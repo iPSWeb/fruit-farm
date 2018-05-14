@@ -19,8 +19,8 @@ class db{
 	\*======================================================================*/
 	public function __construct($host, $user, $pass, $base){
 		$this->Connect($host, $user, $pass, $base);
-		$this->query("SET NAMES 'cp1251'");
-		$this->query("SET CHARACTER SET 'cp1251'");
+		$this->query("SET NAMES 'utf8'");
+		$this->query("SET CHARACTER SET 'utf8'");
 	}
 	
 	/*======================================================================*\
