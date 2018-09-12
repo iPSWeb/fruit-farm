@@ -45,7 +45,7 @@ class func{
 	Descriiption: Проверяет правильность ввода пароля
 	\*======================================================================*/
 	public function IsPassword($password, $mask = "^[a-zA-Z0-9]", $len = "{4,20}"){
-		return (is_array($password)) ? false : (ereg("{$mask}{$len}$", $password)) ? $password : false;
+		return (is_array($password)) ? false : (preg_match("{$mask}{$len}$", $password)) ? $password : false;
 	
 	}
 	
@@ -56,7 +56,7 @@ class func{
 	Descriiption: Проверяет правильность ввода логина
 	\*======================================================================*/
 	public function IsLogin($login, $mask = "^[a-zA-Z0-9]", $len = "{4,10}"){
-		return (is_array($login)) ? false : (ereg("{$mask}{$len}$", $login)) ? $login : false;
+		return (is_array($login)) ? false : (preg_match("{$mask}{$len}$", $login)) ? $login : false;
 	}
 	
 	/*======================================================================*\
@@ -69,7 +69,7 @@ class func{
 			if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_X_FORWARDED_FOR']))
    			{
 				$client_ip = ( !empty($_SERVER['REMOTE_ADDR']) ) ? $_SERVER['REMOTE_ADDR'] : ( ( !empty($_ENV['REMOTE_ADDR']) ) ? $_ENV['REMOTE_ADDR'] : "unknown" );
-				$entries = split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
+				$entries = preg_split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
 				reset($entries);
 				while (list(, $entry) = each($entries))
 				{

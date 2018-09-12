@@ -2,9 +2,9 @@
 class config{
 
 	public $HostDB = 'localhost';
-	public $UserDB = 'psweb_ff';
-	public $PassDB = 'testff';
-	public $BaseDB = 'psweb_ff';
+	public $UserDB = 'psweb_fruit-farm';
+	public $PassDB = '123456';
+	public $BaseDB = 'psweb_fruit-farm';
 	
 	public $SYSTEM_START_TIME = 1357338458;
 	public $VAL = 'Руб.';
