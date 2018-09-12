@@ -69,7 +69,7 @@ class func{
 			if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_X_FORWARDED_FOR']))
    			{
 				$client_ip = ( !empty($_SERVER['REMOTE_ADDR']) ) ? $_SERVER['REMOTE_ADDR'] : ( ( !empty($_ENV['REMOTE_ADDR']) ) ? $_ENV['REMOTE_ADDR'] : "unknown" );
-				$entries = split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
+				$entries = preg_split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
 				reset($entries);
 				while (list(, $entry) = each($entries))
 				{
