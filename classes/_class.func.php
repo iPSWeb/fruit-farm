@@ -45,7 +45,7 @@ class func{
 	Descriiption: Проверяет правильность ввода пароля
 	\*======================================================================*/
 	public function IsPassword($password, $mask = "^[a-zA-Z0-9]", $len = "{4,20}"){
-		return (is_array($password)) ? false : (ereg("{$mask}{$len}$", $password)) ? $password : false;
+		return (is_array($password)) ? false : (preg_match("{$mask}{$len}$", $password)) ? $password : false;
 	
 	}
 	
@@ -56,7 +56,7 @@ class func{
 	Descriiption: Проверяет правильность ввода логина
 	\*======================================================================*/
 	public function IsLogin($login, $mask = "^[a-zA-Z0-9]", $len = "{4,10}"){
-		return (is_array($login)) ? false : (ereg("{$mask}{$len}$", $login)) ? $login : false;
+		return (is_array($login)) ? false : (preg_match("{$mask}{$len}$", $login)) ? $login : false;
 	}
 	
 	/*======================================================================*\
