@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="acc-title">Админка</div>
 <div class="field-gr"><a href="/admin/stats">Статистика</a></div>
 <div class="field-gr"><a href="/admin/story_buy">История покупок</a></div>

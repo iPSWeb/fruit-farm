@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 if(isset($_POST["auth"])){
 	$email = $func->IsMail($_POST["email"]);
 	$password = $func->IsPassword($_POST["password"]);
@@ -15,7 +16,7 @@ if(isset($_POST["auth"])){
 					$_SESSION["user_id"] = $data["id"];
 					$_SESSION["user"] = $data["user"];
 					$_SESSION["referer_id"] = $data["referer_id"];
-					if($data['id'] == 1) $_SESSION['admin'] = TRUE;
+                                        if($data['id'] == 1){$_SESSION['admin'] = TRUE;}
 					Header("Location: /account");	
 				}else echo "<center><font color = 'red'><b>Аккаунт заблокирован</b></font></center><BR />";
 			}else echo "<center><font color = 'red'><b>Email и/или Пароль указан неверно</b></font></center><BR />";

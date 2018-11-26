@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="wim">Как это работает?</div>
 <div class="wim-block">
 	<div class="wim-lf"></div>

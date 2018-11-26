@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <html>
 <head>
 <title>Fruit Farm - {!TITLE!}</title>

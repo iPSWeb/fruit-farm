@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Новости";
 $_OPTIMIZATION["description"] = "Новости проекта";
 $_OPTIMIZATION["keywords"] = "Новости нашего проекта";

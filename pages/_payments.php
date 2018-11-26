@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Последние выплаты";
 $_OPTIMIZATION["description"] = "Список последних выплат";
 $_OPTIMIZATION["keywords"] = "Последние выплаты";

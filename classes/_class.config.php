@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class config{
 
 	public $HostDB = 'localhost';
@@ -20,4 +21,3 @@ class config{
     public $kredit_shopID = 'ShopID';
 	public $kredit_secretW = 'SecretKEY';
 }
-?>

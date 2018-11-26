@@ -27,9 +27,9 @@ include('inc/_set_referer.php');
 # База данных
 $db = new db($config->HostDB, $config->UserDB, $config->PassDB, $config->BaseDB);
 # Шапка
-@include('inc/_header.php');
-    if(isset($_GET["menu"])){
-    $menu = strval($_GET["menu"]);
+include('inc/_header.php');
+if(isset($_GET['menu'])){
+    $menu = strval($_GET['menu']);
     switch($menu){
         case '404': include('pages/_404.php'); break; // Страница ошибки
         case 'rules': include('pages/_rules.php'); break; // Правила проекта
@@ -47,9 +47,11 @@ $db = new db($config->HostDB, $config->UserDB, $config->PassDB, $config->BaseDB)
         # Страница ошибки
         default: @include('pages/_404.php'); break;
     }
-}else @include('pages/_index.php');
+}else{
+    include('pages/_index.php');
+}
 # Подвал
-@include('inc/_footer.php');
+include('inc/_footer.php');
 # Заносим контент в переменную
 $content = ob_get_contents();
 # Очищаем буфер

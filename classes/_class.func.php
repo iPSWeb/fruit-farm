@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class func{
 
 	public $UserIP = "Undefined"; # IP пользователя

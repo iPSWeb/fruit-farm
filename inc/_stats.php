@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $tfstats = time() - 60*60*24;
 $db->Query("SELECT 
 (SELECT COUNT(*) FROM db_users_a) all_users,

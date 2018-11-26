@@ -1,4 +1,5 @@
 <?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $db->Query("SELECT * FROM db_sender WHERE status = '0' ORDER BY id LIMIT 1");
 if($db->NumRows() == 1){
 $send_data = $db->FetchArray();

@@ -1,7 +1,8 @@
 <?PHP
-$_OPTIMIZATION["title"] = "О проекте";
-$_OPTIMIZATION["description"] = "О нашем проекте";
-$_OPTIMIZATION["keywords"] = "Немного о нас и о нашем проекте";
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+$_OPTIMIZATION['title'] = 'О проекте';
+$_OPTIMIZATION['description'] = 'О нашем проекте';
+$_OPTIMIZATION['keywords'] = 'Немного о нас и о нашем проекте';
 ?>
 <div class="s-bk-lf">
 	<div class="acc-title">О проекте</div>

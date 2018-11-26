@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class rfs_payeer
 {
 	private $url = 'https://payeer.com/ajax/api/api.php';

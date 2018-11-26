@@ -27,7 +27,8 @@ RewriteRule ^users(/?)+$ index.php?menu=users [L]
 #Оплата
 RewriteRule ^payment/success(/?)+$ index.php?menu=success [L]
 RewriteRule ^payment/fail(/?)+$ index.php?menu=fail [L]
-
+# Ошибка
+RewriteRule ^404(/?)+$ index.php?menu=404 [L]
 # Аккаунт
 RewriteRule ^account(/?)+$ index.php?menu=account [L]
 RewriteRule ^account/farm(/?)+$ index.php?menu=account&sel=farm [L]

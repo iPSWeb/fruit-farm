@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="clr"></div>
 </div>
 <div class="clr"></div>
