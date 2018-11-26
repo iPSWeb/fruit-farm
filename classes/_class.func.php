@@ -35,8 +35,8 @@ class func{
 	Descriiption: Проверяет правильность ввода email адреса
 	\*======================================================================*/
 	public function IsMail($mail){
-		if(is_array($mail) && empty($mail) && strlen($mail) > 255 && strpos($mail,'@') > 64) return false;
-		return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $mail)) ? false : strtolower($mail);	
+            if(is_array($mail) && empty($mail) && strlen($mail) > 255 && strpos($mail,'@') > 64) return false;
+            return ( !preg_match("#^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$#ix", $mail)) ? false : strtolower($mail);	
 	}
 	
 	/*======================================================================*\
@@ -45,9 +45,8 @@ class func{
 	Input:		Строка пароля, Маска, Длина ("10, 25") && ("10") 
 	Descriiption: Проверяет правильность ввода пароля
 	\*======================================================================*/
-	public function IsPassword($password, $mask = "^[a-zA-Z0-9]", $len = "{4,20}"){
-		return (is_array($password)) ? false : (preg_match("{$mask}{$len}$", $password)) ? $password : false;
-	
+	public function IsPassword($password){
+            return (is_array($password)) ? false : (preg_match("#^[a-zA-Z0-9]{4,20}$#", $password)) ? $password : false;
 	}
 	
 	/*======================================================================*\
@@ -56,8 +55,8 @@ class func{
 	Input:		Строка логина, Маска, Длина ("10, 25") && ("10") 
 	Descriiption: Проверяет правильность ввода логина
 	\*======================================================================*/
-	public function IsLogin($login, $mask = "^[a-zA-Z0-9]", $len = "{4,10}"){
-		return (is_array($login)) ? false : (preg_match("{$mask}{$len}$", $login)) ? $login : false;
+	public function IsLogin($login){
+		return (is_array($login)) ? false : (preg_match("#^[a-zA-Z0-9]{4,10}$#", $login)) ? $login : false;
 	}
 	
 	/*======================================================================*\
