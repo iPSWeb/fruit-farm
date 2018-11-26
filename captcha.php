@@ -1,14 +1,8 @@
 <?php
-@error_reporting(E_ALL ^ E_NOTICE);
-@ini_set('display_errors', true);
-@ini_set('html_errors', false);
-@ini_set('error_reporting', E_ALL ^ E_NOTICE);
-
 function clean_url ($url) {
-
   if ($url == '') return;
-
-  $url = str_replace("http://", "", $url);
+  $protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'] == 'on'))?'https://':'http://';
+  $url = str_replace($protocol, "", $url);
   if (strtolower(substr($url, 0, 4)) == 'www.')  $url = substr($url, 4);
   $url = explode('/', $url);
   $url = reset($url);
@@ -217,5 +211,3 @@ function ImageSmoothAlphaLine ($image, $x1, $y1, $x2, $y2, $r, $g, $b, $alpha=0)
     }
   }
 }
-
-?>
