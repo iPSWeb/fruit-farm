@@ -131,15 +131,15 @@ class func{
 	Descriiption: Проверяет правильность ввода пароля
 	\*======================================================================*/
 	public function IsWM($data, $type = 0){
-		
 		$FirstChar = array( 1 => "R",
-							2 => "Z",
-							3 => "E",
-							4 => "U");
+                        2 => "Z",
+                        3 => "E",
+                        4 => "U"
+                    );
 		
 		if(strlen($data) < 12 && strlen($data) > 12 && $type < 0 && $type > count($FirstChar)) return false;
-		if($type == 0) return (is_array($data)) ? false : ( ereg("^[0-9]{12}$", $data) ? $data : false );
-		if( substr(strtoupper($data),0,1) != $FirstChar[$type] or !ereg("^[0-9]{12}", substr($data,1)) ) return false;
+		if($type == 0) return (is_array($data)) ? false : ( preg_match("#^[0-9]{12}$#", $data) ? $data : false );
+		if( substr(strtoupper($data),0,1) != $FirstChar[$type] or !preg_match("#^[0-9]{12}$#", substr($data,1)) ) return false;
 		return $data;
 	}
 
@@ -240,4 +240,3 @@ class func{
 		}else return 0;
 	}
 }
-?>
