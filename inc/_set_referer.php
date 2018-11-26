@@ -1,5 +1,5 @@
 <?PHP
-if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 if(isset($_GET['i'])){
     $rid = (intval($_GET['i']) > 0) ? intval($_GET['i']) : 1;
     if(!isset($_COOKIE['referer'])){

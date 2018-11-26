@@ -1,5 +1,5 @@
 <?PHP
-if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 if(isset($_POST["auth"])){
 	$email = $func->IsMail($_POST["email"]);
 	$password = $func->IsPassword($_POST["password"]);

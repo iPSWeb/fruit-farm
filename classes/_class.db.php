@@ -1,5 +1,5 @@
 <?PHP
-if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class db{
 
 
@@ -203,4 +203,3 @@ class db{
 	}
 	
 }
-?>

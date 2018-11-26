@@ -1,5 +1,5 @@
 <?PHP
-if (!defined('CONST_PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Регистрация";
 $_OPTIMIZATION["description"] = "Регистрация пользователя в системе";
 $_OPTIMIZATION["keywords"] = "Регистрация нового участника в системе";

@@ -1,6 +1,6 @@
 <?PHP
 # Константа для Include
-define('CONST_PSWeb', true);
+define('PSWeb', true);
 # Подматываем классы
 function __autoload($name){ include("classes/_class.".$name.".php");}
 # Класс конфига 
