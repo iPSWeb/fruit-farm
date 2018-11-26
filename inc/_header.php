@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 <meta name="description" content="{!DESCRIPTION!}">
 <meta name="keywords" content="{!KEYWORDS!}">
-<link href="/style/style.css" rel="stylesheet" type="text/css" />
+<link href="/style/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/functions.js"></script>
 </head>

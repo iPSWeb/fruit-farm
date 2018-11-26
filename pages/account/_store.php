@@ -44,19 +44,19 @@ $sonfig_site = $db->FetchArray();
 <form action="" method="post">
 	<div class="clr"></div>	
 	<div class="sm-line">
-		<img src="/img/fruit/lime-small.jpg" />Ваших <?=$user_data["a_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["a_in_h"], $user_data["a_t"], $user_data["last_sbor"]);?> плодов</font>
+		<img src="/style/img/fruit/a_t-small.jpg" />Ваших <?=$user_data["a_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["a_in_h"], $user_data["a_t"], $user_data["last_sbor"]);?> плодов</font>
 	</div>
 	<div class="sm-line">
-		<img src="/img/fruit/cherry-small.jpg" />Ваших <?=$user_data["b_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["b_in_h"], $user_data["b_t"], $user_data["last_sbor"]);?> плодов</font>
+		<img src="/style/img/fruit/b_t-small.jpg" />Ваших <?=$user_data["b_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["b_in_h"], $user_data["b_t"], $user_data["last_sbor"]);?> плодов</font>
 	</div>
 	<div class="sm-line">
-		<img src="/img/fruit/kiwi-small.jpg" />Ваших <?=$user_data["c_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["c_in_h"], $user_data["c_t"], $user_data["last_sbor"]);?> плодов</font>
+		<img src="/style/img/fruit/c_t-small.jpg" />Ваших <?=$user_data["c_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["c_in_h"], $user_data["c_t"], $user_data["last_sbor"]);?> плодов</font>
 	</div>
 	<div class="sm-line">
-		<img src="/img/fruit/strawberries-small.jpg" />Ваших <?=$user_data["d_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["d_in_h"], $user_data["d_t"], $user_data["last_sbor"]);?> плодов</font>
+		<img src="/style/img/fruit/d_t-small.jpg" />Ваших <?=$user_data["d_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["d_in_h"], $user_data["d_t"], $user_data["last_sbor"]);?> плодов</font>
 	</div>
 	<div class="sm-line">
-		<img src="/img/fruit/orange-small.jpg" />Ваших <?=$user_data["e_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["e_in_h"], $user_data["e_t"], $user_data["last_sbor"]);?> плодов</font>
+		<img src="/style/img/fruit/e_t-small.jpg" />Ваших <?=$user_data["e_t"]; ?> саженцев уродили: <font color="#000"> <?=$func->SumCalc($sonfig_site["e_in_h"], $user_data["e_t"], $user_data["last_sbor"]);?> плодов</font>
 	</div>
 	<div class="clr"></div>
 	<center><input type="submit" name="sbor" value="Собрать все" style="height:30px;"/></center>
@@ -66,11 +66,11 @@ $sonfig_site = $db->FetchArray();
     <td colspan="5" align="center" style="padding:5px;"><b>У вас имеется на складе:</b></td>
     </tr>
   <tr>
-    <td align="center" width="20%"><div class="sm-line-nt"><img src="/img/fruit/lime-small.jpg" /></div></td>
-    <td align="center" width="20%"><div class="sm-line-nt"><img src="/img/fruit/cherry-small.jpg" /></div></td>
-	<td align="center" width="20%"><div class="sm-line-nt"><img src="/img/fruit/kiwi-small.jpg" /></div></td>
-    <td align="center" width="20%"><div class="sm-line-nt"><img src="/img/fruit/strawberries-small.jpg" /></div></td>
-    <td align="center" width="20%"><div class="sm-line-nt"><img src="/img/fruit/orange-small.jpg" /></div></td>
+    <td align="center" width="20%"><div class="sm-line-nt"><img src="/style/img/fruit/a_t-small.jpg" /></div></td>
+    <td align="center" width="20%"><div class="sm-line-nt"><img src="/style/img/fruit/b_t-small.jpg" /></div></td>
+	<td align="center" width="20%"><div class="sm-line-nt"><img src="/style/img/fruit/c_t-small.jpg" /></div></td>
+    <td align="center" width="20%"><div class="sm-line-nt"><img src="/style/img/fruit/d_t-small.jpg" /></div></td>
+    <td align="center" width="20%"><div class="sm-line-nt"><img src="/style/img/fruit/e_t-small.jpg" /></div></td>
   </tr>
   <tr>
     <td align="center"><?=$user_data["a_b"]; ?></td>

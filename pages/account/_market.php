@@ -50,39 +50,36 @@ if(isset($_POST["sell"])){
     <td height="30" align="center" valign="middle"><strong>На сумму (серебра)</strong></td>
   </tr>
   <tr>
-    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/img/fruit/lime-small.jpg" /></div></td>
+    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/style/img/fruit/a_t-small.jpg" /></div></td>
     <td align="center" valign="middle"><?=$user_data["a_b"]; ?> плодов</td>
     <td align="center" valign="middle"><?=$func->SellItems($user_data["a_b"], $sonfig_site["items_per_coin"]); ?></td>
   </tr>
   <tr>
-    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/img/fruit/cherry-small.jpg" /></div></td>
+    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/style/img/fruit/b_t-small.jpg" /></div></td>
     <td align="center" valign="middle"><?=$user_data["b_b"]; ?> плодов</td>
     <td align="center" valign="middle"><?=$func->SellItems($user_data["b_b"], $sonfig_site["items_per_coin"]); ?></td>
   </tr>
   <tr>
-    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/img/fruit/kiwi-small.jpg" /></div></td>
+    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/style/img/fruit/c_t-small.jpg" /></div></td>
     <td align="center" valign="middle"><?=$user_data["c_b"]; ?> плодов</td>
     <td align="center" valign="middle"><?=$func->SellItems($user_data["c_b"], $sonfig_site["items_per_coin"]); ?></td>
   </tr>
   <tr>
-    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/img/fruit/strawberries-small.jpg" /></td>
+    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/style/img/fruit/d_t-small.jpg" /></td>
     <td align="center" valign="middle"><?=$user_data["d_b"]; ?> плодов</td>
     <td align="center" valign="middle"><?=$func->SellItems($user_data["d_b"], $sonfig_site["items_per_coin"]); ?></td>
   </tr>
   <tr>
-    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/img/fruit/orange-small.jpg" /></div></td>
+    <td width="30" height="30" align="center" valign="middle"><div class="sm-line-nt"><img src="/style/img/fruit/e_t-small.jpg" /></div></td>
     <td align="center" valign="middle"><?=$user_data["e_b"]; ?> плодов</td>
-    <td align="center" valign="middle"><?=$func->SellItems($user_data["e_b"], $sonfig_site["items_per_coin"]); ?></td>
+    <td align="center" valign="middle"><?=$func->SellItems($user_data['e_b'], $sonfig_site['items_per_coin']); ?></td>
   </tr>
   <tr>
     <td align="center" valign="middle" colspan="3">
 	<BR />
 	<input type="submit" name="sell" value="Продать все" class="button_0" style="height: 30px;"></td>
   </tr>
-  
 </table>
 </form>
-
-</div>
-								
+</div>							
 <div class="clr"></div>	

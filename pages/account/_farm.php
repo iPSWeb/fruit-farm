@@ -38,7 +38,7 @@
 	<div class="fr-block">
 		<form action="" method="post">
 		<div class="cl-fr-lf">
-			<img src="/img/fruit/lime.jpg" />
+			<img src="/style/img/fruit/a_t.jpg" />
 		</div>
 		<div class="cl-fr-rg" style="padding-left:20px;">
 			<div class="fr-te-gr-title"><b>Лайм</b></div>
@@ -53,7 +53,7 @@
 	<div class="fr-block">
 		<form action="" method="post">
 		<div class="cl-fr-lf">
-			<img src="/img/fruit/cherry.jpg" />
+			<img src="/style/img/fruit/b_t.jpg" />
 		</div>
 		<div class="cl-fr-rg" style="padding-left:20px;">
 			<div class="fr-te-gr-title"><b>Вишня</b></div>
@@ -68,7 +68,7 @@
 	<div class="fr-block">
 		<form action="" method="post">
 		<div class="cl-fr-lf">
-			<img src="/img/fruit/strawberries.jpg" />
+			<img src="/style/img/fruit/c_t.jpg" />
 		</div>
 		<div class="cl-fr-rg" style="padding-left:20px;">
 			<div class="fr-te-gr-title"><b>Клубника</b></div>
@@ -83,7 +83,7 @@
 	<div class="fr-block">
 		<form action="" method="post">
 		<div class="cl-fr-lf">
-			<img src="/img/fruit/kiwi.jpg" />
+			<img src="/style/img/fruit/d_t.jpg" />
 		</div>
 		<div class="cl-fr-rg" style="padding-left:20px;">
 			<div class="fr-te-gr-title"><b>Киви</b></div>
@@ -98,7 +98,7 @@
 	<div class="fr-block">
 		<form action="" method="post">
 		<div class="cl-fr-lf">
-			<img src="/img/fruit/orange.jpg" />
+			<img src="/style/img/fruit/e_t.jpg" />
 		</div>
 		<div class="cl-fr-rg" style="padding-left:20px;">
 			<div class="fr-te-gr-title"><b>Апельсин</b></div>
