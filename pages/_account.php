@@ -5,6 +5,11 @@ $_OPTIMIZATION["description"] = "Аккаунт пользователя";
 $_OPTIMIZATION["keywords"] = "Аккаунт, личный кабинет, пользователь";
 # Блокировка сессии
 if(!isset($_SESSION["user_id"])){ Header("Location: /"); return; }
+$user_id = $_SESSION['user_id'];
+$db->Query("SELECT * FROM `db_users_a`, `db_users_b` WHERE `db_users_a`.`id` = `db_users_b`.`id` AND `db_users_a`.`id` = '$user_id'");
+$user_data = $db->FetchArray();
+if($user_data['banned']){ @session_destroy(); Header('Location: /signin'); return; }
+$user_name = $user_data['user'];
 if(isset($_GET["sel"])){	
 	$smenu = strval($_GET["sel"]);		
 	switch($smenu){
