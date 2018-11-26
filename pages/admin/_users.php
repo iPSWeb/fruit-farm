@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">Пользователи</div>
 </div>
@@ -64,185 +67,48 @@ $data = $db->FetchArray();
     <td style="padding-left:10px;">Серебро (Вывод):</td>
     <td width="200" align="center"><?=sprintf("%.2f",$data["money_p"]); ?></td>
   </tr>
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Овощей на балансе (Лайм):</td>
-    <td width="200" align="center"><?=$data["a_b"]; ?></td>
-  </tr>
-  <tr>
-    <td style="padding-left:10px;">Овощей на балансе (Вишня):</td>
-    <td width="200" align="center"><?=$data["b_b"]; ?></td>
-  </tr>
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Овощей на балансе (Клубника):</td>
-    <td width="200" align="center"><?=$data["c_b"]; ?></td>
-  </tr>
-  <tr>
-    <td style="padding-left:10px;">Овощей на балансе (Киви):</td>
-    <td width="200" align="center"><?=$data["d_b"]; ?></td>
-  </tr>
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Овощей на балансе (Апельсин):</td>
-    <td width="200" align="center"><?=$data["e_b"]; ?></td>
-  </tr>
-  <tr>
-    <td style="padding-left:10px;">Деревьев (Лайм):</td>
-    <td width="200" align="center">
-	
-		<table width="100%" border="0">
-		  <tr>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="a_t" />
-				<input type="hidden" name="type" value="1" />
-				<input type="submit" value="-1" />
-			</form>
-			</td>
-			<td align="center"><?=$data["a_t"]; ?> шт.</td>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="a_t" />
-				<input type="hidden" name="type" value="2" />
-				<input type="submit" value="+1" />
-			</form>
-			</td>
-		  </tr>
-		</table>
-
-	</td>
-  </tr>
-
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Деревьев (Вишня):</td>
-    <td width="200" align="center">
-	
-		<table width="100%" border="0">
-		  <tr>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="b_t" />
-				<input type="hidden" name="type" value="1" />
-				<input type="submit" value="-1" />
-			</form>
-			</td>
-			<td align="center"><?=$data["b_t"]; ?> шт.</td>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="b_t" />
-				<input type="hidden" name="type" value="2" />
-				<input type="submit" value="+1" />
-			</form>
-			</td>
-		  </tr>
-		</table>
-
-	</td>
-  </tr>
-
-  <tr>
-    <td style="padding-left:10px;">Деревьев (Клубника):</td>
-    <td width="200" align="center">
-	
-		<table width="100%" border="0">
-		  <tr>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="c_t" />
-				<input type="hidden" name="type" value="1" />
-				<input type="submit" value="-1" />
-			</form>
-			</td>
-			<td align="center"><?=$data["c_t"]; ?> шт.</td>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="c_t" />
-				<input type="hidden" name="type" value="2" />
-				<input type="submit" value="+1" />
-			</form>
-			</td>
-		  </tr>
-		</table>
-
-	</td>
-  </tr>
-
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Деревьев (Киви):</td>
-    <td width="200" align="center">
-	
-		<table width="100%" border="0">
-		  <tr>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="d_t" />
-				<input type="hidden" name="type" value="1" />
-				<input type="submit" value="-1" />
-			</form>
-			</td>
-			<td align="center"><?=$data["d_t"]; ?> шт.</td>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="d_t" />
-				<input type="hidden" name="type" value="2" />
-				<input type="submit" value="+1" />
-			</form>
-			</td>
-		  </tr>
-		</table>
-
-	</td>
-  </tr>
-
-  <tr>
-    <td style="padding-left:10px;">Деревьев (Апельсин):</td>
-    <td width="200" align="center">
-	
-		<table width="100%" border="0">
-		  <tr>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="e_t" />
-				<input type="hidden" name="type" value="1" />
-				<input type="submit" value="-1" />
-			</form>
-			</td>
-			<td align="center"><?=$data["e_t"]; ?> шт.</td>
-			<td>
-			<form action="" method="post">
-				<input type="hidden" name="set_tree" value="e_t" />
-				<input type="hidden" name="type" value="2" />
-				<input type="submit" value="+1" />
-			</form>
-			</td>
-		  </tr>
-		</table>
-
-	</td>
-  </tr>
-  
-  
-  
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Собрано за все время (Томат):</td>
-    <td width="200" align="center"><?=$data["all_time_a"]; ?></td>
-  </tr>
-  <tr>
-    <td style="padding-left:10px;">Собрано за все время (Клубника):</td>
-    <td width="200" align="center"><?=$data["all_time_b"]; ?></td>
-  </tr>
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Собрано за все время (Тыква):</td>
-    <td width="200" align="center"><?=$data["all_time_c"]; ?></td>
-  </tr>
-  <tr>
-    <td style="padding-left:10px;">Собрано за все время (Горох):</td>
-    <td width="200" align="center"><?=$data["all_time_d"]; ?></td>
-  </tr>
-  <tr bgcolor="#efefef">
-    <td style="padding-left:10px;">Собрано за все время (Арахис):</td>
-    <td width="200" align="center"><?=$data["all_time_e"]; ?></td>
-  </tr>
-  
-  
+    <?PHP
+    foreach($items as $item => $description){
+        echo '<tr bgcolor="#efefef">';
+        echo '<td style="padding-left:10px;">Фруктов на балансе ('.$description['production'].'):</td>';
+        echo '<td width="200" align="center">'.$data[$description['char'].'_b'].'</td>';
+        echo '</tr>';
+    }
+    foreach($items as $item => $description){
+        echo '<tr>';
+        echo '<td style="padding-left:10px;">'.$description['name'].':</td>';
+        echo '<td width="200" align="center">';
+        echo '<table width="100%" border="0">';
+        echo '<table width="100%" border="0">';
+        echo '<tr>';
+        echo '<td>';
+        echo '<form action="" method="post">';
+        echo '<input type="hidden" name="set_tree" value="'.$item.'" />';
+        echo '<input type="hidden" name="type" value="1" />';
+        echo '<input type="submit" value="-1" />';
+        echo '</form>';
+        echo '</td>';
+        echo '<td align="center">'.$data[$item].' шт.</td>';
+        echo '<td>';
+        echo '<form action="" method="post">';
+        echo '<input type="hidden" name="set_tree" value="'.$item.'" />';
+        echo '<input type="hidden" name="type" value="2" />';
+        echo '<input type="submit" value="+1" />';
+        echo '</form>';
+        echo '</td>';
+        echo '</tr>';
+        echo '</table>';
+        echo '</td>';
+        echo '</tr>';
+        
+    }
+    foreach($items as $item => $description){
+        echo '<tr bgcolor="#efefef">';
+        echo '<td style="padding-left:10px;">Собрано за все время ('.$description['production'].'):</td>';
+        echo '<td width="200" align="center">'.$data["all_time_".$description['char']].'</td>';
+        echo '</tr>';
+    }
+    ?>
   <tr>
     <td style="padding-left:10px;">Referer:</td>
     <td width="200" align="center">[<?=$data["referer_id"]; ?>]<?=$data["referer"]; ?></td>

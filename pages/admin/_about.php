@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">О ферме</div>
 </div>
@@ -8,15 +11,15 @@
 	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>
 <?PHP
-	if(isset($_POST["tx"])){
-		$db->Query("UPDATE db_conabrul SET about = '".$_POST["tx"]."' WHERE id = '1'");
-		echo "<center><font color = 'green'><b>Сохранено</b></font></center><BR />";
+	if(isset($_POST['tx'])){
+            $db->Query("UPDATE `db_conabrul` SET `about` = '".$_POST['tx']."' WHERE `id` = '1'");
+            echo '<center><font color = "green"><b>Сохранено</b></font></center><BR />';
 	}
-$db->Query("SELECT * FROM db_conabrul WHERE id = '1'");
+$db->Query("SELECT * FROM `db_conabrul` WHERE id = '1'");
 $data = $db->FetchArray();
 ?>
 <form action="" method="post">
-<textarea name="tx" cols="78" rows="25"><?=$data["about"]; ?></textarea>
+<textarea name="tx" cols="78" rows="25"><?=$data['about']; ?></textarea>
 <BR /><BR />
 <center><input type="submit" value="Сохранить" /></center>
 </form>

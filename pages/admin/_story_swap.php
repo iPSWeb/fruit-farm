@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">История обменов обменника</div>
 </div>
@@ -38,7 +41,9 @@ if($db->NumRows() > 0){
 <center><input type="submit" name="clean" value="Очистить" /></center>
 </form>
 <?PHP
-}else echo "<center><b>Записей нет</b></center><BR />";
+}else{
+    echo '<center><b>Записей нет</b></center><BR />';
+}
 ?>
 <div class="clr"></div>
 </div>	

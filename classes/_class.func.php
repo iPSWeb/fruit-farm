@@ -214,7 +214,7 @@ class func{
 	\*======================================================================*/
 	public function md5Password($pass){
 		$pass = strtolower($pass);
-		return md5("shark_md5"."-".$pass);
+		return md5($_SERVER['HTTP_HOST']."-".$pass);
 		
 	}
 	

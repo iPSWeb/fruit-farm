@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">Рассылка пользователям</div>
 </div>
@@ -87,7 +90,9 @@ while($data = $db->FetchArray()){
 </table>
 <BR />
 <?PHP
-}else echo "<center><b>Рассылок нет</b></center><BR />";
+}else{
+    echo '<center><b>Рассылок нет</b></center><BR />';
+}
 ?>
 </div>
 <div class="clr"></div>	

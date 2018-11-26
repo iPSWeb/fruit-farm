@@ -1,3 +1,6 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">История пополнений</div>
 </div>
