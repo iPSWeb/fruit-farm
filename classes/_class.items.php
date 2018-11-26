@@ -66,8 +66,8 @@ class items {
                 'profit_rub_day' => round($this->config['c_in_h']*24/$this->config['items_per_coin']/$this->config['ser_per_wmr'],4),
                 'profit_rub_week' => round($this->config['c_in_h']*24*7/$this->config['items_per_coin']/$this->config['ser_per_wmr'],4),
                 'profit_rub_month' => round($this->config['c_in_h']*24*30/$this->config['items_per_coin']/$this->config['ser_per_wmr'],4),
-                'img' => '/style/img/fruit/с_t.jpg',
-                'img_small' => '/style/img/fruit/с_t-small.jpg'
+                'img' => '/style/img/fruit/c_t.jpg',
+                'img_small' => '/style/img/fruit/c_t-small.jpg'
             ),
             'd_t' => array(
                 'name' => 'Дерево киви',
@@ -87,8 +87,8 @@ class items {
                 'profit_rub_day' => round($this->config['d_in_h']*24/$this->config['items_per_coin']/$this->config['ser_per_wmr'],4),
                 'profit_rub_week' => round($this->config['d_in_h']*24*7/$this->config['items_per_coin']/$this->config['ser_per_wmr'],4),
                 'profit_rub_month' => round($this->config['d_in_h']*24*30/$this->config['items_per_coin']/$this->config['ser_per_wmr'],4),
-                'img' => '/style/img/items/d_t.jpg',
-                'store_img' => '/style/img/store/d_t.jpg'
+                'img' => '/style/img/fruit/d_t.jpg',
+                'img_small' => '/style/img/fruit/d_t-small.jpg'
             ),
             'e_t' => array(
                 'name' => 'Дерево апельсинов',
