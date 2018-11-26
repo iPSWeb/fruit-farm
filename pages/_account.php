@@ -29,5 +29,3 @@ if(isset($_GET["sel"])){
 	default: @include("pages/_404.php"); break;	
 	}	
 }else @include("pages/account/_user_account.php");
-
-?>
