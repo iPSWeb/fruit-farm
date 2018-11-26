@@ -16,6 +16,7 @@ $page = $send_data["page"] * 50;
 			$all_send++;
 		}
 		$db->Query("UPDATE db_sender SET page = page +1, sended = sended + '$all_send' WHERE id = '".$send_data["id"]."'");
-	} else $db->Query("UPDATE db_sender SET status = '1' WHERE id = '".$send_data["id"]."'");
+	} else{
+            $db->Query("UPDATE db_sender SET status = '1' WHERE id = '".$send_data["id"]."'");
+        }
 }
-?>

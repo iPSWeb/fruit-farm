@@ -1,7 +1,6 @@
 <?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Аккаунт - Ежедневный бонус";
-$user_id = $_SESSION["user_id"];
-$uname = $_SESSION["user"];
 # Настройки бонусов
 $bonus_min = 10;
 $bonus_max = 100;
@@ -28,7 +27,7 @@ $hide_form = false;
 			# Зачилсяем юзверю
 			$db->Query("UPDATE db_users_b SET money_b = money_b + '$sum' WHERE id = '$user_id'");
 			# Вносим запись в список бонусов
-			$db->Query("INSERT INTO db_bonus_list (user, user_id, sum, date_add, date_del) VALUES ('$uname','$user_id','$sum','$dadd','$ddel')");
+			$db->Query("INSERT INTO db_bonus_list (user, user_id, sum, date_add, date_del) VALUES ('$user_name','$user_id','$sum','$dadd','$ddel')");
 			# Случайная очистка устаревших записей
 			$db->Query("DELETE FROM db_bonus_list WHERE date_del < '$dadd'");
 			echo "<center><font color = 'green'><b>На Ваш счет для покупок зачислен бонус в размере {$sum} серебра</b></font></center><BR />";

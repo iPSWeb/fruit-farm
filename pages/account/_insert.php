@@ -1,12 +1,11 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+$_OPTIMIZATION["title"] = "Аккаунт - Пополнение баланса";
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">Пополнение баланса</div>
 </div>
 <?PHP
-$_OPTIMIZATION["title"] = "Аккаунт - Пополнение баланса";
-$user_id = $_SESSION["user_id"];
-$user_name = $_SESSION["user"];
-$db->Query("SELECT * FROM db_config WHERE id = '1' LIMIT 1");
-$db_config = $db->FetchArray();
 /*
 if($_SESSION["user_id"] != 1){
 echo "<center><b><font color = red>Технические работы</font></b></center>";
@@ -23,12 +22,12 @@ return;
 После пополнения вам будет зачислено серебро.<br /></p>
 <?PHP
 /// db_payeer_insert
-if(isset($_POST["sum"])){
+if(isset($_POST['sum'])){
 $sum = round(floatval($_POST["sum"]),2);
 if($sum >= 1){
 # Заносим в БД
-$db->Query("INSERT INTO db_payeer_insert (user_id, user, sum, date_add,description) VALUES ('".$_SESSION["user_id"]."','".$_SESSION["user"]."','$sum','".time()."','Payeer')");
-$desc = base64_encode("Пополнение баланса на проекте ".$_SERVER["HTTP_HOST"]." пользователем ".$_SESSION["user"]);
+$db->Query("INSERT INTO `db_payeer_insert` (`user_id`, `user`, `sum`, `date_add`,`description`) VALUES ('$user_id','$user_name','$sum','".time()."','Payeer')");
+$desc = base64_encode("Пополнение баланса на проекте ".$_SERVER["HTTP_HOST"]." пользователем ".$user_name);
 $m_shop = $config->shopID;
 $m_orderid = $db->LastInsert();
 $m_amount = number_format($sum, 2, ".", "");
@@ -60,7 +59,9 @@ $sign = strtoupper(hash('sha256', implode(":", $arHash)));
 </div>
 <?PHP
 return;
-}else echo '<center><font color="red">Сумма не может быть меньше 1 руб</font></center>';
+    }else{
+        echo '<center><font color="red">Сумма не может быть меньше 1 руб</font></center>';
+    }
 }
 ?>
 <script type="text/javascript">

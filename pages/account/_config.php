@@ -1,8 +1,6 @@
 <?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Аккаунт - Настройки";
-$user_id = $_SESSION["user_id"];
-$db->Query("SELECT * FROM db_users_a WHERE id = '$user_id'");
-$user_data = $db->FetchArray();
 ?>
 <div class="s-bk-lf">
 	<div class="acc-title">Настройки</div>

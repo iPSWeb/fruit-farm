@@ -5,7 +5,7 @@ if(isset($_GET['i'])){
     if(!isset($_COOKIE['referer'])){
         setcookie('referer',$rid,time() + (60*60*24*30),'/',$_SERVER['HTTP_HOST'],0);
         $_SESSION['referer_id'] = $rid;
-        $db->query("UPDATE `db_users` SET `ref_view` = `ref_view` + '1' WHERE `id` = :id",array('id'=>$rid));
+        //$db->query("UPDATE `db_users` SET `ref_view` = `ref_view` + '1' WHERE `id` = :id",array('id'=>$rid));
     }else{
         $_SESSION['referer_id'] = $_COOKIE['referer'];
     }

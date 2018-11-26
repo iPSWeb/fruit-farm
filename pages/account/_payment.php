@@ -1,16 +1,13 @@
+<?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+$_OPTIMIZATION["title"] = "Аккаунт - Заказ выплаты";
+?>
 <div class="s-bk-lf">
 	<div class="acc-title">Заказ выплаты</div>
 </div>
 <div class="silver-bk">
 <BR />
 <?PHP
-$_OPTIMIZATION["title"] = "Аккаунт - Заказ выплаты";
-$user_id = $_SESSION["user_id"];
-$user_name = $_SESSION["user"];
-$db->Query("SELECT * FROM db_users_b WHERE id = '$user_id' LIMIT 1");
-$user_data = $db->FetchArray();
-$db->Query("SELECT * FROM db_config WHERE id = '1' LIMIT 1");
-$db_config = $db->FetchArray();
 $status_array = array( 0 => "Проверяется", 1 => "Выплачивается", 2 => "Отменена", 3 => "Выплачено");
 # Минималка серебром!
 $minPay = $db_config['min_pay']; 
@@ -22,14 +19,9 @@ $minPay = $db_config['min_pay'];
  - <a href="https://payeer.com/0470864" target="_blank">Вывод средств из payeer</a> <BR /><BR />
 <center><b>Заказ выплаты:</b></center><BR />
 <?PHP
-	function ViewPurse($purse){
-		if( substr($purse,0,1) != "P" ) return false;
-		if( !ereg("^[0-9]{7,8}$", substr($purse,1)) ) return false;	
-		return $purse;
-	}
 	# Заносим выплату
 	if(isset($_POST["purse"])){
-		$purse = ViewPurse($_POST["purse"]);
+		$purse = $func->CheckPayeer($_POST["purse"]);
 		$sum = intval($_POST["sum"]);
 		$val = "RUB";
 		if($purse !== false){
@@ -131,7 +123,9 @@ $minPay = $db_config['min_pay'];
   		</tr>
 		<?PHP
 		}
-	}else echo '<tr><td align="center" colspan="5">Нет записей</td></tr>'
+	}else{
+            echo '<tr><td align="center" colspan="5">Нет записей</td></tr>';
+        }
   ?>
 </table>
 <div class="clr"></div>		

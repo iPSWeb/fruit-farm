@@ -18,10 +18,18 @@ if(isset($_POST["auth"])){
 					$_SESSION["referer_id"] = $data["referer_id"];
                                         if($data['id'] == 1){$_SESSION['admin'] = TRUE;}
 					Header("Location: /account");	
-				}else echo "<center><font color = 'red'><b>Аккаунт заблокирован</b></font></center><BR />";
-			}else echo "<center><font color = 'red'><b>Email и/или Пароль указан неверно</b></font></center><BR />";
-		}else echo "<center><font color = 'red'><b>Указанный Email не зарегистрирован в системе</b></font></center><BR />";
-	}else echo "<center><font color = 'red'><b>Email или пароль указан неверно</b></font></center><BR />";
+				}else{
+                                    echo '<center><font color = "red"><b>Аккаунт заблокирован</b></font></center><BR />';
+                                }
+			}else{
+                            echo '<center><font color = "red"><b>Email и/или Пароль указан неверно</b></font></center><BR />';
+                        }
+		}else{
+                    echo '<center><font color = "red"><b>Указанный Email не зарегистрирован в системе</b></font></center><BR />';
+                }
+	}else{
+            echo '<center><font color = "red"><b>Email или пароль указан неверно</b></font></center><BR />';
+        }
 }
 ?>
 <div class="autoriz">

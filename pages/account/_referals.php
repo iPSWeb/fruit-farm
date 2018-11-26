@@ -1,7 +1,7 @@
 <?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Аккаунт - Партнерская программа";
-$user_id = $_SESSION["user_id"];
-$db->Query("SELECT COUNT(*) FROM db_users_a WHERE referer_id = '$user_id'");
+$db->Query("SELECT COUNT(*) FROM `db_users_a` WHERE `referer_id` = '$user_id'");
 $refs = $db->FetchRow();
 ?> 
 <div class="s-bk-lf">
@@ -35,7 +35,9 @@ $refs = $db->FetchRow();
 		<?PHP
 		$all_money += $ref["to_referer"];
 		}
-	}else echo '<tr><td align="center" colspan="3">У вас нет рефералов</td></tr>'
+	}else{
+            echo '<tr><td align="center" colspan="3">У вас нет рефералов</td></tr>';
+        }
   ?>
 </table>
 <div class="clr"></div>	

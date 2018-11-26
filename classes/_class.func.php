@@ -239,4 +239,13 @@ class func{
 			}else return 0;
 		}else return 0;
 	}
+        /*======================================================================*\
+	Function:	CheckPayeer
+	Descriiption: Проверка правильности ввода кошелька Payeer
+	\*======================================================================*/
+	function CheckPayeer($purse){
+		if( substr($purse,0,1) != "P" ) return false;
+		if( !preg_match("#^[0-9]{7,}$#", substr($purse,1)) ) return false;	
+		return $purse;
+	}
 }

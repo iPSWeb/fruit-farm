@@ -1,7 +1,6 @@
 <?PHP
+if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Аккаунт - Лотерея";
-$user_id = $_SESSION["user_id"];
-$uname = $_SESSION["user"];
 # Настройки лотерея
 $amount_lottery = 100; // Стоимость лотерейного билета
 $num_bil = 10; // Количество билетов
@@ -60,7 +59,7 @@ if(isset($_GET["winners"])){ ?>
 		$db->Query("SELECT money_b FROM db_users_b WHERE id = '{$user_id}' LIMIT 1");
 		if($db->FetchRow() >= $amount_lottery){
 			$db->Query("UPDATE db_users_b SET money_b = money_b - '$amount_lottery' WHERE id = '{$user_id}'");
-			$db->Query("INSERT INTO db_lottery (user_id, user, date_add) VALUE ('$user_id','$uname','".time()."')");
+			$db->Query("INSERT INTO db_lottery (user_id, user, date_add) VALUE ('$user_id','$user_name','".time()."')");
 			$lid = $db->LastInsert();
 			if( $lid >= $num_bil){
 				# Розыгрываем призы
