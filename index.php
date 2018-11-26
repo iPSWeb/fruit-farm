@@ -1,8 +1,8 @@
 <?PHP
 # Счетчик
 function TimerSet(){
-	list($seconds, $microSeconds) = explode(' ', microtime());
-	return $seconds + (float) $microSeconds;
+    list($seconds, $microSeconds) = explode(' ', microtime());
+    return $seconds + (float) $microSeconds;
 }
 $_timer_a = TimerSet();
 # Старт сессии
