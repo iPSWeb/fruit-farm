@@ -5,15 +5,15 @@
 <BR />
 <?PHP
 $_OPTIMIZATION["title"] = "Аккаунт - Заказ выплаты";
-$usid = $_SESSION["user_id"];
-$usname = $_SESSION["user"];
-$db->Query("SELECT * FROM db_users_b WHERE id = '$usid' LIMIT 1");
+$user_id = $_SESSION["user_id"];
+$user_name = $_SESSION["user"];
+$db->Query("SELECT * FROM db_users_b WHERE id = '$user_id' LIMIT 1");
 $user_data = $db->FetchArray();
 $db->Query("SELECT * FROM db_config WHERE id = '1' LIMIT 1");
-$sonfig_site = $db->FetchArray();
+$db_config = $db->FetchArray();
 $status_array = array( 0 => "Проверяется", 1 => "Выплачивается", 2 => "Отменена", 3 => "Выплачено");
 # Минималка серебром!
-$minPay = $sonfig_site['min_pay']; 
+$minPay = $db_config['min_pay']; 
 ?>
 <b>Выплаты осуществляются в автоматическом режиме и только на платежную систему <a href="https://payeer.com/0470864" target="_BLANK">PAYEER!</a> Процент при выводе составляет 0%</b> <BR /><BR />
 <b>Из платежной системы Payeer Вы можете вывести свои средства в автоматическом режиме на все известные платежные системы и международные банки.</b><BR /><BR />
@@ -36,7 +36,7 @@ $minPay = $sonfig_site['min_pay'];
 			if($sum >= $minPay){
 				if($sum <= $user_data["money_p"]){
 					# Проверяем на существующие заявки
-					$db->Query("SELECT COUNT(*) FROM db_payment WHERE user_id = '$usid' AND (status = '0' OR status = '1')");
+					$db->Query("SELECT COUNT(*) FROM db_payment WHERE user_id = '$user_id' AND (status = '0' OR status = '1')");
 					if($db->FetchRow() == 0){		
 						### Делаем выплату ###	
 						$payeer = new rfs_payeer($config->AccountNumber, $config->apiId, $config->apiKey);
@@ -45,7 +45,7 @@ $minPay = $sonfig_site['min_pay'];
 							$arBalance = $payeer->getBalance();
 							if($arBalance["auth_error"] == 0)
 							{
-								$sum_pay = round( ($sum / $sonfig_site["ser_per_wmr"]), 2);
+								$sum_pay = round( ($sum / $db_config["ser_per_wmr"]), 2);
 								$balance = $arBalance["balance"]["RUB"]["DOSTUPNO"];
 								if($balance >= $sum_pay){
 									$arTransfer = $payeer->transfer(array(
@@ -53,18 +53,18 @@ $minPay = $sonfig_site['min_pay'];
 									'sum' => $sum_pay, // сумма получения
 									'curOut' => 'RUB', // валюта получения
 									'to' => $purse, // получатель (email)
-									'comment' => iconv('windows-1251', 'utf-8', "Выплата пользователю {$usname} с проекта ".$_SERVER["HTTP_HOST"])
+									'comment' => iconv('windows-1251', 'utf-8', "Выплата пользователю {$user_name} с проекта ".$_SERVER["HTTP_HOST"])
 									));
 									if (!empty($arTransfer["historyId"]))
 									{	
 										# Снимаем с пользователя
-										$db->Query("UPDATE db_users_b SET money_p = money_p - '$sum' WHERE id = '$usid'");
+										$db->Query("UPDATE db_users_b SET money_p = money_p - '$sum' WHERE id = '$user_id'");
 										# Вставляем запись в выплаты
 										$da = time();
 										$dd = $da + 60*60*24*15;
 										$ppid = $arTransfer["historyId"];
-										$db->Query("INSERT INTO db_payment (user, user_id, purse, sum, valuta, serebro, payment_id, date_add, status) VALUES ('$usname','$usid','$purse','$sum_pay','RUB', '$sum','$ppid','".time()."', '3')");
-										$db->Query("UPDATE db_users_b SET payment_sum = payment_sum + '$sum_pay' WHERE id = '$usid'");
+										$db->Query("INSERT INTO db_payment (user, user_id, purse, sum, valuta, serebro, payment_id, date_add, status) VALUES ('$user_name','$user_id','$purse','$sum_pay','RUB', '$sum','$ppid','".time()."', '3')");
+										$db->Query("UPDATE db_users_b SET payment_sum = payment_sum + '$sum_pay' WHERE id = '$user_id'");
 										$db->Query("UPDATE db_stats SET all_payments = all_payments + '$sum_pay' WHERE id = '1'");
 										echo "<center><font color = 'green'><b>Выплачено!</b></font></center><BR />";	
 									}
@@ -95,7 +95,7 @@ $minPay = $sonfig_site['min_pay'];
     <td><font color="#000;">Получаете <span id="res_val"></span></font><font color="#000;">:</font> </td>
 	<td>
 	<input type="text" name="res" id="res_sum" value="0" size="15" disabled="disabled"/>
-	<input type="hidden" name="per" id="RUB" value="<?=$sonfig_site["ser_per_wmr"]; ?>" disabled="disabled"/>
+	<input type="hidden" name="per" id="RUB" value="<?=$db_config["ser_per_wmr"]; ?>" disabled="disabled"/>
 	<input type="hidden" name="per" id="min_sum_RUB" value="0.5" disabled="disabled"/>
 	<input type="hidden" name="val_type" id="val_type" value="RUB" />
 	</td>
@@ -118,7 +118,7 @@ $minPay = $sonfig_site['min_pay'];
 	<td align="center" class="m-tb">Статус</td>
   </tr>
   <?PHP
-  $db->Query("SELECT * FROM db_payment WHERE user_id = '$usid' ORDER BY id DESC LIMIT 20");
+  $db->Query("SELECT * FROM db_payment WHERE user_id = '$user_id' ORDER BY id DESC LIMIT 20");
 	if($db->NumRows() > 0){
   		while($ref = $db->FetchArray()){
 		?>

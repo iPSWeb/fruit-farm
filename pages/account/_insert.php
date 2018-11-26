@@ -3,10 +3,10 @@
 </div>
 <?PHP
 $_OPTIMIZATION["title"] = "Аккаунт - Пополнение баланса";
-$usid = $_SESSION["user_id"];
-$usname = $_SESSION["user"];
+$user_id = $_SESSION["user_id"];
+$user_name = $_SESSION["user"];
 $db->Query("SELECT * FROM db_config WHERE id = '1' LIMIT 1");
-$sonfig_site = $db->FetchArray();
+$db_config = $db->FetchArray();
 /*
 if($_SESSION["user_id"] != 1){
 echo "<center><b><font color = red>Технические работы</font></b></center>";
@@ -15,7 +15,7 @@ return;
 */
 ?>
 <div class="silver-bk"> 
-Курс игровой валюты: 1 рубль (<?=$config->VAL; ?>) = <?=$sonfig_site["ser_per_wmr"]; ?> серебра.
+Курс игровой валюты: 1 рубль (<?=$config->VAL; ?>) = <?=$db_config["ser_per_wmr"]; ?> серебра.
 <p>Ввод средств позволяет автоматически приобрести игровое серебро с помощью различных платежных 
 систем: Yandex Деньги, банковских карт, SMS, терминалов, денежных переводов и т.д.</p>
 <p>Оплата и зачисление серебра на баланс производится в автоматическом режиме.</p> 

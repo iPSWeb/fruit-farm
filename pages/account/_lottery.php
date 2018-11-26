@@ -1,6 +1,6 @@
 <?PHP
 $_OPTIMIZATION["title"] = "Аккаунт - Лотерея";
-$usid = $_SESSION["user_id"];
+$user_id = $_SESSION["user_id"];
 $uname = $_SESSION["user"];
 # Настройки лотерея
 $amount_lottery = 100; // Стоимость лотерейного билета
@@ -57,10 +57,10 @@ if(isset($_GET["winners"])){ ?>
 <BR /><BR />
 <?PHP
 	if(isset($_POST["set_lottery"], $_POST["hash"]) AND $_SESSION["lot_hash"] == $_POST["hash"]){
-		$db->Query("SELECT money_b FROM db_users_b WHERE id = '{$usid}' LIMIT 1");
+		$db->Query("SELECT money_b FROM db_users_b WHERE id = '{$user_id}' LIMIT 1");
 		if($db->FetchRow() >= $amount_lottery){
-			$db->Query("UPDATE db_users_b SET money_b = money_b - '$amount_lottery' WHERE id = '{$usid}'");
-			$db->Query("INSERT INTO db_lottery (user_id, user, date_add) VALUE ('$usid','$uname','".time()."')");
+			$db->Query("UPDATE db_users_b SET money_b = money_b - '$amount_lottery' WHERE id = '{$user_id}'");
+			$db->Query("INSERT INTO db_lottery (user_id, user, date_add) VALUE ('$user_id','$uname','".time()."')");
 			$lid = $db->LastInsert();
 			if( $lid >= $num_bil){
 				# Розыгрываем призы

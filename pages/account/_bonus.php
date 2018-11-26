@@ -1,6 +1,6 @@
 <?PHP
 $_OPTIMIZATION["title"] = "Аккаунт - Ежедневный бонус";
-$usid = $_SESSION["user_id"];
+$user_id = $_SESSION["user_id"];
 $uname = $_SESSION["user"];
 # Настройки бонусов
 $bonus_min = 10;
@@ -19,16 +19,16 @@ $bonus_max = 100;
 <?PHP
 $ddel = time() + 60*60*24;
 $dadd = time();
-$db->Query("SELECT COUNT(*) FROM db_bonus_list WHERE user_id = '$usid' AND date_del > '$dadd'");
+$db->Query("SELECT COUNT(*) FROM db_bonus_list WHERE user_id = '$user_id' AND date_del > '$dadd'");
 $hide_form = false;
 	if($db->FetchRow() == 0){
 		# Выдача бонуса
 		if(isset($_POST["bonus"])){
 			$sum = rand($bonus_min, rand($bonus_min, $bonus_max) );
 			# Зачилсяем юзверю
-			$db->Query("UPDATE db_users_b SET money_b = money_b + '$sum' WHERE id = '$usid'");
+			$db->Query("UPDATE db_users_b SET money_b = money_b + '$sum' WHERE id = '$user_id'");
 			# Вносим запись в список бонусов
-			$db->Query("INSERT INTO db_bonus_list (user, user_id, sum, date_add, date_del) VALUES ('$uname','$usid','$sum','$dadd','$ddel')");
+			$db->Query("INSERT INTO db_bonus_list (user, user_id, sum, date_add, date_del) VALUES ('$uname','$user_id','$sum','$dadd','$ddel')");
 			# Случайная очистка устаревших записей
 			$db->Query("DELETE FROM db_bonus_list WHERE date_del < '$dadd'");
 			echo "<center><font color = 'green'><b>На Ваш счет для покупок зачислен бонус в размере {$sum} серебра</b></font></center><BR />";
