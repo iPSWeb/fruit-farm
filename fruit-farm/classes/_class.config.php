@@ -2,8 +2,8 @@
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class config{
     public $HostDB = 'localhost';
-    public $UserDB = 'fruit-farm';
-    public $PassDB = 'O3s1H0u3';
+    public $UserDB = 'root';
+    public $PassDB = '';
     public $BaseDB = 'fruit-farm';
 
     public $SYSTEM_START_TIME = 1357338458;
