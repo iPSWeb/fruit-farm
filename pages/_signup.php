@@ -32,6 +32,8 @@ if(isset($_POST["signup"])){
 				if($login !== false){
 					if($password !== false){
 						if($password == $_POST["repass"]){
+                                                    $db->Query("SELECT COUNT(*) FROM `db_users_a` WHERE `email` = '$email'");
+                                                    if($db->FetchRow() == 0){
 							$db->Query("SELECT COUNT(*) FROM db_users_a WHERE user = '$login'");
 							if($db->FetchRow() == 0){
 								# Регаем пользователя
@@ -47,13 +49,13 @@ if(isset($_POST["signup"])){
 								$_SESSION["user_id"] = $lid;
 								$_SESSION["user"] = $login;
 								$_SESSION["referer_id"] = $referer_id;
-								echo "<center><b><font color = 'green'>Вы успешно зарегистрировались. Используйте форму слева для входа в аккаунт</font></b></center><BR />";
 								Header("Location: /account");
 								?></div>
 								<div class="clr"></div>	
 								<?PHP
 								return;
 							}else echo "<center><b><font color = 'red'>Указанный логин уже используется</font></b></center><BR />";
+                                                    }else echo "<center><b><font color = 'red'>Указанный email уже используется</font></b></center><BR />";
 						}else echo "<center><b><font color = 'red'>Пароль и повтор пароля не совпадают</font></b></center><BR />";
 					}else echo "<center><b><font color = 'red'>Пароль заполнен неверно</font></b></center><BR />";
 				}else echo "<center><b><font color = 'red'>Логин заполнен неверно</font></b></center><BR />";
