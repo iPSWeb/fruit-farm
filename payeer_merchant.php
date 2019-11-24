@@ -79,16 +79,16 @@ if (isset($_POST['m_operation_id']) && isset($_POST['m_sign']))
 		$to_referer = ($serebro * 0.10);
 	# Зачисляем пользователю
 		$db->Query("UPDATE db_users_b SET money_b = money_b + '$serebro', e_t = e_t + '$add_tree', to_referer = to_referer + '$to_referer', last_sbor = '".time()."', insert_sum = insert_sum + '$amount' WHERE id = '$user_id'") or die ($_POST['m_orderid'].'|error');
-		$db->Query("UPDATE db_payeer_insert SET status = '1' WHERE id = '".$_POST['m_orderid']."'") or die(mysql_error());
+		$db->Query("UPDATE db_payeer_insert SET status = '1' WHERE id = '".$_POST['m_orderid']."'") or die(mysqli_error());
 	# Зачисляем средства рефереру и дерево
 		$add_tree_referer = ($insert_sum <= 0.01) ? ", a_t = a_t + 1" : "";
-		$db->Query("UPDATE db_users_b SET money_b = money_b + $to_referer, from_referals = from_referals + '$to_referer' $add_tree_referer WHERE id = '$refid'") or die(mysql_error());
+		$db->Query("UPDATE db_users_b SET money_b = money_b + $to_referer, from_referals = from_referals + '$to_referer' $add_tree_referer WHERE id = '$refid'") or die(mysqli_error());
 	# Статистика пополнений
 		$da = time();
 		$dd = $da + 60*60*24*15;
-		$db->Query("INSERT INTO db_insert_money (user, user_id, money, serebro, date_add, date_del) VALUES ('$user_name','$user_id','$amount','$serebro','$da','$dd')") or die(mysql_error());
+		$db->Query("INSERT INTO db_insert_money (user, user_id, money, serebro, date_add, date_del) VALUES ('$user_name','$user_id','$amount','$serebro','$da','$dd')") or die(mysqli_error());
 	# Обновление статистики сайта
-		$db->Query("UPDATE db_stats SET all_insert = all_insert + '$amount' WHERE id = '1'") or die(mysql_error());
+		$db->Query("UPDATE db_stats SET all_insert = all_insert + '$amount' WHERE id = '1'") or die(mysqli_error());
 		exit($_POST['m_orderid'].'|success');
 	}
 }

@@ -158,7 +158,7 @@ class db{
 	function RealEscape($string)
 	{
 		if ($this->con) return mysqli_real_escape_string ($this->con, $string);
-		else return mysql_escape_string($string);
+		else return mysqli_escape_string($string);
 	}
 	
 	/*======================================================================*\
