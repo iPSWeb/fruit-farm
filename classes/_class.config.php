@@ -3,7 +3,7 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class config{
     public $HostDB = 'localhost';
     public $UserDB = 'fruit-farm';
-    public $PassDB = 'O3s1H0u3';
+    public $PassDB = '';
     public $BaseDB = 'fruit-farm';
 
     public $SYSTEM_START_TIME = 1357338458;
@@ -19,4 +19,7 @@ class config{
     # Настройки для оплаты кредита
     public $kredit_shopID = 'ShopID';
     public $kredit_secretW = 'SecretKEY';
+    #PSCoin
+    public $PSCoinWallet = 'PSC-AAAA-BBBB-CCCC-DDDDD';
+    public $PSCoinSecret = 'secret_phrase';
 }

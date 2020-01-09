@@ -44,6 +44,7 @@ RewriteRule ^account/referals(/?)+$ index.php?menu=account&sel=referals [L]
 RewriteRule ^account/insert(/?)+$ index.php?menu=account&sel=insert [L]
 RewriteRule ^account/payment(/?)+$ index.php?menu=account&sel=payment [L]
 RewriteRule ^account/config(/?)+$ index.php?menu=account&sel=config [L]
+RewriteRule ^account/psc(/?)+$ index.php?menu=account&sel=psc [L]
 RewriteRule ^account/exit(/?)+$ index.php?menu=account&sel=exit [L]
 
 #Админка
