@@ -210,6 +210,19 @@ CREATE TABLE IF NOT EXISTS `db_payment` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Структура таблицы `db_recovery`
+--
+
+CREATE TABLE IF NOT EXISTS `db_psc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `publickey` varchar(64) NOT NULL,
+  `accountRS` varchar(25) NOT NULL,
+  `account` int(50) NOT NULL,
+  `phrase` varchar(120) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 
 --
