@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `db_config` (
   `ser_per_wmr` int(11) NOT NULL DEFAULT '1000',
   `ser_per_wmz` int(11) NOT NULL DEFAULT '3300',
   `ser_per_wme` int(11) NOT NULL DEFAULT '4200',
+  `ser_per_psc` int(2) NOT NULL DEFAULT '10',
   `percent_swap` int(11) NOT NULL DEFAULT '0',
   `percent_sell` int(2) NOT NULL DEFAULT '10',
   `items_per_coin` int(11) NOT NULL DEFAULT '7',
