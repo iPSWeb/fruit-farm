@@ -12,7 +12,7 @@ $refs = $db->FetchRow();
 приглашенным Вами человеком. Доход ни чем не ограничен. Даже несколько приглашенных могут 
 принести вам более 100 000 серебра. 
 Ниже представлена ссылка для привлечения и количество приглашенных Вами людей.<br /><br />
-<img src="/style/img/piar-link.png" style="vertical-align:-2px; margin-right:5px;" /><font color="#000;">http://<?=$_SERVER['HTTP_HOST']; ?>/?i=<?=$_SESSION["user_id"]; ?></font>
+<img src="/assets/style/img/piar-link.png" style="vertical-align:-2px; margin-right:5px;" /><font color="#000;">http://<?=$_SERVER['HTTP_HOST']; ?>/?i=<?=$_SESSION["user_id"]; ?></font>
 <p><center>Количество ваших рефералов: <font color="#000;"><?=$refs; ?> чел.</font></center></p>
 <table cellpadding='3' cellspacing='0' border='0' bordercolor='#336633' align='center' width='98%'>
 <tr height='25' valign=top align=center>

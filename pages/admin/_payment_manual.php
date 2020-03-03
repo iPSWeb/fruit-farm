@@ -112,7 +112,7 @@ $count_rows = $db->FetchRow();
                                                             <td style="padding: 5px;"><a href="/admin/users/view=<?=$data['user_id']; ?>"><?=$data['user']; ?></a></td>
                                                             <td style="padding: 5px;"><?=$data['serebro']; ?></td>
                                                             <td style="padding: 5px;"><?=$data['sum']-$data['commission']; ?></td>
-                                                            <td style="padding: 5px;"><img src="/img/ps/icon/<?=$data['icon'];?>" width="20"> <?=$data['name']; ?></td>
+                                                            <td style="padding: 5px;"><img src="/assets/img/ps/icon/<?=$data['icon'];?>" width="20"> <?=$data['name']; ?></td>
                                                             <td style="padding: 5px;"><?=$data['purse']; ?></td>
                                                             <td style="padding: 5px;"><?=date('H:i d.m.Y',$data['date_add']); ?></td>
                                                             <td style="padding: 5px;"><?=$status_array[$data['status']]; ?></td>

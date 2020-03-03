@@ -27,13 +27,13 @@ img { border:0px; }
 .header { width:100%; }
 
 .clr-line {
-	background: url(/style/img/hd-line.jpg) no-repeat;
+	background: url(/assets/style/img/hd-line.jpg) no-repeat;
 	width:980px;
 	height:8px;
 }
 
 .logo {
-	background: url(/style/img/logo.jpg) no-repeat;
+	background: url(/assets/style/img/logo.jpg) no-repeat;
 	width:322px;
 	height:109px;
 	margin-top:10px;
@@ -65,7 +65,7 @@ img { border:0px; }
 }
 
 .cp-art {
-	background: url(/style/img/fruits.jpg) no-repeat;
+	background: url(/assets/style/img/fruits.jpg) no-repeat;
 	width:542px;
 	height:244px;
 	margin-bottom:10px;
@@ -73,14 +73,14 @@ img { border:0px; }
 }
 
 .sprite-icon {
-	background: url(/style/img/sprite-icon.png) no-repeat;
+	background: url(/assets/style/img/sprite-icon.png) no-repeat;
 	width:500px;
 	height:500px;
 }
 
 .hd-bnf {
 	float:left;
-	background: url(/style/img/bnf.png) repeat-x;
+	background: url(/assets/style/img/bnf.png) repeat-x;
 	height:152px;
 	font-family: "lobster";
 	margin:25px 0px 0px 10px;
@@ -93,7 +93,7 @@ img { border:0px; }
 }
 
 .hd-bnf li {
-	list-style-image: url(/style/img/arrow.png);	
+	list-style-image: url(/assets/style/img/arrow.png);	
 	background-repeat:no-repeat;
 }
 
@@ -103,7 +103,7 @@ img { border:0px; }
 .cl-right { width:630px; float:left; padding:0px 0px 0px 20px; border:0px solid black; }
 
 .h-title {
-	background: url(/style/img/opacity-title.png) no-repeat;
+	background: url(/assets/style/img/opacity-title.png) no-repeat;
 	width:289px;
 	height:22px;
 	color:#4f6f05;
@@ -113,7 +113,7 @@ img { border:0px; }
 }
 
 .autoriz {
-	background: url(/style/img/bnf.png) repeat-x;
+	background: url(/assets/style/img/bnf.png) repeat-x;
 	height:175px;
 	border:1px solid #b6b6b6;
 	border-radius:10px;	
@@ -123,7 +123,7 @@ img { border:0px; }
 	background: none;
 	border: 1px solid #8d8d8d;
 	border-radius:10px;
-	background: url(/style/img/inpt.png) repeat-x;
+	background: url(/assets/style/img/inpt.png) repeat-x;
 	width:237px;
 	height:24px;
 	padding:0px 0px 0px 10px;
@@ -131,7 +131,7 @@ img { border:0px; }
 }
 
 .lg:hover {
-	background: url(/style/img/inpt-hov.png) repeat-x;
+	background: url(/assets/style/img/inpt-hov.png) repeat-x;
 	width:237px;
 	height:24px;
 }
@@ -140,7 +140,7 @@ img { border:0px; }
 	background: none;
 	border: 1px solid #8d8d8d;
 	border-radius:10px;
-	background: url(/style/img/inpt.png) repeat-x;
+	background: url(/assets/style/img/inpt.png) repeat-x;
 	width:237px;
 	height:24px;
 	padding:0px 0px 0px 10px;
@@ -148,7 +148,7 @@ img { border:0px; }
 }
 
 .ps:hover {
-	background: url(/style/img/inpt-hov.png) repeat-x;
+	background: url(/assets/style/img/inpt-hov.png) repeat-x;
 	width:237px;
 	height:24px;
 }
@@ -179,7 +179,7 @@ a.rs-ps { color:#f77827; text-decoration:none;  font-size:14px; }
 a.rs-ps:hover { text-decoration:underline; }
 
 .stat {
-	background: url(/style/img/bnf.png) repeat-x;
+	background: url(/assets/style/img/bnf.png) repeat-x;
 	height:180px;
 	margin:20px 0px 0px 0px;
 	border:1px solid #b6b6b6;
@@ -196,7 +196,7 @@ a.rs-ps:hover { text-decoration:underline; }
 .line-st {
 	border: 1px solid #8d8d8d;
 	border-radius:10px;
-	background: url(/style/img/inpt-hov.png) repeat-x;
+	background: url(/assets/style/img/inpt-hov.png) repeat-x;
 	width:115px;
 	height:19px;
 	color:#f77827;
@@ -211,7 +211,7 @@ a.rs-ps:hover { text-decoration:underline; }
 }
 
 .wim {
-	background: url(/style/img/small-inpt.png) repeat-x;
+	background: url(/assets/style/img/small-inpt.png) repeat-x;
 	width:229px;
 	height:34px;
 	border:1px solid #b6b6b6;
@@ -227,7 +227,7 @@ a.rs-ps:hover { text-decoration:underline; }
 }
 
 .wim-lf {
-	background: url(/style/img/man-1.jpg) no-repeat;
+	background: url(/assets/style/img/man-1.jpg) no-repeat;
 	width:125px;
 	height:129px;
 	float:left;
@@ -243,14 +243,14 @@ a.rs-ps:hover { text-decoration:underline; }
 }
 
 .wim-ctr-in {
-	background: url(/style/img/arrows.jpg) no-repeat;
+	background: url(/assets/style/img/arrows.jpg) no-repeat;
 	width:117px;
 	height:63px;
 	margin:10px 0px 10px 50px;
 }
 
 .wim-rg {
-	background: url(/style/img/man-2.jpg) no-repeat;
+	background: url(/assets/style/img/man-2.jpg) no-repeat;
 	width:130px;
 	height:131px;
 	float:left;	
@@ -268,14 +268,14 @@ a.rs-ps:hover { text-decoration:underline; }
 
 i {
 	display:block;
-	background:url(/style/img/garant-sprite.jpg);
+	background:url(/assets/style/img/garant-sprite.jpg);
 	width:171px;
 	height:155px;
 	margin-left:15px;
 }
 
 .cntrl-ps  {
-    background: url(/style/img/payment.png) no-repeat;
+    background: url(/assets/style/img/payment.png) no-repeat;
     width: 186px;
     height: 120px;
     margin-left: 63px;
@@ -284,7 +284,7 @@ i {
 
 s {
 	display:block;
-	background:url(/style/img/paysitem-sprite.png);
+	background:url(/assets/style/img/paysitem-sprite.png);
 	width:57px;
 	height:46px;
 	float:left;
@@ -304,7 +304,7 @@ s {
 }
 
 .field-gr {
-	background: url(/style/img/field-gr.jpg) no-repeat;
+	background: url(/assets/style/img/field-gr.jpg) no-repeat;
 	width:220px;
 	height:31px;
 	padding:9px 0px 0px 48px;
@@ -325,7 +325,7 @@ s {
 }
 
 .field-rd {
-	background: url(/style/img/field-rd.jpg) no-repeat;
+	background: url(/assets/style/img/field-rd.jpg) no-repeat;
 	width:220px;
 	height:31px;
 	padding:9px 0px 0px 48px;
@@ -346,7 +346,7 @@ s {
 }
 
 .field-ar {
-	background: url(/style/img/field-ar.jpg) no-repeat;
+	background: url(/assets/style/img/field-ar.jpg) no-repeat;
 	width:220px;
 	height:31px;
 	padding:9px 0px 0px 48px;
@@ -354,7 +354,7 @@ s {
 }
 
 .field-ars {
-	background: url(/style/img/field-ars.jpg) no-repeat;
+	background: url(/assets/style/img/field-ars.jpg) no-repeat;
 	width:220px;
 	height:31px;
 	padding:9px 0px 0px 48px;
@@ -375,7 +375,7 @@ s {
 }
 
 .fr-block {
-	background: url(/style/img/fr-block.jpg) no-repeat;
+	background: url(/assets/style/img/fr-block.jpg) no-repeat;
 	width:450px;
 	height:150px;
 	float:left;
@@ -503,7 +503,7 @@ td {
 .bs-py {
 	border: 1px solid #8d8d8d;
 	border-radius:10px;
-	background: url(/style/img/inpt-hov.png) repeat-x;
+	background: url(/assets/style/img/inpt-hov.png) repeat-x;
 	width:115px;
 	height:24px;
 	color:#f77827;
@@ -516,7 +516,7 @@ td {
 	background: none;
 	border: 1px solid #8d8d8d;
 	border-radius:10px;
-	background: url(/style/img/inpt.png) repeat-x;
+	background: url(/assets/style/img/inpt.png) repeat-x;
 	width:187px;
 	height:24px;
 	padding:0px 0px 0px 10px;
@@ -524,7 +524,7 @@ td {
 }
 
 .out-my:hover {
-	background: url(/style/img/inpt-hov.png) repeat-x;
+	background: url(/assets/style/img/inpt-hov.png) repeat-x;
 	width:187px;
 	height:24px;
 }

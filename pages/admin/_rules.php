@@ -5,7 +5,7 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 	<div class="acc-title">Правила</div>
 </div>
 <div class="silver-bk"><div class="clr"></div>	
-<script type="text/javascript" src="../js/nicEdit.js"></script>
+<script type="text/javascript" src="/assets/js/nicEdit.js"></script>
 <script type="text/javascript">
 	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>

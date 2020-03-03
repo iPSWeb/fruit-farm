@@ -8,7 +8,7 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 
 <center><a href = "/admin/news" class="stn">Список новостей</a> || <a href = "/admin/news/add" class="stn">Добавить новость</a></center>
 <BR />
-<script type="text/javascript" src="../../js/nicEdit.js"></script>
+<script type="text/javascript" src="/assets/js/nicEdit.js"></script>
 <script type="text/javascript">
 	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>

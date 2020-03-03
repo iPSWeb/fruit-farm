@@ -7,9 +7,9 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 <meta name="description" content="{!DESCRIPTION!}">
 <meta name="keywords" content="{!KEYWORDS!}">
-<link href="/style/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/functions.js"></script>
+<link href="/assets/style/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+<script type="text/javascript" src="/assets/js/functions.js"></script>
 </head>
 <body>
 <div class="wrap">
