@@ -24,6 +24,7 @@ if(isset($_GET["sel"])){
 		case "insert": include("pages/account/_insert.php"); break; // Пополнение баланса
 		case "payment": include("pages/account/_payment.php"); break; // Выплата WM
 		case "config": include("pages/account/_config.php"); break; // Настройки
+                case "autoref": include("pages/account/_autoref.php"); break; // Автореферал
                 case "psc": include("pages/account/_psc.php"); break; // PSCoin
 		case "exit": @session_destroy(); Header("Location: /"); return; break; // Выход	
 	# Страница ошибки
