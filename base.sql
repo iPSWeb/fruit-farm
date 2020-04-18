@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2020 at 08:42 PM
+-- Generation Time: Apr 18, 2020 at 09:07 PM
 -- Server version: 5.5.64-MariaDB
 -- PHP Version: 5.4.16
 
@@ -476,21 +476,22 @@ CREATE TABLE IF NOT EXISTS `db_users_a` (
   `date_reg` int(11) NOT NULL DEFAULT '0',
   `date_login` int(11) NOT NULL DEFAULT '0',
   `ip` int(10) unsigned NOT NULL DEFAULT '0',
-  `banned` int(1) NOT NULL DEFAULT '0'
+  `banned` int(1) NOT NULL DEFAULT '0',
+  `refback` int(3) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `db_users_a`
 --
 
-INSERT INTO `db_users_a` (`id`, `user`, `email`, `pass`, `referer`, `referer_id`, `referals`, `date_reg`, `date_login`, `ip`, `banned`) VALUES
-(1, 'Admin', 'admin@admin.ru', 'admin', 'Admin', 1, 7, 1367313062, 1587221810, 775482167, 0),
-(2, 'aleksey', 'leha.vodanov@mail.ru', 'aleksey', 'Admin', 1, 0, 1440868538, 1440868651, 1832711990, 0),
-(3, 'baxedik', 'bax.edik@yandex.ru', '000000', 'Admin', 1, 0, 1510901125, 1510904750, 1509523661, 0),
-(4, 'lexa2015', 'bax@yandex.ru', '000000', 'Admin', 1, 0, 1510901171, 0, 1509523661, 0),
-(7, 'pligin', 'pligin103@gmail.com', 'a12344321', 'Admin', 1, 0, 1510915285, 0, 2956760126, 0),
-(8, 'lexa', 'edik@yandex.ru', '000000', 'Admin', 1, 0, 1510919054, 0, 1509523661, 0),
-(9, 'luchinin', 'maksim@luchinin.net', 'dZtXrWR49B4rF3G', 'Admin', 1, 0, 1543990229, 1544222965, 3585554581, 0);
+INSERT INTO `db_users_a` (`id`, `user`, `email`, `pass`, `referer`, `referer_id`, `referals`, `date_reg`, `date_login`, `ip`, `banned`, `refback`) VALUES
+(1, 'Admin', 'admin@admin.ru', 'admin', 'Admin', 1, 7, 1367313062, 1587221810, 775482167, 0, 50),
+(2, 'aleksey', 'leha.vodanov@mail.ru', 'aleksey', 'Admin', 1, 0, 1440868538, 1440868651, 1832711990, 0, 0),
+(3, 'baxedik', 'bax.edik@yandex.ru', '000000', 'Admin', 1, 0, 1510901125, 1510904750, 1509523661, 0, 0),
+(4, 'lexa2015', 'bax@yandex.ru', '000000', 'Admin', 1, 0, 1510901171, 0, 1509523661, 0, 0),
+(7, 'pligin', 'pligin103@gmail.com', 'a12344321', 'Admin', 1, 0, 1510915285, 0, 2956760126, 0, 0),
+(8, 'lexa', 'edik@yandex.ru', '000000', 'Admin', 1, 0, 1510919054, 0, 1509523661, 0, 0),
+(9, 'luchinin', 'maksim@luchinin.net', 'dZtXrWR49B4rF3G', 'Admin', 1, 0, 1543990229, 1544222965, 3585554581, 0, 0);
 
 -- --------------------------------------------------------
 

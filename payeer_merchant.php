@@ -77,6 +77,13 @@ if (isset($_POST['m_operation_id']) && isset($_POST['m_sign']))
 		$add_tree = ( $amount >= 500) ? 2 : 0;
 	# Отчисления рефералу
 		$to_referer = ($serebro * 0.10);
+                $db->Query("SELECT `refback` FROM `db_users_a` WHERE `id` = '$refid'");
+                $refback = $db->FetchRow();
+                if($refback > 0){
+                    $tmp = $to_referer*$refback/100;
+                    $serebro += $to_referer - $tmp;
+                    $to_referer -= $tmp;
+                }
 	# Зачисляем пользователю
 		$db->Query("UPDATE db_users_b SET money_b = money_b + '$serebro', e_t = e_t + '$add_tree', to_referer = to_referer + '$to_referer', last_sbor = '".time()."', insert_sum = insert_sum + '$amount' WHERE id = '$user_id'") or die ($_POST['m_orderid'].'|error');
 		$db->Query("UPDATE db_payeer_insert SET status = '1' WHERE id = '".$_POST['m_orderid']."'") or die(mysqli_error());
