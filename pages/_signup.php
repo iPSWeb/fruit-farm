@@ -37,7 +37,8 @@ if(isset($_POST["signup"])){
                                 $db->Query("SELECT COUNT(*) FROM db_users_a WHERE user = '$login'");
                                 if($db->FetchRow() == 0){
                                     if($referer_id == 1){
-                                        $datetime = new DateTime();
+                                        $date = new DateTime();
+                                        $datetime = $date->format('Y-m-d H:i:s');
                                         $db->Query("UPDATE `db_autoref` SET `status` = 0 WHERE `end` < '$datetime'");
                                         $db->Query("SELECT * FROM `db_autoref` WHERE `status` = 1");
                                         if($db->NumRows() > 0){
