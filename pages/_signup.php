@@ -36,6 +36,7 @@ if(isset($_POST["signup"])){
                             if($db->FetchRow() == 0){
                                 $db->Query("SELECT COUNT(*) FROM db_users_a WHERE user = '$login'");
                                 if($db->FetchRow() == 0){
+                                    $autoreferal = false;
                                     if($referer_id == 1){
                                         $date = new DateTime();
                                         $datetime = $date->format('Y-m-d H:i:s');
@@ -67,6 +68,7 @@ if(isset($_POST["signup"])){
                                                 $db->Query("INSERT INTO `db_autoref_temp` (`user_id`) VALUES ('$referer_id')");
                                                 $db->Query("SELECT `user` FROM `db_users_a` WHERE `id` = '$referer_id'");
                                                 $referer_name = $db->FetchRow();
+                                                $autoreferal = true;
                                             }
                                         }
                                     }
@@ -75,6 +77,9 @@ if(isset($_POST["signup"])){
                                     VALUES ('$login','{$email}','$password','$referer_name','$referer_id','$time',INET_ATON('$ip'))");
                                     $lid = $db->LastInsert();
                                     $db->Query("INSERT INTO db_users_b (id, user, a_t, last_sbor) VALUES ('$lid','$login','1', '".time()."')");
+                                    if($autoreferal === true){
+                                        $db->Query("INSERT INTO `db_autoref_history` (`user_id`,`referal_id`) VALUES ('$referer_id','$lid')");
+                                    }
                                     # Вставляем статистику
                                     $db->Query("UPDATE db_stats SET all_users = all_users +1 WHERE id = '1'");
                                     # Отправляем на почту

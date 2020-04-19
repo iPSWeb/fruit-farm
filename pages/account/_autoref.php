@@ -99,6 +99,31 @@ if(isset($_POST['buy']) && $isset === false){
         }
   ?>
 </table>
+    <br><br>
+    <table cellpadding='3' cellspacing='0' border='0' bordercolor='#336633' align='center' width="99%">
+        <tr>
+            <td colspan="5" align="center"><h4>Список полученных рефералов</h4></td>
+        </tr>
+        <tr>
+            <td align="center" class="m-tb">Пользователь</td>
+            <td align="center" class="m-tb">Дата регистрации</td>
+        </tr>
+  <?PHP
+  $db->Query("SELECT `db_autoref_history`.*,`db_users_a`.`user` FROM `db_autoref_history`,`db_users_a` WHERE `db_autoref_history`.`referal_id` = `db_users_a`.`id`");
+	if($db->NumRows() > 0){
+  		while($data = $db->FetchArray()){
+		?>
+		<tr class="htt">
+                    <td align="center"><?=$data['user']; ?></td>
+                    <td align="center"><?=$data['timestamp']; ?></td>
+  		</tr>
+		<?PHP
+		}
+	}else{
+            echo '<tr><td align="center" colspan="2">Нет записей</td></tr>';
+        }
+  ?>
+    </table>
 </center>
 <div class="clr"></div>	
 </div>
