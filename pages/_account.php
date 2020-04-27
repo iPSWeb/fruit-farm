@@ -22,7 +22,8 @@ if(isset($_GET["sel"])){
 		case "swap": include("pages/account/_swap.php"); break; // Обменный пункт
 		case "referals": include("pages/account/_referals.php"); break; // Рефералы
 		case "insert": include("pages/account/_insert.php"); break; // Пополнение баланса
-		case "payment": include("pages/account/_payment.php"); break; // Выплата WM
+		case "payment": include("pages/account/_payment.php"); break; // Выплата
+                case "payment_manual": include("pages/account/_payment_manual.php"); break; // Ручные выплаты
 		case "config": include("pages/account/_config.php"); break; // Настройки
                 case "autoref": include("pages/account/_autoref.php"); break; // Автореферал
                 case "psc": include("pages/account/_psc.php"); break; // PSCoin

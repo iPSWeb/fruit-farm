@@ -22,6 +22,7 @@ if(isset($_GET["sel"])){
 		case "users": include("pages/admin/_users.php"); break; // Список пользователей
 		case "sender": include("pages/admin/_sender.php"); break; // Рассылка пользователям
 		case "payments": include("pages/admin/_payments.php"); break; // Список выплат
+                case "payment_manual": include("pages/admin/_payment_manual.php"); break; // Заказы выплат
 		case "config": include("pages/admin/_config.php"); break; // Настройки
 	# Страница ошибки
 	default: @include("pages/_404.php"); break;		
