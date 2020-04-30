@@ -1,4 +1,11 @@
 <?PHP
+/*
+ * Модуль Ручные выплаты для Фруктовой Фермы
+ * Author: pligin
+ * Site: psweb.ru
+ * Telegram: t.me/pligin
+ */
+
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION["title"] = "Аккаунт - Заказ выплаты";
 ?>

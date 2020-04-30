@@ -1,4 +1,11 @@
 <?php
+/*
+ * Модуль Ручные выплаты для Фруктовой Фермы
+ * Author: pligin
+ * Site: psweb.ru
+ * Telegram: t.me/pligin
+ */
+
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION['title'] = 'Выплаты';
 $status_array = array( 0 => "Проверяется", 1 => "Выплачивается", 2 => "Отменена", 3 => "Выплачено");
