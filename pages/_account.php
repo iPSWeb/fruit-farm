@@ -10,6 +10,7 @@ $db->Query("SELECT * FROM `db_users_a`, `db_users_b` WHERE `db_users_a`.`id` = `
 $user_data = $db->FetchArray();
 if($user_data['banned']){ @session_destroy(); Header('Location: /signin'); return; }
 $user_name = $user_data['user'];
+include(BASE_DIR.'/inc/_autosbor.php');
 if(isset($_GET["sel"])){	
 	$smenu = strval($_GET["sel"]);		
 	switch($smenu){

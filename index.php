@@ -16,6 +16,7 @@ $_OPTIMIZATION['description'] = 'Фруктовая ферма';
 $_OPTIMIZATION['keywords'] = 'Заработок на растениях, вложения, заработать, ферма, денежная ферма, заработать на ферме';
 # Константа для Include
 define('PSWeb', true);
+define('BASE_DIR',$_SERVER['DOCUMENT_ROOT']);
 # Автоподгрузка классов
 function __autoload($name){ include('classes/_class.'.$name.'.php');}
 # Класс конфига 
