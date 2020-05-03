@@ -88,6 +88,7 @@ if(isset($_POST["signup"])){
                                     $_SESSION["user_id"] = $lid;
                                     $_SESSION["user"] = $login;
                                     $_SESSION["referer_id"] = $referer_id;
+                                    setcookie('referer',NULL,-1,'/',$_SERVER['HTTP_HOST'],0);
                                     Header("Location: /account");
                                     ?></div>
                                     <div class="clr"></div>	

@@ -1,5 +1,13 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+if(!empty($_COOKIE['referer'])){
+    $referer_id = intval($_COOKIE['referer']);
+    $db->Query("SELECT `text` FROM `db_welcomText` WHERE `user_id` = '$referer_id'");
+    if($db->NumRows() == 1){
+        echo htmlspecialchars_decode($db->FetchRow());
+    }
+    //setcookie('referer',NULL,-1,'/',$_SERVER['HTTP_HOST'],0);
+}
 ?>
 <div class="wim">Как это работает?</div>
 <div class="wim-block">
