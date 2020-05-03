@@ -6,7 +6,6 @@ if(!empty($_COOKIE['referer'])){
     if($db->NumRows() == 1){
         echo htmlspecialchars_decode($db->FetchRow());
     }
-    //setcookie('referer',NULL,-1,'/',$_SERVER['HTTP_HOST'],0);
 }
 ?>
 <div class="wim">Как это работает?</div>

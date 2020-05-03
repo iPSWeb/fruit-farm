@@ -34,12 +34,21 @@ if($db->NumRows() == 1){
 if(isset($_POST['save']) && !empty($_POST['text']) && $_POST['text'] != '<br>'){
     $text = htmlspecialchars(strip_tags($_POST['text'],'<br><b><font><p><div><h1><h2><h3><h4><h5><h6><pre><ol><li>'));
     if($isset === false){
-        $db->Query("INSERT INTO `db_welcomText` (`user_id`,`text`) VALUES ('$user_id','$text')");
-        echo '<center><b><font color = "green">Приветственное сообщение добавлено!</font></b></center><BR />';
+        if($user_data['money_'.$config->accountWelcomeText] > $config->costWelcomeText){
+            $db->Query("INSERT INTO `db_welcomText` (`user_id`,`text`) VALUES ('$user_id','$text')");
+            $db->Query("UPDATE `db_users_b` SET `money_".$config->accountWelcomeText."` = `money_".$config->accountWelcomeText."` - '".$config->costWelcomeText."' WHERE `id` = '$user_id'");
+            echo '<center><b><font color = "green">Приветственное сообщение добавлено!</font></b></center><BR />';
+        }else{
+            echo '<center><b><font color = "red">У Вас недостаточно средств!</font></b></center><BR />';
+        }
     }elseif($isset === true){
         $db->Query("UPDATE `db_welcomText` SET `text` = '$text' WHERE `user_id` = '$user_id'");
         echo '<center><b><font color = "green">Приветственное сообщение обновлено!</font></b></center><BR />';
     }
+}
+if(isset($_POST['delete'])){
+    $db->Query("DELETE FROM `db_welcomText` WHERE `user_id` = '$user_id'");
+    $text = '';
 }
 ?>
 <form action="" method="post">
@@ -47,6 +56,12 @@ if(isset($_POST['save']) && !empty($_POST['text']) && $_POST['text'] != '<br>'){
     <textarea name="text" cols="70" rows="5"><?=(isset($_POST['text'])) ? $_POST['text'] : $text; ?></textarea><BR />
     <center><input type="submit" name="save" value="Сохранить" /></center>
 </form>
+<?PHP
+if($isset){?>
+    <form action="" method="post"><center><input type="submit" name="delete" value="Удалить" /></center></form>
+<?PHP
+}
+?>
 <p><center>Количество ваших рефералов: <font color="#000;"><?=$refs; ?> чел.</font></center></p>
 <table cellpadding='3' cellspacing='0' border='0' bordercolor='#336633' align='center' width='98%'>
 <tr height='25' valign=top align=center>
