@@ -27,9 +27,6 @@ class config{
 
     public $shopID = '11111111';
     public $secretW = '11111111';
-    # Настройки для оплаты кредита
-    public $kredit_shopID = 'ShopID';
-    public $kredit_secretW = 'SecretKEY';
     #PSCoin
     public $PSCoinWallet = 'PSC-X2QN-WQL6-K96N-7ZGB9';
     public $PSCoinSecret = '';
