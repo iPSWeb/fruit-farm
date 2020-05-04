@@ -34,9 +34,10 @@ if($db->NumRows() == 1){
 if(isset($_POST['save']) && !empty($_POST['text']) && $_POST['text'] != '<br>'){
     $text = htmlspecialchars(strip_tags($_POST['text'],'<br><b><font><p><div><h1><h2><h3><h4><h5><h6><pre><ol><li>'));
     if($isset === false){
-        if($user_data['money_'.$config->accountWelcomeText] > $config->costWelcomeText){
+        if($user_data['money_'.$config->accountWelcomeText] >= $config->costWelcomeText){
             $db->Query("INSERT INTO `db_welcomText` (`user_id`,`text`) VALUES ('$user_id','$text')");
             $db->Query("UPDATE `db_users_b` SET `money_".$config->accountWelcomeText."` = `money_".$config->accountWelcomeText."` - '".$config->costWelcomeText."' WHERE `id` = '$user_id'");
+            $isset = true;
             echo '<center><b><font color = "green">Приветственное сообщение добавлено!</font></b></center><BR />';
         }else{
             echo '<center><b><font color = "red">У Вас недостаточно средств!</font></b></center><BR />';
@@ -49,6 +50,7 @@ if(isset($_POST['save']) && !empty($_POST['text']) && $_POST['text'] != '<br>'){
 if(isset($_POST['delete'])){
     $db->Query("DELETE FROM `db_welcomText` WHERE `user_id` = '$user_id'");
     $text = '';
+    $isset = false;
 }
 ?>
 <form action="" method="post">
