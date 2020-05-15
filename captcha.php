@@ -15,7 +15,7 @@ function clean_url ($url) {
 if (clean_url($_SERVER['HTTP_REFERER']) != clean_url($_SERVER['HTTP_HOST'])) return;
 
 session_start();
-$font=imagecreatefrompng("/assets/fonts/font.png");
+$font=imagecreatefrompng("assets/fonts/font.png");
 
 imagealphablending($font, true);
 $fontfile_width=imagesx($font);
