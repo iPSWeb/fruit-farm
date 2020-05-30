@@ -80,9 +80,9 @@ if (isset($_POST['m_operation_id']) && isset($_POST['m_sign']))
                 $db->Query("SELECT `refback` FROM `db_users_a` WHERE `id` = '$refid'");
                 $refback = $db->FetchRow();
                 if($refback > 0){
-                    $tmp = $to_referer*$refback/100;
-                    $serebro += $to_referer - $tmp;
-                    $to_referer -= $tmp;
+                    $amount_refback = $to_referer*$refback/100;
+                    $db->Query("UPDATE `db_users_b` SET `money_p` = `money_p` + '$amount_refback' WHERE `id` = '$user_id'");//начисление рефбек: money_p - на счет для вывода,money_b - на счет для оплаты
+                    $to_referer -= $amount_refback;
                 }
 	# Зачисляем пользователю
 		$db->Query("UPDATE db_users_b SET money_b = money_b + '$serebro', e_t = e_t + '$add_tree', to_referer = to_referer + '$to_referer', last_sbor = '".time()."', insert_sum = insert_sum + '$amount' WHERE id = '$user_id'") or die ($_POST['m_orderid'].'|error');

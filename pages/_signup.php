@@ -20,7 +20,7 @@ if(isset($_POST["signup"])){
         $email = $func->IsMail($_POST["email"]);
         $rules = isset($_POST["rules"]) ? true : false;
         $time = time();
-        $referer_id = $_SESSION['referer_id'];
+        $referer_id = intval($_SESSION['referer_id']);
         $referer_name = "";
         if($referer_id != 1){
                 $db->Query("SELECT user FROM db_users_a WHERE id = '$referer_id' LIMIT 1");
