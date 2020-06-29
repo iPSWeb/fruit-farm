@@ -27,6 +27,8 @@ $func = new func;
 include('inc/_set_referer.php');
 # База данных
 $db = new db($config->HostDB, $config->UserDB, $config->PassDB, $config->BaseDB);
+# База данных
+include(BASE_DIR.'/inc/_connect.php');
 $db->Query("SELECT * FROM `db_config` WHERE `id` = '1' LIMIT 1");
 $db_config = $db->FetchArray();
 $array_items = new items($db_config);

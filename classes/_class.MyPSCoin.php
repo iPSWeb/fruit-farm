@@ -1,20 +1,6 @@
 <?php
 class MyPSCoin extends PSCoinApi {
 	public function initialize(){
-            $sNode=defined('NODE')?NODE:'https://wallet.psweb.ru:443';
-            if(!empty($sNode)) {
-                if(substr($sNode,0,4)=='http'){
-                    list($this->protocol,$this->host,$this->nxt_port) = explode(':',$sNode); //
-                    $this->host = str_replace('//','',$this->host);
-                    return;
-                }else{
-                    list($this->protocol,$this->host) = explode(':',$sNode); //
-                    if(strpos($this->host,'@')>0){
-                        list($this->user,$this->host) = explode('@',$this->host); //
-                    }
-                    return;
-                }
-            } 
             parent::initialize();
 	}
 
