@@ -2,9 +2,10 @@
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 if(!empty($_COOKIE['referer'])){
     $referer_id = intval($_COOKIE['referer']);
-    $db->Query("SELECT `text` FROM `db_welcomText` WHERE `user_id` = '$referer_id'");
-    if($db->NumRows() == 1){
-        echo htmlspecialchars_decode($db->FetchRow());
+    $result = $pdo->prepare("SELECT `text` FROM `db_welcomText` WHERE `user_id` = :referer_id");
+    $result->execute(array('referer_id'=>$referer_id));
+    if($result->rowCount() == 1){
+        echo htmlspecialchars_decode($result->fetch());
     }
 }
 ?>
