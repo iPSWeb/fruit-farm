@@ -16,19 +16,19 @@ if($config->autoSborActive){
     if($lsDay<$thisDay){
         $thisTime = $date->format('H:i');
         if($thisTime >= $config->autoSborTime){
-            $db->Query("SELECT * FROM `db_users_b`");
-            while($data = $db->FetchArray()){
+            $result = $pdo->query("SELECT * FROM `db_users_b`");
+            while($data = $result->fetch()){
                 $items_string = '';
                 $ui = $data['id'];
                 foreach($items as $item => $description){
                     $$item = $func->SumCalc($description['in_hour'], $data[$item], $data['last_sbor']);
                     $items_string.= '`'.$description['char'].'_b` = `'.$description['char'].'_b`+\''.$$item.'\',';
-                    $db->Query("UPDATE `db_users_b` SET `all_time_".$description['char']."` = `all_time_".$description['char']."` + '".$$item."' WHERE `id` = '$ui' LIMIT 1",false,false);
+                    $pdo->query("UPDATE `db_users_b` SET `all_time_".$description['char']."` = `all_time_".$description['char']."` + '".$$item."' WHERE `id` = '$ui' LIMIT 1");
                 }
-                $db->Query("UPDATE `db_users_b` SET 
+                $pdo->query("UPDATE `db_users_b` SET 
                 ".$items_string."
                 `last_sbor` = '".time()."' 
-                WHERE `id` = '$ui' LIMIT 1",false,false);
+                WHERE `id` = '$ui' LIMIT 1");
             }
         }
     }
