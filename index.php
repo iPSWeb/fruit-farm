@@ -74,7 +74,7 @@ $content = str_replace('{!GEN_PAGE!}', sprintf('%.5f', (TimerSet() - $_timer_a))
 # Вывод баланса
 if(isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
-    $result = $pdo->query("SELECT `money_b`, `money_p` FROM `db_users_b` WHERE `id` = :user_id");
+    $result = $pdo->prepare("SELECT `money_b`, `money_p` FROM `db_users_b` WHERE `id` = :user_id");
     $result->execute(array('user_id'=>$user_id));
     $db->Query("SELECT `money_b`, `money_p` FROM `db_users_b` WHERE `id` = '$user_id'");
     $balance = $result->fetch();
