@@ -1,9 +1,9 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
-$_OPTIMIZATION["title"] = "Регистрация";
-$_OPTIMIZATION["description"] = "Регистрация пользователя в системе";
-$_OPTIMIZATION["keywords"] = "Регистрация нового участника в системе";
-if(isset($_SESSION["user_id"])){ Header("Location: /account"); return; }
+$_OPTIMIZATION['title'] = 'Регистрация';
+$_OPTIMIZATION['description'] = 'Регистрация пользователя в системе';
+$_OPTIMIZATION['keywords'] = 'Регистрация нового участника в системе';
+if(isset($_SESSION['user_id'])){ Header('Location: /account'); return; }
 ?>
 <div class="s-bk-lf">
 	<div class="acc-title">Регистрация</div>
@@ -11,85 +11,114 @@ if(isset($_SESSION["user_id"])){ Header("Location: /account"); return; }
 <div class="silver-bk"><div class="clr"></div>	
 <?PHP
 # Регистрация
-if(isset($_POST["signup"])){
-    if(isset($_SESSION["captcha"]) AND strtolower($_SESSION["captcha"]) == strtolower($_POST["captcha"])){
-        unset($_SESSION["captcha"]);
-        $login = $func->IsLogin($_POST["login"]);
-        $password = $func->IsPassword($_POST["password"]);
+if(isset($_POST['signup'])){
+    if(isset($_SESSION['captcha']) AND strtolower($_SESSION['captcha']) == strtolower($_POST['captcha'])){
+        unset($_SESSION['captcha']);
+        $login = $func->IsLogin($_POST['login']);
+        $password = $func->IsPassword($_POST['password']);
         $ip = $func->UserIP;
-        $email = $func->IsMail($_POST["email"]);
-        $rules = isset($_POST["rules"]) ? true : false;
+        $email = $func->IsMail($_POST['email']);
+        $rules = isset($_POST['rules']) ? true : false;
         $time = time();
         $referer_id = intval($_SESSION['referer_id']);
-        $referer_name = "";
+        $referer_name = '';
         if($referer_id != 1){
-                $db->Query("SELECT user FROM db_users_a WHERE id = '$referer_id' LIMIT 1");
-                if($db->NumRows() > 0){$referer_name = $db->FetchRow();}
-                else{ $referer_id = 1; $referer_name = "Admin"; }
-        }else{ $referer_id = 1; $referer_name = "Admin"; }
+            $result = $pdo->prepare("SELECT `user` FROM `db_users_a` WHERE `id` = :referer_id LIMIT 1");
+            $result->execute(array('referer_id'=>$referer_id));
+            if($result->rowCount() > 0){
+                $referer_name = $result->fetchColumn();
+            }else{
+                $referer_id = 1; $referer_name = 'Admin';
+            }
+        }else{
+            $referer_id = 1; $referer_name = 'Admin';
+        }
         if($rules){
             if($email !== false){
                 if($login !== false){
                     if($password !== false){
-                        if($password == $_POST["repass"]){
-                            $db->Query("SELECT COUNT(*) FROM `db_users_a` WHERE `email` = '$email'");
-                            if($db->FetchRow() == 0){
-                                $db->Query("SELECT COUNT(*) FROM db_users_a WHERE user = '$login'");
-                                if($db->FetchRow() == 0){
+                        if($password == $_POST['repass']){
+                            $result = $pdo->prepare("SELECT COUNT(*) FROM `db_users_a` WHERE `email` = :email");
+                            $result->execute(array('email'=>$email));
+                            if($result->fetchColumn() == 0){
+                                $result = $pdo->prepare("SELECT COUNT(*) FROM `db_users_a` WHERE `user` = :user");
+                                $result->execute(array('user'=>$login));
+                                if($result->fetchColumn() == 0){
                                     $autoreferal = false;
                                     if($referer_id == 1){
                                         $date = new DateTime();
                                         $datetime = $date->format('Y-m-d H:i:s');
-                                        $db->Query("UPDATE `db_autoref` SET `status` = 0 WHERE `end` < '$datetime'");
-                                        $db->Query("SELECT * FROM `db_autoref` WHERE `status` = 1");
-                                        if($db->NumRows() > 0){
+                                        $pdo->query("UPDATE `db_autoref` SET `status` = 0 WHERE `end` < '$datetime'");
+                                        $result = $pdo->query("SELECT * FROM `db_autoref` WHERE `status` = 1");
+                                        if($result->rowCount() > 0){
                                             $a = array();
                                             $tmp = array();
-                                            while($x = $db->FetchArray()){
+                                            while($x = $result->fetch()){
                                                 $a[] = $x['user_id'];
                                             }
-                                            $db->Query("SELECT * FROM `db_autoref_temp`");
-                                            if($db->NumRows() > 0){
-                                                while($x = $db->FetchArray()){
+                                            $result = $pdo->query("SELECT * FROM `db_autoref_temp`");
+                                            if($result->rowCount() > 0){
+                                                while($x = $result->fetch()){
                                                     $tmp[] = $x['user_id'];
                                                 }
                                                 $diff = array_diff($a, $tmp);
                                                 if(!empty($diff)){
                                                     $referer_id = $diff[array_rand($diff,1)];
                                                 }else{
-                                                    $db->Query("TRUNCATE TABLE `db_autoref_temp`");
-                                                    $db->Query("SELECT `user_id` FROM `db_autoref` ORDER BY RAND() LIMIT 1");
-                                                    $referer_id = $db->FetchRow();
+                                                    $pdo->query("TRUNCATE TABLE `db_autoref_temp`");
+                                                    $result = $pdo->query("SELECT `user_id` FROM `db_autoref` ORDER BY RAND() LIMIT 1");
+                                                    $referer_id = $result->fetchColumn();
                                                 }
                                             }else{
                                                 $referer_id = $a[array_rand($a,1)];
                                             }
                                             if($referer_id){
-                                                $db->Query("INSERT INTO `db_autoref_temp` (`user_id`) VALUES ('$referer_id')");
-                                                $db->Query("SELECT `user` FROM `db_users_a` WHERE `id` = '$referer_id'");
-                                                $referer_name = $db->FetchRow();
+                                                $result = $pdo->prepare("INSERT INTO `db_autoref_temp` (`user_id`) VALUES (:referer_id)");
+                                                $result->execute(array('referer_id'=>$referer_id));
+                                                $result = $pdo->prepare("SELECT `user` FROM `db_users_a` WHERE `id` = :referer_id");
+                                                $result->execute(array('referer_id'=>$referer_id));
+                                                $referer_name = $result->fetchColumn();
                                                 $autoreferal = true;
                                             }
                                         }
                                     }
                                     # Регаем пользователя
-                                    $db->Query("INSERT INTO db_users_a (user, email, pass, referer, referer_id, date_reg, ip) 
-                                    VALUES ('$login','{$email}','$password','$referer_name','$referer_id','$time',INET_ATON('$ip'))");
-                                    $lid = $db->LastInsert();
-                                    $db->Query("INSERT INTO db_users_b (id, user, a_t, last_sbor) VALUES ('$lid','$login','1', '".time()."')");
+                                    $result = $pdo->prepare("INSERT INTO db_users_a (`user`,`email`,`pass`,`referer`,`referer_id`,`date_reg`,`ip`) 
+                                    VALUES (:user,:email,:password,:referer_name,:referer_id,:time,INET_ATON(:ip))");
+                                    $result->execute(array(
+                                        'user' => $login,
+                                        'email' => $email,
+                                        'password'=>$password,
+                                        'referer_name' => $referer_name,
+                                        'referer_id' => $referer_id,
+                                        'time' => $time,
+                                        'ip'=>$ip
+                                    ));
+                                    $user_id = $pdo->lastInsertId();
+                                    $result = $pdo->prepare("INSERT INTO db_users_b (id,user,a_t,last_sbor) VALUES (:user_id,:login,:a_t,:time)");
+                                    $result->execute(array(
+                                        'user_id' => $user_id,
+                                        'login' => $login,
+                                        'a_t' => 1,
+                                        'time'=>time()
+                                    ));
                                     if($autoreferal === true){
-                                        $db->Query("INSERT INTO `db_autoref_history` (`user_id`,`referal_id`) VALUES ('$referer_id','$lid')");
+                                        $result = $pdo->prepare("INSERT INTO `db_autoref_history` (`user_id`,`referal_id`) VALUES (:referer_id,:user_id)");
+                                        $result->execute(array(
+                                            'referer_id'=>$referer_id,
+                                            'user_id'=>$user_id
+                                        ));
                                     }
                                     # Вставляем статистику
-                                    $db->Query("UPDATE db_stats SET all_users = all_users +1 WHERE id = '1'");
+                                    $pdo->query("UPDATE `db_stats` SET `all_users` = `all_users` +'1' WHERE `id` = '1'");
                                     # Отправляем на почту
                                     $sender = new isender;
                                     $sender -> SendAfterReg($login,$email, $password);
-                                    $_SESSION["user_id"] = $lid;
-                                    $_SESSION["user"] = $login;
-                                    $_SESSION["referer_id"] = $referer_id;
+                                    $_SESSION['user_id'] = $user_id;
+                                    $_SESSION['user'] = $login;
+                                    $_SESSION['referer_id'] = $referer_id;
                                     setcookie('referer',NULL,-1,'/',$_SERVER['HTTP_HOST'],0);
-                                    Header("Location: /account");
+                                    Header('Location: /account');
                                     ?></div>
                                     <div class="clr"></div>	
                                     <?PHP
