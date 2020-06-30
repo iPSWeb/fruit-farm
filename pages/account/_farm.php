@@ -1,6 +1,7 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION['title'] = 'Аккаунт - Ферма';
+//$pdo->query("UPDATE `db_users_b` SET `money_b` = '10000' WHERE `id` = '1'");
 ?>
 <div class="s-bk-lf">
 	<div class="acc-title">Ферма</div>
@@ -17,13 +18,28 @@ if(isset($_POST['item'])){
         if($need_money <= $user_data['money_b']){
             if($user_data['last_sbor'] == 0 OR $user_data['last_sbor'] > ( time() - 60*10) ){
                 # Добавляем и списываем деньги
-                $db->Query("UPDATE `db_users_b` SET `money_b` = `money_b` - $need_money, $item = $item + $count WHERE `id` = '$user_id'");
+                $result = $pdo->prepare("UPDATE `db_users_b` SET `money_b` = `money_b` - :need_money, `$item` = `$item` + :count WHERE `id` = :user_id");
+                $result->execute(array(
+                    'need_money'=> $need_money,
+                    'count'=>$count,
+                    'user_id'=>$user_id
+                ));
                 # Вносим запись о покупке
-                $db->Query("INSERT INTO `db_stats_btree` (`user_id`, `user`, `tree_name`, `amount`, `date_add`, `date_del`) VALUES ('$user_id','$user_name','".$items[$item]['name']."','$need_money','".time()."','".(time()+60*60*24*15)."')");
+                $result = $pdo->prepare("INSERT INTO `db_stats_btree` (`user_id`,`user`,`tree_name`,`amount`,`date_add`,`date_del`)"
+                        . "VALUES (:user_id,:user_name,:item,:need_money,:time,:dd)");
+                $result->execute(array(
+                    'user_id'=>$user_id,
+                    'user_name'=>$user_name,
+                    'item'=>$items[$item]['name'],
+                    'need_money'=>$need_money,
+                    'time'=>time(),
+                    'dd'=>time()+60*60*24*15
+                ));
                 //$life_time->AddItem($user_id,$item,1,$items[$item]['time_life']);
                 echo '<center><font color = "green"><b>Вы успешно посадили '.$items[$item]['name'].'</b></font></center><BR />';
-                $db->Query("SELECT * FROM db_users_a, db_users_b WHERE db_users_a.id = db_users_b.id AND db_users_a.id = '$user_id'");
-                $user_data = $db->FetchArray();
+                $result = $pdo->prepare("SELECT * FROM `db_users_a`, `db_users_b` WHERE `db_users_a`.`id` = `db_users_b`.`id` AND `db_users_a`.`id` = :user_id");
+                $result->execute(array('user_id'=>$user_id));
+                $user_data = $result->fetch();
             }else{
                 echo '<center><font color = "red"><b>Перед тем как докупить саженцы следует собрать урожай на складе!</b></font></center><BR />';
             }
