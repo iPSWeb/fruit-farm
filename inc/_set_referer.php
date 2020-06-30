@@ -14,4 +14,6 @@ if(isset($_GET['i'])){
         setcookie('referer_site', $_SERVER['HTTP_REFERER'], time() + (60*60*24*30),'/',$_SERVER['HTTP_HOST'],0);
     }
     header('Location: /');
+}else{
+    $_SESSION['referer_id'] = 1;
 }
