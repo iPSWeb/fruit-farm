@@ -73,7 +73,7 @@ class isender{
 	\*======================================================================*/
 	function Headers($recipient){
             $headers = "MIME-Version: 1.0\r\n";
-            $headers.= "Content-type: text/html; charset=Windows-1251\r\n";
+            $headers.= "Content-type: text/html; charset=utf-8\r\n";
             $headers.= "Date: ".date('r',time())."\r\n";
             $headers.= "From: support@".$this->Hosts." \r\n";
             $headers.= "To: <".$recipient."> \r\n";
