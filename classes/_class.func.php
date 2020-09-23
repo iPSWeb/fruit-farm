@@ -2,7 +2,7 @@
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class func{
 
-	public $UserIP = "Undefined"; # IP пользователя
+	public $UserIP = '0000000000'; # IP пользователя
 	public $UserCode = "Undefined"; # Код от IP
 	public $TableID = -1; # ID таблицы
 	public $UserAgent = "Undefined"; // Браузер пользователя
@@ -65,35 +65,20 @@ class func{
 	Descriiption: Определяет IP пользователя
 	\*======================================================================*/
 	public function GetUserIp(){
-		if($this->UserIP == "Undefined"){
-			if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND !empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-   			{
-				$client_ip = ( !empty($_SERVER['REMOTE_ADDR']) ) ? $_SERVER['REMOTE_ADDR'] : ( ( !empty($_ENV['REMOTE_ADDR']) ) ? $_ENV['REMOTE_ADDR'] : "unknown" );
-				$entries = preg_split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
-				reset($entries);
-				while (list(, $entry) = each($entries))
-				{
-					$entry = trim($entry);
-					if ( preg_match("/^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)/", $entry, $ip_list) )
-					{
-						$private_ip = array(
-							'/^0\./',
-							'/^127\.0\.0\.1/',
-							'/^192\.168\..*/',
-							'/^172\.((1[6-9])|(2[0-9])|(3[0-1]))\..*/',
-							'/^10\..*/');
-							$found_ip = preg_replace($private_ip, $client_ip, $ip_list[1]);
-						if ($client_ip != $found_ip)
-						{
-							$client_ip = $found_ip;
-							break;
-						}	
-					}	
-				}
-				$this->UserIP = $client_ip;
-				return $client_ip;
-			}else return ( !empty($_SERVER['REMOTE_ADDR']) ) ? $_SERVER['REMOTE_ADDR'] : ( ( !empty($_ENV['REMOTE_ADDR']) ) ? $_ENV['REMOTE_ADDR'] : "unknown");
-		}else return $this->UserIP;
+            if($this->UserIP == "0000000000"){
+                if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+                    //ip from share internet
+                    $this->UserIP = $_SERVER['HTTP_CLIENT_IP'];
+                }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+                    //ip pass from proxy
+                    $this->UserIP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                }else{
+                    $this->UserIP = $_SERVER['REMOTE_ADDR'];
+                }
+                return $this->UserIP;
+            }else{
+                return $this->UserIP;
+            }
 	}
 	
 	/*======================================================================*\
