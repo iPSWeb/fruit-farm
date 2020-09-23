@@ -14,7 +14,6 @@ class func{
 	\*======================================================================*/
 	public function __construct(){
 		$this->UserIP = $this->GetUserIp();
-		$this->UserCode = $this->IpCode();
 		$this->UserAgent = $this->UserAgent();
 	}
 	
@@ -126,17 +125,6 @@ class func{
 		if($type == 0) return (is_array($data)) ? false : ( preg_match("#^[0-9]{12}$#", $data) ? $data : false );
 		if( substr(strtoupper($data),0,1) != $FirstChar[$type] or !preg_match("#^[0-9]{12}$#", substr($data,1)) ) return false;
 		return $data;
-	}
-
-	/*======================================================================*\
-	Function:	IpCode
-	Output:		String, Example 255025502550255
-	Input:		- 
-	Descriiption: Возвращает IP с замененными знаками "." на "0"
-	\*======================================================================*/
-	public function IpCode(){
-		$arr_mask = explode(".",$this->GetUserIp());
-		return $arr_mask[0].".".$arr_mask[1].".".$arr_mask[2].".0";
 	}
 	
 	/*======================================================================*\
