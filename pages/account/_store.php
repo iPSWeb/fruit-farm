@@ -17,16 +17,18 @@ if(isset($_POST['sbor'])){
         $items_string = '';
         foreach($items as $item => $description){
             $$item = $func->SumCalc($description['in_hour'], $user_data[$item], $user_data['last_sbor']);
-            $items_string.= '`'.$description['char'].'_b` = `'.$description['char'].'_b`+\''.$$item.'\',';
-            $db->Query("UPDATE `db_users_b` SET `all_time_".$description['char']."` = `all_time_".$description['char']."` + '".$$item."' WHERE `id` = '$user_id' LIMIT 1");
+            $result = $pdo->prepare("UPDATE `db_users_b` SET `".$description['char']."_b`=`".$description['char']."_b`+:item_calc,`all_time_".$description['char']."`=`all_time_".$description['char']."`+:all_time,`last_sbor`=:last_sbor WHERE `id`=:user_id");
+            $result->execute(array(
+                'user_id' => $user_id,
+                'item_calc' => $$item,
+                'all_time' => $$item,
+                'last_sbor' => time()
+            ));
         }
-        $db->Query("UPDATE db_users_b SET 
-        ".$items_string."
-        last_sbor = '".time()."' 
-        WHERE id = '$user_id' LIMIT 1");
         echo '<center><font color = "green"><b>Вы собрали урожай</b></font></center><BR />';
-        $db->Query("SELECT * FROM db_users_b WHERE id = '$user_id' LIMIT 1");
-        $user_data = $db->FetchArray();
+        $result = $pdo->prepare("SELECT * FROM `db_users_a`, `db_users_b` WHERE `db_users_a`.`id` = `db_users_b`.`id` AND `db_users_a`.`id` = :user_id");
+        $result->execute(array('user_id'=>$user_id));
+        $user_data = $result->fetch();
     }else{
         echo '<center><font color = "red"><b>Урожай можно собирать не чаще 1го раза в 10 минут</b></font></center><BR />';
     }
