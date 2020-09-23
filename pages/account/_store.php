@@ -14,7 +14,6 @@ $_OPTIMIZATION["description"] = "Фруктовый склад";
 <?PHP
 if(isset($_POST['sbor'])){
     if($user_data['last_sbor'] < (time() - 60*10) ){
-        $items_string = '';
         foreach($items as $item => $description){
             $$item = $func->SumCalc($description['in_hour'], $user_data[$item], $user_data['last_sbor']);
             $result = $pdo->prepare("UPDATE `db_users_b` SET `".$description['char']."_b`=`".$description['char']."_b`+:item_calc,`all_time_".$description['char']."`=`all_time_".$description['char']."`+:all_time,`last_sbor`=:last_sbor WHERE `id`=:user_id");
