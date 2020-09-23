@@ -14,32 +14,50 @@ $_OPTIMIZATION["title"] = "Аккаунт - Торговая лавка";
 # Продажа
 if(isset($_POST['sell'])){
     $all_items = 0;
-    $string_null = '';
+    $all_money = 0;
     $items_string = '';
-    $items_values = '';
+    $items_values_prepare = '';
+    $items_values = array();
     foreach($items as $item => $description){
+        $item_pr = $user_data[$description['char'].'_b'];
         $all_items += $user_data[$description['char'].'_b'];
-        $$item = $user_data[$item];
-        $string_null.= '`'.$description['char'].'_b` = \'0\',';
-        $items_string.= '`'.$description['char'].'_s`,';
-        $items_values.= '\''.$user_data[$description['char'].'_b'].'\',';
+        if($item_pr > 0){
+            $money_add = $func->SellItems($item_pr, $db_config['items_per_coin']);
+            $all_money += $money_add;
+            $money_b = ( (100 - $db_config['percent_sell']) / 100) * $money_add;
+            $money_p = ( ($db_config['percent_sell']) / 100) * $money_add;
+            # Обновляем юзверя
+            $result = $pdo->prepare("UPDATE `db_users_b` SET `".$description['char']."_b`='0',`money_b`=`money_b`+:money_b,`money_p`=`money_p`+:money_p WHERE `id` = :user_id");
+            $result->execute(array(
+                'money_b' => $money_b,
+                'money_p' => $money_p,
+                'user_id' => $user_id
+            ));
+            $items_string.= '`'.$description['char'].'_s`,';
+            $items_values_prepare.= ':'.$description['char'].'_s,';
+            $items_values[$description['char'].'_s']= $user_data[$description['char'].'_b'];
+        }
     }
-    if($all_items > 0){
-        $money_add = $func->SellItems($all_items, $db_config['items_per_coin']);
-        $money_b = ( (100 - $db_config['percent_sell']) / 100) * $money_add;
-        $money_p = ( ($db_config['percent_sell']) / 100) * $money_add;
-        # Обновляем юзверя
-        $db->Query("UPDATE `db_users_b` SET ".$string_null." `money_b` = `money_b` + '$money_b',`money_p` = `money_p` + '$money_p', `last_sbor` = '".time()."' WHERE `id` = '$user_id'");
+    if($all_items == 0){
+        echo '<center><font color = "red"><b>Вам нечего продавать :(</b></font></center><BR />';
+    }else{
         $da = time();
         $dd = $da + 60*60*24*15;
         # Вставляем запись в статистику
-        $db->Query("INSERT INTO `db_sell_items` (`user`, `user_id`, ".$items_string." `amount`, `all_sell`, `date_add`, `date_del`) VALUES 
-        ('$user_name','$user_id',".$items_values."'$money_add','$all_items','$da','$dd')");
-        echo '<center><font color = "green"><b>Вы продали '.$all_items.' плодов, на сумму '.$money_add.' серебра</b></font></center><BR />';
-        $db->Query("SELECT * FROM `db_users_b` WHERE id = '$user_id' LIMIT 1");
-        $user_data = $db->FetchArray();
-    }else{
-        echo '<center><font color = "red"><b>Вам нечего продавать :(</b></font></center><BR />';
+        $execute_array = array_merge($items_values, array(
+            'user_name' => $user_name,
+            'user_id' => $user_id,
+            'money_add' => $money_add,
+            'all_items' => $all_items,
+            'da' => $da,
+            'dd' => $dd
+        ));
+        $result = $pdo->prepare("INSERT INTO `db_sell_items` (`user`,`user_id`,".$items_string."`amount`, `all_sell`, `date_add`, `date_del`) VALUES (:user_name,:user_id,".$items_values_prepare.":money_add,:all_items,:da,:dd)");
+        $result->execute($execute_array);
+        $result = $pdo->prepare("SELECT * FROM `db_users_a`, `db_users_b` WHERE `db_users_a`.`id` = `db_users_b`.`id` AND `db_users_a`.`id` = :user_id");
+        $result->execute(array('user_id'=>$user_id));
+        $user_data = $result->fetch();
+        echo '<center><font color = "green"><b>Вы продали '.$all_items.' плодов, на сумму '.$all_money.' серебра</b></font></center><BR />';
     }
 }
 ?>	       
