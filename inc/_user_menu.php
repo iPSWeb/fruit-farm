@@ -1,7 +1,7 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 ?>
-<div class="acc-title"><?=$_SESSION["user"]; ?></div>
+<div class="acc-title"><?=$_SESSION['user']; ?></div>
 <div class="field-gr"><a href="/account">Мой профиль</a></div>
 <?PHP
 if(isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE){
