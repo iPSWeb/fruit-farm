@@ -76,15 +76,15 @@ if($result->fetchColumn() == 0){
         <td align="center" class="m-tb">Дата</td>
     </tr>
 <?PHP
-$db->Query("SELECT * FROM db_bonus_list ORDER BY id DESC LIMIT 20");
-if($db->NumRows() > 0){
-    while($bon = $db->FetchArray()){
+$result = $pdo->query("SELECT * FROM `db_bonus_list` ORDER BY `id` DESC LIMIT 20");
+if($result->rowCount() > 0){
+    while($data = $result->fetch()){
     ?>
     <tr class="htt">
-    <td align="center"><?=$bon['id']; ?></td>
-    <td align="center"><?=$bon['user']; ?></td>
-    <td align="center"><?=$bon['sum']; ?></td>
-    <td align="center"><?=date('d.m.Y',$bon['date_add']); ?></td>
+    <td align="center"><?=$data['id']; ?></td>
+    <td align="center"><?=$data['user']; ?></td>
+    <td align="center"><?=$data['sum']; ?></td>
+    <td align="center"><?=date('d.m.Y',$data['date_add']); ?></td>
     </tr>
     <?PHP
     }
