@@ -9,7 +9,7 @@
 
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class config{
-    public $HostDB = '';
+    public $HostDB = 'localhost';
     public $UserDB = '';
     public $PassDB = '';
     public $BaseDB = '';
@@ -28,6 +28,11 @@ class config{
     public $minBonus = 10;//минимальная сумма бонуса в серебре
     public $maxBonus = 100;//максимальная сумма бонуса в серебре
     public $accountBonus = 'b';//счет для получения бонуса: b - дя поупок, p - для выплаты
+    #Настройки лотереи
+    public $costTicket = 100;//стоимость лотерейного билета серебром
+    public $accountPayTicket = 'b';//аккаунт для списания серебра за покупку билетов: b - дя поупок, p - для выплаты 
+    public $accountPayPrize = 'b';//аккаунт для выплаты приза с лотереи: b - дя поупок, p - для выплаты 
+    public $countTickets = 10;//количество билетов для завершения лотереи
     # PAYEER настройки
     public $AccountNumber = 'P111111';
     public $apiId = '11111111';
