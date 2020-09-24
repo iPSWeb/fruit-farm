@@ -74,7 +74,6 @@ if(isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
     $result = $pdo->prepare("SELECT `money_b`, `money_p` FROM `db_users_b` WHERE `id` = :user_id");
     $result->execute(array('user_id'=>$user_id));
-    $db->Query("SELECT `money_b`, `money_p` FROM `db_users_b` WHERE `id` = '$user_id'");
     $balance = $result->fetch();
     $content = str_replace('{!BALANCE_B!}', sprintf('%.2f', $balance['money_b']) ,$content);
     $content = str_replace('{!BALANCE_P!}', sprintf('%.2f', $balance['money_p']) ,$content);
