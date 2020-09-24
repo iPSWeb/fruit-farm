@@ -34,7 +34,7 @@ class config{
     public $accountPayPrize = 'b';//аккаунт для выплаты приза с лотереи: b - дя поупок, p - для выплаты 
     public $countTickets = 10;//количество билетов для завершения лотереи
     public $lotteryFirst = 50;
-    public $lotterySecont = 50;
+    public $lotterySecond = 50;
     public $lotteryThird = 50;
     # PAYEER настройки
     public $AccountNumber = 'P111111';
