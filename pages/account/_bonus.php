@@ -1,6 +1,7 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION['title'] = 'Ежедневный бонус';
+$accountBonus=($config->accountBonus === 'b')?'покупок':'выплаты';
 ?>
 <div class="s-bk-lf">
     <div class="acc-title">{!TITLE!}</div>
@@ -9,8 +10,8 @@ $_OPTIMIZATION['title'] = 'Ежедневный бонус';
 <div class="clr"></div>	
 <BR />
 Бонус выдется 1 раз в 24 часа. <BR />
-Бонус выдается серебром на счет для покупок. <BR />
-Сумма бонуса генерируется случайно от <b><?=$bonus_min;?></b> до <b><?=$bonus_max;?></b> серебра.
+Бонус выдается серебром на счет для <?=$accountBonus;?>. <BR />
+Сумма бонуса генерируется случайно от <b><?=$config->minBonus;?></b> до <b><?=$config->maxBonus;?></b> серебра.
 <BR /><BR />
 <?PHP
 $ddel = time() + 60*60*$config->frequencyBonus;
@@ -43,7 +44,7 @@ if($result->fetchColumn() == 0){
         # Очистка устаревших записей
         $result = $pdo->prepare("DELETE FROM db_bonus_list WHERE date_del < :dadd");
         $result->execute(array('dadd'=>$dadd));
-        echo '<center><font color = "green"><b>На Ваш счет для покупок зачислен бонус в размере '.$amount.' серебра</b></font></center><BR />';
+        echo '<center><font color = "green"><b>На Ваш счет для '.$accountBonus.' зачислен бонус в размере '.$amount.' серебра</b></font></center><BR />';
         $hide_form = true;
     }
     # Показывать или нет форму
@@ -62,7 +63,7 @@ if($result->fetchColumn() == 0){
         <?PHP 
     }
 }else{
-    echo '<center><font color = "red"><b>Вы уже получали бонус за последние 24 часа</b></font></center><BR />';
+    echo '<center><font color = "red"><b>Вы уже получали бонус за последние '.$config->frequencyBonus.' часа</b></font></center><BR />';
 }
 ?>
 <table cellpadding='3' cellspacing='0' border='0' bordercolor='#336633' align='center' width="99%">
