@@ -9,7 +9,7 @@
 
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 class config{
-    public $HostDB = 'localhost';
+    public $HostDB = '';
     public $UserDB = '';
     public $PassDB = '';
     public $BaseDB = '';
@@ -25,6 +25,9 @@ class config{
     public $accountWelcomeText = 'b';//Счет списания: b - с покупок, p - с выплат
     #настройка бонуса
     public $frequencyBonus = 24;//периодичность получения бонуса в часах
+    public $minBonus = 10;//минимальная сумма бонуса в серебре
+    public $maxBonus = 100;//максимальная сумма бонуса в серебре
+    public $accountBonus = 'b';//счет для получения бонуса: b - дя поупок, p - для выплаты
     # PAYEER настройки
     public $AccountNumber = 'P111111';
     public $apiId = '11111111';
