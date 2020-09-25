@@ -181,16 +181,28 @@ class func{
 		return $a+$b;
 	}
 	
-	/*======================================================================*\
-	Function:	md5Password
-	Descriiption: Возвращает md5_пароля
+        /*======================================================================*\
+	Function:	sha512Password
+	Descriiption: Возвращает хеш пароля
 	\*======================================================================*/
-	public function md5Password($pass){
-		$pass = strtolower($pass);
-		return md5($_SERVER['HTTP_HOST']."-".$pass);
-		
+	public function sha512Password($pass,$salt){
+            return hash_hmac('sha512',$pass,$salt);
 	}
-	
+        
+        /*======================================================================*\
+	Function:	genSaltd
+	Descriiption: Возвращает соль для хеширования пароля
+	\*======================================================================*/
+        public function genSalt(){
+            $chars='QAZXSWEDCVFRTGBNHYUJMKIOLPqazxswedcvfrtgbnhyujmkiolp1234567890';
+            $max=64;
+            $size=StrLen($chars)-1; 
+            $salt=null;
+            while($max--){
+                $salt.=$chars[rand(0,$size)];
+            }
+            return $salt;
+        }
 	/*======================================================================*\
 	Function:	ControlCode
 	Descriiption: Возвращает контрольное число
