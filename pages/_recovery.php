@@ -19,8 +19,11 @@ if(isset($_POST['email'])){
         if($email !== false){
             $pdo->query("DELETE FROM `db_recovery` WHERE `date_del` < '$time'");
             $result = $pdo->prepare("SELECT COUNT(*) FROM `db_recovery` WHERE `ip` = INET_ATON(:ip) OR `email` = :email");
-            $result->execute(array('ip'=>$func->UserIP,'email'=>$email));
-            if($result->rowCount() == 0){
+            $result->execute(array(
+                'ip'=>$func->UserIP,
+                'email'=>$email
+                ));
+            if($result->fetchColumn() == 0){
                 $result = $pdo->prepare("SELECT `id`, `user`, `email` FROM `db_users_a` WHERE `email` = :email");
                 $result->execute(array('email'=>$email));
                 if($result->rowCount() == 1){
