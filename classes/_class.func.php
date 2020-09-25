@@ -209,7 +209,7 @@ class func{
 	Descriiption: Возвращает сгенерированный пароль
 	\*======================================================================*/
         public function genPassword(){
-            $chars='qazxswedcvfrtgbnhyujmkiolp1234567890';
+            $chars='QAZXSWEDCVFRTGBNHYUJMKIOLPqazxswedcvfrtgbnhyujmkiolp1234567890';
             $max=20;
             $size=StrLen($chars)-1; 
             $password=null;
