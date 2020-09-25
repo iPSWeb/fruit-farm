@@ -17,11 +17,11 @@ if(isset($_POST['email'])){
         $time = time();
         $tdel = $time + 60*15;
         if($email !== false){
-            $pdo->query("DELETE FROM db_recovery WHERE date_del < '$time'");
+            $pdo->query("DELETE FROM `db_recovery` WHERE `date_del` < '$time'");
             $result = $pdo->prepare("SELECT COUNT(*) FROM `db_recovery` WHERE `ip` = INET_ATON(:ip) OR `email` = :email");
             $result->execute(array('ip'=>$func->UserIP,'email'=>$email));
             if($result->rowCount() == 0){
-                $result = $pdo->prepare("SELECT id, user, email, pass FROM db_users_a WHERE email = :email");
+                $result = $pdo->prepare("SELECT `id`, `user`, `email` FROM `db_users_a` WHERE `email` = :email");
                 $result->execute(array('email'=>$email));
                 if($result->rowCount() == 1){
                     $data = $result->fetch();
@@ -33,9 +33,18 @@ if(isset($_POST['email'])){
                         'time'=>$time,
                         'tdel'=>$tdel
                     ));
+                    $password = $func->genPassword();
+                    $salt = $func->genSalt();
+                    $hash = $func->sha512Password($password,$salt);
+                    $result = $pdo->prepare("UPDATE `db_users_a` SET `pass`=:hash,`salt`=:salt WHERE `email`=:email");
+                    $result->execute(array(
+                        'hash'=>$hash,
+                        'salt'=>$salt,
+                        'email'=>$email
+                    ));
                     # Отправляем пароль
                     $sender = new isender;
-                    $sender -> RecoveryPassword($data['email'], $data['pass'], $data['email']);
+                    $sender -> RecoveryPassword($data['user'], $password, $email);
                     echo "<center><font color = 'green'><b>Данные для входа отправлены на Email</b></font></center>";
                     ?>
                     </div>

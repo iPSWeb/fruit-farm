@@ -4,11 +4,11 @@ if(isset($_POST['auth'])){
     $email = $func->IsMail($_POST['email']);
     $password = $func->IsPassword($_POST['password']);
     if($email !== false && $password !== false){
-        $result = $pdo->prepare("SELECT `id`,`user`,`pass`,`referer_id`,`banned` FROM `db_users_a` WHERE `email` = :email");
+        $result = $pdo->prepare("SELECT `id`,`user`,`pass`,`salt`,`referer_id`,`banned` FROM `db_users_a` WHERE `email` = :email");
         $result->execute(array('email'=>$email));
         if($result->rowCount() == 1){
             $data = $result->fetch();
-            if(strtolower($data['pass']) == strtolower($password)){
+            if($data['pass'] == $func->sha512Password($password,$data['salt'])){
                 if($data['banned'] == 0){
                     # Считаем рефералов
                     $result = $pdo->prepare("SELECT COUNT(*) FROM db_users_a WHERE referer_id = :user_id");

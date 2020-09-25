@@ -83,12 +83,15 @@ if(isset($_POST['signup'])){
                                         }
                                     }
                                     # Регаем пользователя
-                                    $result = $pdo->prepare("INSERT INTO db_users_a (`user`,`email`,`pass`,`referer`,`referer_id`,`date_reg`,`ip`) 
-                                    VALUES (:user,:email,:password,:referer_name,:referer_id,:time,INET_ATON(:ip))");
+                                    $salt = $func->genSalt();
+                                    $hash = $func->sha512Password($password,$salt);
+                                    $result = $pdo->prepare("INSERT INTO db_users_a (`user`,`email`,`pass`,`salt`,`referer`,`referer_id`,`date_reg`,`ip`) 
+                                    VALUES (:user,:email,:password,:salt,:referer_name,:referer_id,:time,INET_ATON(:ip))");
                                     $result->execute(array(
                                         'user' => $login,
                                         'email' => $email,
-                                        'password'=>$password,
+                                        'password'=>$hash,
+                                        'salt'=>$salt,
                                         'referer_name' => $referer_name,
                                         'referer_id' => $referer_id,
                                         'time' => $time,
