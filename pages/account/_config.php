@@ -1,26 +1,39 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
-$_OPTIMIZATION["title"] = "Аккаунт - Настройки";
+$_OPTIMIZATION['title'] = 'Настройки';
 ?>
 <div class="s-bk-lf">
-	<div class="acc-title">Настройки</div>
+    <div class="acc-title">{!TITLE!}</div>
 </div>
 <div class="silver-bk">
 <div class="clr"></div>	
 <center><b>Смена пароля</b></center>
 <BR />
 <?PHP
-if(isset($_POST["old"])){
-    $old = $func->IsPassword($_POST["old"]);
-    $new = $func->IsPassword($_POST["new"]);
-    if($old !== false AND strtolower($old) == strtolower($user_data["pass"])){
+if(isset($_POST['old'])){
+    $old = $func->IsPassword($_POST['old']);
+    $new = $func->IsPassword($_POST['new']);
+    if($old !== false AND $func->sha512Password($old,$user_data['salt']) == $user_data['pass']){
         if($new !== false){
-            if( strtolower($new) == strtolower($_POST["re_new"])){
-                $db->Query("UPDATE db_users_a SET pass = '$new' WHERE id = '$user_id'");
-                echo "<center><font color = 'green'><b>Новый пароль успешно установлен</b></font></center><BR />";
-            }else echo "<center><font color = 'red'><b>Пароль и повтор пароля не совпадают</b></font></center><BR />";
-        }else echo "<center><font color = 'red'><b>Новый пароль имеет неверный формат</b></font></center><BR />";
-    }else echo "<center><font color = 'red'><b>Старый паполь заполнен неверно</b></font></center><BR />";
+            if($new == $_POST['re_new']){
+                $salt = $func->genSalt();
+                $hash = $func->sha512Password($new,$salt);
+                $result = $pdo->prepare("UPDATE `db_users_a` SET `pass` = :hash,`salt`=:salt WHERE `id` = :user_id");
+                $result->execute(array(
+                    'hash'=>$hash,
+                    'salt'=>$salt,
+                    'user_id'=>$user_id
+                ));
+                echo '<center><font color = "green"><b>Новый пароль успешно установлен</b></font></center><BR />';
+            }else{
+                echo '<center><font color = "red"><b>Пароль и повтор пароля не совпадают</b></font></center><BR />';
+            }
+        }else{
+            echo '<center><font color = "red"><b>Новый пароль имеет неверный формат</b></font></center><BR />';
+        }
+    }else{
+        echo '<center><font color = "red"><b>Старый паполь заполнен неверно</b></font></center><BR />';
+    }
 }
 ?>
 <form action="" method="post">
@@ -54,9 +67,13 @@ if(isset($_POST['refback'])){
         $msg = '<font color="red">Процент рефбека должен быть от 0 до 100</font>';
     }
     if(empty($msg)){
-       $db->Query("UPDATE `db_users_a` SET `refback` = '$percent' WHERE `id` = '$user_id'");
-       $user_data['refback'] = $percent;
-       $msg = '<font color="green">Успешно сохранено!</font>';
+        $result = $pdo->prepare("UPDATE `db_users_a` SET `refback` = :percent WHERE `id` = :user_id");
+        $result->execute(array(
+            'percent'=>$percent,
+            'user_id'=>$user_id
+        ));
+        $user_data['refback'] = $percent;
+        $msg = '<font color="green">Успешно сохранено!</font>';
     }
 }
 ?>
