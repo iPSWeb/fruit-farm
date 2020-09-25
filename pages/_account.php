@@ -7,7 +7,8 @@ $user_id = $_SESSION['user_id'];
 $result = $pdo->prepare("SELECT * FROM `db_users_a`, `db_users_b` WHERE `db_users_a`.`id` = `db_users_b`.`id` AND `db_users_a`.`id` = :user_id");
 $result->execute(array('user_id'=>$user_id));
 $user_data = $result->fetch();
-if($user_data['banned']){ @session_destroy(); Header('Location: /signin'); return; }
+if($user_data['ip']!= ip2long($func->UserIP)){ @session_destroy(); Header('Location: /'); return; }
+if($user_data['banned']){ @session_destroy(); Header('Location: /'); return; }
 $user_name = $user_data['user'];
 include(BASE_DIR.'/inc/_autosbor.php');
 if(isset($_GET['sel'])){	
