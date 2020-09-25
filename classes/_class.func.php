@@ -203,6 +203,21 @@ class func{
             }
             return $salt;
         }
+        
+        /*======================================================================*\
+	Function:	genPassword
+	Descriiption: Возвращает сгенерированный пароль
+	\*======================================================================*/
+        public function genPassword(){
+            $chars='qazxswedcvfrtgbnhyujmkiolp1234567890';
+            $max=20;
+            $size=StrLen($chars)-1; 
+            $password=null;
+            while($max--){
+                $password.=$chars[rand(0,$size)];
+            }
+            return $password;
+        }
 	/*======================================================================*\
 	Function:	ControlCode
 	Descriiption: Возвращает контрольное число
