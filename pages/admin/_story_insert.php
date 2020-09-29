@@ -128,8 +128,8 @@ if(isset($_GET["day"])){
 				<tr class="htt">
 					<td align="center"><b><?=$date; ?></b></td>
 					<td align="center"><?=$days_insert[$date]; ?> шт.</td>
-					<td align="center"><?=$sum; ?> <?=$config->VAL;?></td>
-					<td align="center"><?=round($sum/$days_insert[$date],2); ?> <?=$config->VAL;?></td>
+					<td align="center"><?=$sum; ?> RUB</td>
+					<td align="center"><?=round($sum/$days_insert[$date],2); ?> RUB</td>
 				</tr>
 				<?PHP
 				

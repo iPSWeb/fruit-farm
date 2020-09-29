@@ -151,11 +151,11 @@ $data = $db->FetchArray();
   
   <tr bgcolor="#efefef">
     <td style="padding-left:10px;">Пополнено на баланс:</td>
-    <td width="200" align="center"><?=sprintf("%.2f",$data["insert_sum"]); ?> <?=$config->VAL; ?></td>
+    <td width="200" align="center"><?=sprintf("%.2f",$data["insert_sum"]); ?> RUB</td>
   </tr>
   <tr>
     <td style="padding-left:10px;">Выплачено на кошелек:</td>
-    <td width="200" align="center"><?=sprintf("%.2f",$data["payment_sum"]); ?> <?=$config->VAL; ?></td>
+    <td width="200" align="center"><?=sprintf("%.2f",$data["payment_sum"]); ?> RUB</td>
   </tr>
   
   <tr bgcolor="#efefef">

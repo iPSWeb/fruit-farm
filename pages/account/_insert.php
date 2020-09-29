@@ -73,7 +73,7 @@ function calculate(st_q) {
 </script>
 <div id="error3"></div>
 <form method="POST" action="">
-	Введите сумму [<?=$config->VAL; ?>]:  
+	Введите сумму [RUB]:  
 	<input type="text" value="100" name="sum" size="7" id="psevdo" onchange="calculate(this.value)" onkeyup="calculate(this.value)" onfocusout="calculate(this.value)" onactivate="calculate(this.value)" ondeactivate="calculate(this.value)"> 
     Вы получите <span id="res_sum">10000</span> серебра
 	<BR /><BR />

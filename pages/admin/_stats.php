@@ -64,11 +64,11 @@ $data_stats = $db->FetchArray();
   <tr> <td colspan="2" align="center"><b>- - - - -</b></td> </tr>
   <tr class="htt">
     <td><b>Введено пользователями:</b></td>
-	<td width="100" align="center"><?=sprintf("%.2f",$data_stats["insert_sum"]); ?> <?=$config->VAL; ?></td>
+	<td width="100" align="center"><?=sprintf("%.2f",$data_stats["insert_sum"]); ?> RUB</td>
   </tr>
   <tr class="htt">
     <td><b>Выплачено пользователям:</b></td>
-	<td width="100" align="center"><?=sprintf("%.2f",$data_stats["payment_sum"]); ?> <?=$config->VAL; ?></td>
+	<td width="100" align="center"><?=sprintf("%.2f",$data_stats["payment_sum"]); ?> RUB</td>
   </tr>
 </table>
 </div>

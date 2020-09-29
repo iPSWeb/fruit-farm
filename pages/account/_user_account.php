@@ -34,7 +34,7 @@ $_OPTIMIZATION['title'] = 'Аккаунт - Профиль';
 	  </tr>
 		<tr>
 		<td align="left" style="padding:3px;">Выплачено</td>
-		<td align="left" style="padding:3px;"><font color="#000;"><?=sprintf('%.2f',$user_data['payment_sum']); ?> <?=$config->VAL; ?></font></td>
+		<td align="left" style="padding:3px;"><font color="#000;"><?=sprintf('%.2f',$user_data['payment_sum']); ?> RUB</font></td>
 	  </tr>
 	  <tr align="left">
 		<td colspan="2" style="padding:3px;">&nbsp;</td>

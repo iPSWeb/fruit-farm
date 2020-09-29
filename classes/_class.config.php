@@ -16,7 +16,6 @@ class config{
     public $CharsetDB = 'utf8';
     
     public $SYSTEM_START_TIME = 1357338458;
-    public $VAL = 'Руб.';
     #бонус при первом пополнении
     public $bonusFirstInsert = 20;//бонус при первом пополнении, в процентах
     #Бонус при регистрации
