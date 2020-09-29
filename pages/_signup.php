@@ -85,7 +85,7 @@ if(isset($_POST['signup'])){
                                     # Регаем пользователя
                                     $salt = $func->genSalt();
                                     $hash = $func->sha512Password($password,$salt);
-                                    $result = $pdo->prepare("INSERT INTO db_users_a (`user`,`email`,`pass`,`salt`,`referer`,`referer_id`,`date_reg`,`ip`) 
+                                    $result = $pdo->prepare("INSERT INTO `db_users_a` (`user`,`email`,`pass`,`salt`,`referer`,`referer_id`,`date_reg`,`ip`) 
                                     VALUES (:user,:email,:password,:salt,:referer_name,:referer_id,:time,INET_ATON(:ip))");
                                     $result->execute(array(
                                         'user' => $login,
@@ -98,11 +98,11 @@ if(isset($_POST['signup'])){
                                         'ip'=>$ip
                                     ));
                                     $user_id = $pdo->lastInsertId();
-                                    $result = $pdo->prepare("INSERT INTO db_users_b (id,user,a_t,last_sbor) VALUES (:user_id,:login,:a_t,:time)");
+                                    $result = $pdo->prepare("INSERT INTO `db_users_b` (`id`,`user`,`".$config->bonusSignupItem."`,`last_sbor`) VALUES (:user_id,:login,:".$config->bonusSignupItem.",:time)");
                                     $result->execute(array(
                                         'user_id' => $user_id,
                                         'login' => $login,
-                                        'a_t' => 1,
+                                        $config->bonusSignupItem => $config->bonusSignupCount,
                                         'time'=>time()
                                     ));
                                     if($autoreferal === true){
