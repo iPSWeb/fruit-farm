@@ -19,7 +19,7 @@ $stats_data = $result->fetch();
 	<div class="st-rg">
 	<div class="line-st"><a href="/users" style="text-decoration:none; color: blue;"><?=$stats_data['all_users']; ?></a> чел.</div>
 	<div class="line-st"><?=$stats_data['new_users']; ?> чел.</div>
-	<div class="line-st"><a href="/payments" style="text-decoration:none; color: blue;"><?=sprintf('%.2f',$stats_data['all_payment']); ?></a> <?=$config->VAL; ?></div>
+	<div class="line-st"><a href="/payments" style="text-decoration:none; color: blue;"><?=sprintf('%.2f',$stats_data['all_payment']); ?></a> RUB</div>
 	<div class="line-st"><?=sprintf('%.2f',$stats_data['all_insert']); ?> RUB</div>
 	</div>
 	<div class="clr"></div>
