@@ -23,7 +23,7 @@ $stats_data = $result->fetch();
 	<div class="line-st"><?=sprintf('%.2f',$stats_data['all_insert']); ?> RUB</div>
 	</div>
 	<div class="clr"></div>
-	<div class="st-time"><img style="vertical-align:-5px; margin-right:5px;" src="/assets/style/img/clock.png" />Проекту пошел: <font color="#f77827"><?=intval(((time() - $config->SYSTEM_START_TIME) / 86400 ) +1); ?> - й</font> день</div>
+	<div class="st-time"><img style="vertical-align:-5px; margin-right:5px;" src="/assets/img/clock.png" />Проекту пошел: <font color="#f77827"><?=intval(((time() - $config->SYSTEM_START_TIME) / 86400 ) +1); ?> - й</font> день</div>
 </div>
 <div class="stat">
 	<div class="h-title">Платежные системы:</div>
