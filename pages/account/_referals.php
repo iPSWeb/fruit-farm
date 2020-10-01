@@ -28,7 +28,7 @@ if($db->NumRows() == 1){
 приглашенным Вами человеком. Доход ни чем не ограничен. Даже несколько приглашенных могут 
 принести вам более 100 000 серебра. 
 Ниже представлена ссылка для привлечения и количество приглашенных Вами людей.<br /><br />
-<img src="/assets/style/img/piar-link.png" style="vertical-align:-2px; margin-right:5px;" /><font color="#000;">http://<?=$_SERVER['HTTP_HOST']; ?>/?i=<?=$_SESSION["user_id"]; ?></font>
+<img src="/assets/img/piar-link.png" style="vertical-align:-2px; margin-right:5px;" /><font color="#000;">http://<?=$_SERVER['HTTP_HOST']; ?>/?i=<?=$_SESSION["user_id"]; ?></font>
 <BR /><BR />
 <?PHP
 if(isset($_POST['save']) && !empty($_POST['text']) && $_POST['text'] != '<br>'){

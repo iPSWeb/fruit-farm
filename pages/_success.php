@@ -7,7 +7,7 @@ $_OPTIMIZATION["title"] = "Пополнение баланса";
 </div>
 <div class="silver-bk">
 <center>
-<img src="/assets/style/img/vpti.png" height="50">
+<img src="/assets/img/vpti.png" height="50">
 </center>
 <center>
 <font color="green" height="60"><b>Баланс успешно пополнен !</b></font>
