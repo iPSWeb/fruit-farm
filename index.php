@@ -21,7 +21,10 @@ $_OPTIMIZATION['keywords'] = 'Заработок на растениях, вло
 define('PSWeb', true);
 define('BASE_DIR',$_SERVER['DOCUMENT_ROOT']);
 # Автоподгрузка классов
-function __autoload($name){ include('classes/_class.'.$name.'.php');}
+function my_autoloader($class) {
+    include BASE_DIR.'/classes/_class.'.$class.'.php';
+}
+spl_autoload_register('my_autoloader');
 # Класс конфига 
 $config = new config;
 # Функции
