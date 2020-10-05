@@ -9,8 +9,8 @@ $_OPTIMIZATION["keywords"] = "Правила, помятка пользоват�
 </div>
 <div class="silver-bk"><div class="clr"></div>	
 <?PHP
-$db->Query("SELECT rules FROM db_conabrul WHERE id = '1'");
-$xt = $db->FetchRow();
+$result = $pdo->query("SELECT `rules` FROM `db_conabrul` WHERE `id` = '1'");
+$xt = $result->fetchColumn();
 echo $xt;
 ?>
 </div>
