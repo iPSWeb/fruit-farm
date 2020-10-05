@@ -9,8 +9,8 @@ $_OPTIMIZATION['keywords'] = 'Немного о нас и о нашем прое
 </div>
 <div class="silver-bk"><div class="clr"></div>	
 <?PHP
-$db->Query("SELECT about FROM db_conabrul WHERE id = '1'");
-$xt = $db->FetchRow();
+$result = $pdo->query("SELECT `about` FROM `db_conabrul` WHERE `id` = '1'");
+$xt = $result->fetchColumn();
 echo $xt;
 ?>
 </div>
