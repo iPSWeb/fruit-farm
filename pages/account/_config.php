@@ -6,7 +6,7 @@ $_OPTIMIZATION['title'] = 'Настройки';
     <div class="acc-title">{!TITLE!}</div>
 </div>
 <div class="silver-bk">
-<div class="clr"></div>	
+<div class="clr"></div>
 <center><b>Смена пароля</b></center>
 <BR />
 <?PHP
