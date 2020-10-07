@@ -14,9 +14,10 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 </script>
 <?PHP
 if(isset($_POST['del'])){
-$ret_id = intval($_POST['del']);
-$db->Query("DELETE FROM `db_news` WHERE `id` = '$ret_id'");
-	echo '<center><b>Новость удалена</b></center><BR />';
+    $ret_id = intval($_POST['del']);
+    $result=$pdo->prepare("DELETE FROM `db_news` WHERE `id` = :ret_id");
+    $result->execute(array('ret_id'=>$ret_id));
+    echo '<center><b>Новость удалена</b></center><BR />';
 }
 # добавление новости
 if(isset($_GET['add'])){
@@ -24,13 +25,18 @@ if(isset($_GET['add'])){
     unset($_SESSION['add_news']);
     $title = $func->TextClean($_POST['title']);
     $text = $_POST['ntext'];
-        if(strlen($title) >= 3){
-            $db->Query("INSERT INTO `db_news` (`title`, `news`, `date_add`) VALUES ('$title','$text','".time()."')");
-            echo '<center><b><font color = "green">Новость добавлена</font></b></center><BR />';	
-        }else{
-            echo '<center><b><font color = "red">Заголовк не может быть менее 3х символов</font></b></center><BR />';
-        }
+    if(strlen($title) >= 3){
+        $result=$pdo->prepare("INSERT INTO `db_news` (`title`, `news`, `date_add`) VALUES (:title,:text,:time)");
+        $result->execute(array(
+            'title'=>$title,
+            'text'=>$text,
+            'time'=>time()
+        ));
+        echo '<center><b><font color = "green">Новость добавлена</font></b></center><BR />';	
+    }else{
+        echo '<center><b><font color = "red">Заголовк не может быть менее 3х символов</font></b></center><BR />';
     }
+}
 ?>
 
 <form action="" method="post">
@@ -52,17 +58,28 @@ return;
 # редактирование
 if(isset($_GET['edit'])){
 $idr = intval($_GET['edit']);
-$db->Query("SELECT * FROM `db_news` WHERE `id` = '$idr' LIMIT 1");
-if($db->NumRows() != 1){ echo '<center><b>Новость с таким ID не найдена</b></center><BR />'; return;}
-	if(isset($_POST['title'])){
-	$title = $func->TextClean($_POST['title']);
-	$title = (strlen($title) > 0) ? $title : 'Без заголовка';
-	$text = $_POST['ntext'];
-	$db->Query("UPDATE `db_news` SET `title` = '$title', `news` = '$text' WHERE `id` = '$idr'");
-	$db->Query("SELECT * FROM `db_news` WHERE `id` = '$idr' LIMIT 1");
-	 echo '<center><b>Новость отредактирована</b></center><BR />';
-	}
-$news = $db->FetchArray();
+$result=$pdo->prepare("SELECT * FROM `db_news` WHERE `id` = :idr LIMIT 1");
+$result->execute(array(
+    'idr'=>$idr
+));
+if($result->rowCount() != 1){ echo '<center><b>Новость с таким ID не найдена</b></center><BR />'; return;}
+    if(isset($_POST['title'])){
+        $title = $func->TextClean($_POST['title']);
+        $title = (strlen($title) > 0) ? $title : 'Без заголовка';
+        $text = $_POST['ntext'];
+        $result=$pdo->prepare("UPDATE `db_news` SET `title` = :title,`news` = :text WHERE `id` = :idr");
+        $result-execute(array(
+            'title'=>$title,
+            'news'=>$text,
+            'idr'=>$idr
+        ));
+        $result=$pdo->prepare("SELECT * FROM `db_news` WHERE `id` = :idr LIMIT 1");
+        $result->execute(array(
+            'idr'=>$idr
+        ));
+        echo '<center><b>Новость отредактирована</b></center><BR />';
+    }
+$news = $result->fetch();
 ?>
 <form action="" method="post">
 <b>Заголовок:</b><BR />
@@ -76,8 +93,8 @@ $news = $db->FetchArray();
 <?PHP
 return;
 }
-$db->Query("SELECT * FROM `db_news` ORDER BY `id` DESC");
-if($db->NumRows() > 0){
+$result=$pdo->query("SELECT * FROM `db_news` ORDER BY `id` DESC");
+if($result->rowCount() > 0){
 ?>
 <table cellpadding='3' cellspacing='0' border='0' bordercolor='#336633' align='center' width="99%">
   <tr bgcolor="#efefef">
@@ -86,7 +103,7 @@ if($db->NumRows() > 0){
 	<td align="center" width="70" class="m-tb">Удалить</td>
   </tr>
 <?PHP
-	while($data = $db->FetchArray()){
+	while($data = $result->fetch()){
 	?>
 	<tr class="htt">
     <td align="center" width="50"><?=$data['id']; ?></td>

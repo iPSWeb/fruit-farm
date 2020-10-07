@@ -6,32 +6,32 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 </div>
 <div class="silver-bk"><div class="clr"></div>	
 <?PHP
-$tdadd = time() - 5*60;
-	if(isset($_POST["clean"])){
-		$db->Query("DELETE FROM db_swap_ser WHERE date_add < '$tdadd'");
-		echo "<center><font color = 'green'><b>Очищено</b></font></center><BR />";
-	}
-$db->Query("SELECT * FROM db_swap_ser ORDER BY id DESC");
-if($db->NumRows() > 0){
+$tdadd = time() - 24*60;
+if(isset($_POST['clean'])){
+    $pdo->query("DELETE FROM `db_swap_ser` WHERE `date_add` < '$tdadd'");
+    echo '<center><font color = "green"><b>Очищено</b></font></center><BR />';
+}
+$result=$pdo->query("SELECT * FROM `db_swap_ser` ORDER BY `id` DESC");
+if($result->rowCount() > 0){
 ?>
 <table cellpadding='3' cellspacing='0' border='0' bordercolor='#336633' align='center' width="99%">
-  <tr bgcolor="#efefef" class="m-tb">
-    <td align="center" width="50" class="m-tb">ID</td>
-    <td align="center" class="m-tb">Пользователь</td>
-    <td align="center" width="75" class="m-tb">Отдал</td>
-	<td align="center" width="75" class="m-tb">Получил</td>
-	<td align="center" width="150" class="m-tb">Дата операции</td>
-  </tr>
+    <tr bgcolor="#efefef" class="m-tb">
+        <td align="center" width="50" class="m-tb">ID</td>
+        <td align="center" class="m-tb">Пользователь</td>
+        <td align="center" width="75" class="m-tb">Отдал</td>
+        <td align="center" width="75" class="m-tb">Получил</td>
+        <td align="center" width="150" class="m-tb">Дата операции</td>
+    </tr>
 <?PHP
-	while($data = $db->FetchArray()){
+	while($data = $result->fetch()){
 	?>
-	<tr class="htt">
-    <td align="center" width="50"><?=$data["id"]; ?></td>
-    <td align="center"><?=$data["user"]; ?></td>
-    <td align="center" width="75"><?=$data["amount_p"]; ?></td>
-	<td align="center" width="75"><?=$data["amount_b"]; ?></td>
-	<td align="center" width="150"><?=date("d.m.Y в H:i:s",$data["date_add"]); ?></td>
-  	</tr>
+    <tr class="htt">
+        <td align="center" width="50"><?=$data['id']; ?></td>
+        <td align="center"><?=$data['user']; ?></td>
+        <td align="center" width="75"><?=$data['amount_p']; ?></td>
+	<td align="center" width="75"><?=$data['amount_b']; ?></td>
+	<td align="center" width="150"><?=date('d.m.Y в H:i:s',$data['date_add']); ?></td>
+    </tr>
 	<?PHP
 	}
 ?>

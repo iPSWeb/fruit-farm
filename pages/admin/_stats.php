@@ -10,7 +10,7 @@ $string = '';
 foreach($items as $item => $description){
     $string.='SUM(`'.$item.'`) `'.$item.'`,SUM(`'.$description['char'].'_b`) `'.$description['char'].'_b`,SUM(`all_time_'.$description['char'].'`) `all_time_'.$description['char'].'`,';
 }
-$db->Query("SELECT 
+$result=$pdo->query("SELECT 
 	COUNT(id) all_users, 
 	SUM(money_b) money_b, 
 	SUM(money_p) money_p, 
@@ -18,7 +18,7 @@ $db->Query("SELECT
 	SUM(payment_sum) payment_sum, 
 	SUM(insert_sum) insert_sum
 	FROM db_users_b");
-$data_stats = $db->FetchArray();
+$data_stats = $result->fetch();
 ?>
 <table width="450" border="0" align="center">
   <tr class="htt">
