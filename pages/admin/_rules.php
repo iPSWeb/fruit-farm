@@ -11,11 +11,12 @@ if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 </script>
 <?PHP
 if(isset($_POST['tx'])){
-    $db->Query("UPDATE `db_conabrul` SET `rules` = '".$_POST['tx']."' WHERE `id` = '1'");
+    $result=$pdo->prepare("UPDATE `db_conabrul` SET `rules` = :rules WHERE `id` = '1'");
+    $result->execute(array('rules'=>$_POST['tx']));
     echo '<center><font color = "green"><b>Сохранено</b></font></center><BR />';
 }
-$db->Query("SELECT * FROM `db_conabrul` WHERE `id` = '1'");
-$data = $db->FetchArray();
+$result=$pdo->query("SELECT * FROM `db_conabrul` WHERE id = '1'");
+$data = $result->fetch();
 ?>
 <form action="" method="post">
 <textarea name="tx" cols="78" rows="25"><?=$data['rules']; ?></textarea>
