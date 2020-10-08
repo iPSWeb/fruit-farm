@@ -12,8 +12,8 @@ if(isset($_POST["admin"])){
     $string = '';
     # Проверка на ошибки
     $errors = array();
-    $admin = $func->IsLogin($_POST['admin']);
-    $pass = $func->md5password($func->IsPassword($_POST['pass']));
+    //$admin = $func->IsLogin($_POST['admin']);
+    //$pass = $func->md5password($func->IsPassword($_POST['pass']));
     $ser_per_wmr = intval($_POST['ser_per_wmr']);
     $min_pay = intval($_POST['min_pay']);
     $percent_swap = intval($_POST['percent_swap']);
@@ -32,12 +32,12 @@ if(isset($_POST["admin"])){
         }
         $string.=',`'.$in_h.'`= \''.$$in_h.'\',`'.$amount.'`= \''.$$amount.'\'';
     }
-    if($admin === false){
+    /*if($admin === false){
         $errors[] = '<center><font color = "red"><b>Логин администратора имеет неверный формат</b></font></center><BR />'; 
-    }
-    if($pass != $db_config['pass']){
+    }*/
+    /*if($pass != $db_config['pass']){
         $errors[] = '<center><font color = "red"><b>Пароль неверный</b></font></center><BR />'; 
-    }
+    }*/
     if($min_pay < 0){
         $errors[] = '<center><font color = "red"><b>Минимальная сумма выплаты не может быть меньше 0</b></font></center><BR />'; 
     }
@@ -55,9 +55,7 @@ if(isset($_POST["admin"])){
 
 	# Обновление
 	if(empty($errors)){
-            $db->Query("UPDATE db_config SET 
-            admin = '$admin',
-            pass = '$pass',
+            $pdo->query("UPDATE db_config SET 
             ser_per_wmr = '$ser_per_wmr',
             min_pay = '$min_pay',
             percent_swap = '$percent_swap',
@@ -66,8 +64,8 @@ if(isset($_POST["admin"])){
             $string
             WHERE id = '1'");
             echo "<center><font color = 'green'><b>Сохранено</b></font></center><BR />";
-            $db->Query("SELECT * FROM db_config WHERE id = '1'");
-            $db_config = $db->FetchArray();
+            $result = $pdo->query("SELECT * FROM `db_config` WHERE `id` = '1' LIMIT 1");
+            $db_config = $result->fetch();
 	}else{
             foreach($errors as $error){
                 echo $error;
@@ -79,14 +77,14 @@ if(isset($_POST["admin"])){
 ?>
 <form action="" method="post">
 <table width="100%" border="0">
-  <tr>
+  <!--tr>
     <td><b>Логин администратора:</b></td>
 	<td width="150" align="center"><input type="text" name="admin" value="<?=$db_config["admin"]; ?>" /></td>
-  </tr>
-  <tr>
+  </tr-->
+  <!--tr>
     <td ><b>Пароль администратора:</b></td>
 	<td width="150" align="center"><input type="password" name="pass" value="" /></td>
-  </tr>
+  </tr-->
   
   <tr>
     <td><b>Стоимость 1 RUB (Серебром):</b></td>
