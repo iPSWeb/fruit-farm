@@ -71,8 +71,9 @@ class isender{
 	Function:	Headers
 	Descriiption: Создание заголовков письма
 	\*======================================================================*/
-	function Headers($recipient){
-            $headers = "MIME-Version: 1.0\r\n";
+	function Headers($recipient,$subject){
+            $headers = "Subject: =?utf-8?b?". base64_encode($subject). "?=\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
             $headers.= "Content-type: text/html; charset=utf-8\r\n";
             $headers.= "Date: ".date('r',time())."\r\n";
             $headers.= "From: support@".$this->Hosts." \r\n";
@@ -87,7 +88,6 @@ class isender{
 	function SendMail($recipient, $subject, $message){
 		$message .= "<BR />----------------------------------------------------
 		<BR />Сообщение было выслано роботом, пожалуйста, не отвечайте на него!";
-		return (mail($recipient, $subject, $message, $this->Headers($recipient))) ? true : false;
+		return (mail($recipient, $subject, $message, $this->Headers($recipient,$subject))) ? true : false;
 	}
 }
-?>
