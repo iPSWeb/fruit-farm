@@ -8,7 +8,7 @@ $_OPTIMIZATION["title"] = "Админка - Настройки";
 <div class="silver-bk"><div class="clr"></div>	
 <?PHP
 # Обновление
-if(isset($_POST["admin"])){
+if(isset($_POST['save'])){
     $string = '';
     # Проверка на ошибки
     $errors = array();
@@ -123,7 +123,7 @@ if(isset($_POST["admin"])){
       echo '</tr>';
   }
   ?>
-  <tr> <td colspan="2" align="center"><input type="submit" value="Сохранить" /></td> </tr>
+  <tr> <td colspan="2" align="center"><input type="submit" name="save" value="Сохранить" /></td> </tr>
 </table>
 </form>
 </div>
