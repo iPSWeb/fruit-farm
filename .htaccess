@@ -23,6 +23,10 @@ RewriteRule ^signup(/?)+$ index.php?menu=signup [L]
 RewriteRule ^recovery(/?)+$ index.php?menu=recovery [L]
 # Последние выплаты
 RewriteRule ^payments(/?)+$ index.php?menu=payments [L]
+# Страница успешной оплаты
+RewriteRule ^success(/?)+$ index.php?menu=success [L]
+# Страница отмены оплаты
+RewriteRule ^fail(/?)+$ index.php?menu=fail [L]
 # Пользователи
 RewriteRule ^users/([0-9]+)(/?)+$ index.php?menu=users&page=$1 [L]
 RewriteRule ^users(/?)+$ index.php?menu=users [L]

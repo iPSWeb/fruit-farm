@@ -1,32 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 4.9.1
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.14  Distrib 5.5.60-MariaDB, for Linux (x86_64)
 --
--- Host: localhost
--- Generation Time: Jun 23, 2020 at 09:34 AM
--- Server version: 5.6.39-83.1
--- PHP Version: 5.6.40
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: user1382037_ff
+-- ------------------------------------------------------
+-- Server version	5.5.60-MariaDB-cll-lve
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ce11468_swanlake`
---
-
--- --------------------------------------------------------
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `db_autoref`
 --
 
-CREATE TABLE IF NOT EXISTS `db_autoref` (
+DROP TABLE IF EXISTS `db_autoref`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_autoref` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `cost` float(11,2) NOT NULL DEFAULT '0.00',
@@ -36,39 +32,72 @@ CREATE TABLE IF NOT EXISTS `db_autoref` (
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_autoref`
+--
+
+LOCK TABLES `db_autoref` WRITE;
+/*!40000 ALTER TABLE `db_autoref` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_autoref` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_autoref_history`
 --
 
-CREATE TABLE IF NOT EXISTS `db_autoref_history` (
+DROP TABLE IF EXISTS `db_autoref_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_autoref_history` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `referal_id` bigint(20) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_autoref_history`
+--
+
+LOCK TABLES `db_autoref_history` WRITE;
+/*!40000 ALTER TABLE `db_autoref_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_autoref_history` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_autoref_temp`
 --
 
-CREATE TABLE IF NOT EXISTS `db_autoref_temp` (
+DROP TABLE IF EXISTS `db_autoref_temp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_autoref_temp` (
   `user_id` bigint(20) NOT NULL,
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_autoref_temp`
+--
+
+LOCK TABLES `db_autoref_temp` WRITE;
+/*!40000 ALTER TABLE `db_autoref_temp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_autoref_temp` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_bonus_list`
 --
 
-CREATE TABLE IF NOT EXISTS `db_bonus_list` (
+DROP TABLE IF EXISTS `db_bonus_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_bonus_list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
@@ -76,43 +105,53 @@ CREATE TABLE IF NOT EXISTS `db_bonus_list` (
   `date_add` int(11) NOT NULL DEFAULT '0',
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_bonus_list`
 --
 
-INSERT INTO `db_bonus_list` (`id`, `user`, `user_id`, `sum`, `date_add`, `date_del`) VALUES
-(3, 'Admin', 1, 0.06, 1586368606, 1586455006);
-
--- --------------------------------------------------------
+LOCK TABLES `db_bonus_list` WRITE;
+/*!40000 ALTER TABLE `db_bonus_list` DISABLE KEYS */;
+INSERT INTO `db_bonus_list` VALUES (8,'MrLogon',12,14.00,1603460202,1603546602);
+/*!40000 ALTER TABLE `db_bonus_list` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_conabrul`
 --
 
-CREATE TABLE IF NOT EXISTS `db_conabrul` (
+DROP TABLE IF EXISTS `db_conabrul`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_conabrul` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rules` text NOT NULL,
   `about` text NOT NULL,
   `contacts` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_conabrul`
 --
 
-INSERT INTO `db_conabrul` (`id`, `rules`, `about`, `contacts`) VALUES
-(1, '<p>Правила проекта</p>', '<p>О проекте</p>', '<p>Контактные данные</p>');
-
--- --------------------------------------------------------
+LOCK TABLES `db_conabrul` WRITE;
+/*!40000 ALTER TABLE `db_conabrul` DISABLE KEYS */;
+INSERT INTO `db_conabrul` VALUES (1,'<p>Правила проекта</p>','<p>О проекте</p>','<p>Контактные данные</p><p>Email: i@psweb.ru</p><p>Telegram: <a href=\"https://t.me/psweb\" title=\"PSWeb\" target=\"_blank\">@psweb</a></p>');
+/*!40000 ALTER TABLE `db_conabrul` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_config`
 --
 
-CREATE TABLE IF NOT EXISTS `db_config` (
+DROP TABLE IF EXISTS `db_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `admin` varchar(10) NOT NULL,
   `pass` varchar(50) NOT NULL,
@@ -136,42 +175,78 @@ CREATE TABLE IF NOT EXISTS `db_config` (
   `amount_e_t` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_config`
 --
 
-INSERT INTO `db_config` (`id`, `admin`, `pass`, `min_pay`, `ser_per_wmr`, `ser_per_wmz`, `ser_per_wme`, `ser_per_psc`, `percent_swap`, `percent_sell`, `items_per_coin`, `a_in_h`, `b_in_h`, `c_in_h`, `d_in_h`, `e_in_h`, `amount_a_t`, `amount_b_t`, `amount_c_t`, `amount_d_t`, `amount_e_t`) VALUES
-(1, 'admin', 'c5c8fa49f8a50a94488992ee662a4071', 100.00, 100, 3300, 4200, 10, 50, 50, 10, 1001, 2001, 3001, 4001, 5001, 1001, 2001, 3001, 4001, 5001);
+LOCK TABLES `db_config` WRITE;
+/*!40000 ALTER TABLE `db_config` DISABLE KEYS */;
+INSERT INTO `db_config` VALUES (1,'admin','',100.00,100,3300,4200,10,50,50,10,1001,2001,3001,4001,5001,1001,2001,3001,4001,5001);
+/*!40000 ALTER TABLE `db_config` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `db_hash`
+--
+
+DROP TABLE IF EXISTS `db_hash`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_hash` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `hash` varchar(64) NOT NULL,
+  `expired` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ip` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `db_hash`
+--
+
+LOCK TABLES `db_hash` WRITE;
+/*!40000 ALTER TABLE `db_hash` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_hash` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_history_login`
 --
 
-CREATE TABLE IF NOT EXISTS `db_history_login` (
+DROP TABLE IF EXISTS `db_history_login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_history_login` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
-  `ip` int(10) UNSIGNED NOT NULL,
+  `ip` int(10) unsigned NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='История авторизаций';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_history_login`
 --
 
-INSERT INTO `db_history_login` (`id`, `user_id`, `ip`, `timestamp`) VALUES
-(1, 1, 2994523295, '2020-04-12 15:45:30');
-
--- --------------------------------------------------------
+LOCK TABLES `db_history_login` WRITE;
+/*!40000 ALTER TABLE `db_history_login` DISABLE KEYS */;
+INSERT INTO `db_history_login` VALUES (1,1,2994523295,'2020-04-12 15:45:30');
+/*!40000 ALTER TABLE `db_history_login` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_insert_money`
 --
 
-CREATE TABLE IF NOT EXISTS `db_insert_money` (
+DROP TABLE IF EXISTS `db_insert_money`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_insert_money` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
@@ -181,28 +256,50 @@ CREATE TABLE IF NOT EXISTS `db_insert_money` (
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_insert_money`
+--
+
+LOCK TABLES `db_insert_money` WRITE;
+/*!40000 ALTER TABLE `db_insert_money` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_insert_money` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_lottery`
 --
 
-CREATE TABLE IF NOT EXISTS `db_lottery` (
+DROP TABLE IF EXISTS `db_lottery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_lottery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `user` varchar(50) NOT NULL,
   `date_add` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_lottery`
+--
+
+LOCK TABLES `db_lottery` WRITE;
+/*!40000 ALTER TABLE `db_lottery` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_lottery` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_lottery_winners`
 --
 
-CREATE TABLE IF NOT EXISTS `db_lottery_winners` (
+DROP TABLE IF EXISTS `db_lottery_winners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_lottery_winners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_a` varchar(50) NOT NULL,
   `bil_a` int(11) NOT NULL DEFAULT '0',
@@ -213,15 +310,27 @@ CREATE TABLE IF NOT EXISTS `db_lottery_winners` (
   `bank` float NOT NULL DEFAULT '0',
   `date_add` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_lottery_winners`
+--
+
+LOCK TABLES `db_lottery_winners` WRITE;
+/*!40000 ALTER TABLE `db_lottery_winners` DISABLE KEYS */;
+INSERT INTO `db_lottery_winners` VALUES (1,'pligin',1,'pligin',4,'pligin',2,400,1600971184);
+/*!40000 ALTER TABLE `db_lottery_winners` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_newlottery`
 --
 
-CREATE TABLE IF NOT EXISTS `db_newlottery` (
+DROP TABLE IF EXISTS `db_newlottery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_newlottery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `count_ticket` int(2) NOT NULL DEFAULT '10',
   `cost` float(11,2) NOT NULL DEFAULT '0.00',
@@ -232,42 +341,53 @@ CREATE TABLE IF NOT EXISTS `db_newlottery` (
   `end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_newlottery`
+--
+
+LOCK TABLES `db_newlottery` WRITE;
+/*!40000 ALTER TABLE `db_newlottery` DISABLE KEYS */;
+INSERT INTO `db_newlottery` VALUES (1,10,10.00,'b',1,1,'2020-09-24 17:04:05','0000-00-00 00:00:00',1);
+/*!40000 ALTER TABLE `db_newlottery` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_newlottery_prizes`
 --
 
-CREATE TABLE IF NOT EXISTS `db_newlottery_prizes` (
+DROP TABLE IF EXISTS `db_newlottery_prizes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_newlottery_prizes` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` enum('a_t','b_t','c_t','d_t','e_t','money_b','money_p') NOT NULL DEFAULT 'money_b',
   `title` varchar(50) NOT NULL,
   `image` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_newlottery_prizes`
 --
 
-INSERT INTO `db_newlottery_prizes` (`id`, `name`, `title`, `image`) VALUES
-(1, 'a_t', 'Лимонное дерево', '/assets/style/img/fruit/a_t.jpg'),
-(2, 'b_t', 'Вишневое дерево', '/assets/style/img/fruit/b_t.jpg'),
-(3, 'c_t', 'Куст клубники', '/assets/style/img/fruit/c_t.jpg'),
-(4, 'd_t', 'Дерево киви', '/assets/style/img/fruit/d_t.jpg'),
-(5, 'e_t', 'Дерево апельсинов', '/assets/style/img/fruit/e_t.jpg'),
-(6, 'money_b', 'Серебра на покупки', '/assets/style/img/man-2.jpg'),
-(7, 'money_p', 'Серебра на вывод', '/assets/style/img/man-2.jpg');
-
--- --------------------------------------------------------
+LOCK TABLES `db_newlottery_prizes` WRITE;
+/*!40000 ALTER TABLE `db_newlottery_prizes` DISABLE KEYS */;
+INSERT INTO `db_newlottery_prizes` VALUES (1,'a_t','Лимонное дерево','/assets/style/img/fruit/a_t.jpg'),(2,'b_t','Вишневое дерево','/assets/style/img/fruit/b_t.jpg'),(3,'c_t','Куст клубники','/assets/style/img/fruit/c_t.jpg'),(4,'d_t','Дерево киви','/assets/style/img/fruit/d_t.jpg'),(5,'e_t','Дерево апельсинов','/assets/style/img/fruit/e_t.jpg'),(6,'money_b','Серебра на покупки','/assets/style/img/man-2.jpg'),(7,'money_p','Серебра на вывод','/assets/style/img/man-2.jpg');
+/*!40000 ALTER TABLE `db_newlottery_prizes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_newlottery_users`
 --
 
-CREATE TABLE IF NOT EXISTS `db_newlottery_users` (
+DROP TABLE IF EXISTS `db_newlottery_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_newlottery_users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `lottery_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -275,38 +395,51 @@ CREATE TABLE IF NOT EXISTS `db_newlottery_users` (
   `status` enum('winner','loser','waiting') NOT NULL DEFAULT 'waiting',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_newlottery_users`
+--
+
+LOCK TABLES `db_newlottery_users` WRITE;
+/*!40000 ALTER TABLE `db_newlottery_users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_newlottery_users` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_news`
 --
 
-CREATE TABLE IF NOT EXISTS `db_news` (
+DROP TABLE IF EXISTS `db_news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `news` text NOT NULL,
   `date_add` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_news`
 --
 
-INSERT INTO `db_news` (`id`, `title`, `news`, `date_add`) VALUES
-(1, 'Тестовая новость', '<p style=\"text-align: center;\"><span style=\"color: #ff0000; font-family: &quot;arial black&quot;, &quot;avant garde&quot;; font-size: medium;\"><strong>Это тестовая новость</strong></span></p>', 1510832442),
-(3, 'проба', '<p>проба</p>', 1510900013),
-(4, 'проба1', '<p>проба1</p>', 1510919121),
-(6, 'тест ', '<div style=\"text-align: center;\"><b>тестовая</b></div>', 1511086117);
-
--- --------------------------------------------------------
+LOCK TABLES `db_news` WRITE;
+/*!40000 ALTER TABLE `db_news` DISABLE KEYS */;
+INSERT INTO `db_news` VALUES (1,'Тестовая новость','<p style=\"text-align: center;\"><span style=\"color: #ff0000; font-family: &quot;arial black&quot;, &quot;avant garde&quot;; font-size: medium;\"><strong>Это тестовая новость</strong></span></p>',1510832442),(3,'проба','<p>проба</p>',1510900013),(4,'проба1','<p>проба1</p>',1510919121),(6,'тест ','<div style=\"text-align: center;\"><b>тестовая</b></div>',1511086117);
+/*!40000 ALTER TABLE `db_news` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_payeer_insert`
 --
 
-CREATE TABLE IF NOT EXISTS `db_payeer_insert` (
+DROP TABLE IF EXISTS `db_payeer_insert`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_payeer_insert` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
@@ -319,22 +452,27 @@ CREATE TABLE IF NOT EXISTS `db_payeer_insert` (
   `operation_id` varchar(20) NOT NULL,
   `account` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_payeer_insert`
 --
 
-INSERT INTO `db_payeer_insert` (`id`, `user_id`, `user`, `sum`, `date_add`, `status`, `description`, `ps`, `request_id`, `operation_id`, `account`) VALUES
-(1, 1, 'Admin', 100.00, 1579230518, 0, 'Payeer', '', '', '', '');
-
--- --------------------------------------------------------
+LOCK TABLES `db_payeer_insert` WRITE;
+/*!40000 ALTER TABLE `db_payeer_insert` DISABLE KEYS */;
+INSERT INTO `db_payeer_insert` VALUES (1,1,'Admin',100.00,1579230518,0,'Payeer','','','',''),(2,1,'Admin',100.00,1601062376,0,'Payeer','','','',''),(3,12,'MrLogon',100.00,1603460253,0,'Payeer','','','','');
+/*!40000 ALTER TABLE `db_payeer_insert` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_payment`
 --
 
-CREATE TABLE IF NOT EXISTS `db_payment` (
+DROP TABLE IF EXISTS `db_payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_payment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -352,25 +490,26 @@ CREATE TABLE IF NOT EXISTS `db_payment` (
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_payment`
 --
 
-INSERT INTO `db_payment` (`id`, `user`, `user_id`, `purse`, `sum`, `comission`, `valuta`, `serebro`, `status`, `pay_sys`, `pay_sys_id`, `response`, `payment_id`, `date_add`, `date_del`) VALUES
-(1, 'Admin', 1, 'P8706145', 1.00, 0.00, 'RUB', 100, 3, '0', 0, 0, '806223850', 1559933720, 0),
-(2, 'Admin', 1, 'P1013746860', 1.00, 0.00, 'RUB', 100, 3, '0', 0, 0, '806226765', 1559934092, 0),
-(3, 'Admin', 1, '410014713264252', 2.00, 0.00, 'RUB', 200, 3, '0', 0, 0, '631909705766040301', 1578594505, 0),
-(5, 'Admin', 1, 'P8706145', 1.00, 0.00, 'RUB', 100, 2, '0', 0, 0, '', 1587986482, 0),
-(6, 'Admin', 1, 'P8706145', 1.00, 0.00, 'RUB', 100, 3, '0', 0, 0, '', 1587986941, 0);
-
--- --------------------------------------------------------
+LOCK TABLES `db_payment` WRITE;
+/*!40000 ALTER TABLE `db_payment` DISABLE KEYS */;
+INSERT INTO `db_payment` VALUES (1,'Admin',1,'P8706145',1.00,0.00,'RUB',100,3,'0',0,0,'806223850',1559933720,0),(2,'Admin',1,'P1013746860',1.00,0.00,'RUB',100,3,'0',0,0,'806226765',1559934092,0),(3,'Admin',1,'410014713264252',2.00,0.00,'RUB',200,3,'0',0,0,'631909705766040301',1578594505,0),(5,'Admin',1,'P8706145',1.00,0.00,'RUB',100,2,'0',0,0,'',1587986482,0),(6,'Admin',1,'P8706145',1.00,0.00,'RUB',100,3,'0',0,0,'',1587986941,0);
+/*!40000 ALTER TABLE `db_payment` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_psc`
 --
 
-CREATE TABLE IF NOT EXISTS `db_psc` (
+DROP TABLE IF EXISTS `db_psc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_psc` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `publickey` varchar(64) NOT NULL,
@@ -379,44 +518,54 @@ CREATE TABLE IF NOT EXISTS `db_psc` (
   `phrase` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_psc`
 --
 
-INSERT INTO `db_psc` (`id`, `user_id`, `publickey`, `accountRS`, `account`, `phrase`) VALUES
-(1, 1, 'a44f98b78c4a05ec09fe86b4b70cbb7518d7988d10fe35a44939f45967c75e46', 'PSC-XHTV-X3EK-FZVC-G43KP', 2147483647, 'promise cruel pause stuck through threw here candle complain balance very grief');
-
--- --------------------------------------------------------
+LOCK TABLES `db_psc` WRITE;
+/*!40000 ALTER TABLE `db_psc` DISABLE KEYS */;
+INSERT INTO `db_psc` VALUES (1,1,'a44f98b78c4a05ec09fe86b4b70cbb7518d7988d10fe35a44939f45967c75e46','PSC-XHTV-X3EK-FZVC-G43KP',2147483647,'promise cruel pause stuck through threw here candle complain balance very grief');
+/*!40000 ALTER TABLE `db_psc` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_recovery`
 --
 
-CREATE TABLE IF NOT EXISTS `db_recovery` (
+DROP TABLE IF EXISTS `db_recovery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_recovery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
-  `ip` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `ip` int(10) unsigned NOT NULL DEFAULT '0',
   `date_add` int(11) NOT NULL DEFAULT '0',
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_recovery`
 --
 
-INSERT INTO `db_recovery` (`id`, `email`, `ip`, `date_add`, `date_del`) VALUES
-(3, 'bax.edik@yandex.ru', 1509523661, 1510918999, 1510919899);
-
--- --------------------------------------------------------
+LOCK TABLES `db_recovery` WRITE;
+/*!40000 ALTER TABLE `db_recovery` DISABLE KEYS */;
+INSERT INTO `db_recovery` VALUES (4,'i@psweb.ru',775482177,1601030015,1601030915);
+/*!40000 ALTER TABLE `db_recovery` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_regkey`
 --
 
-CREATE TABLE IF NOT EXISTS `db_regkey` (
+DROP TABLE IF EXISTS `db_regkey`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_regkey` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
   `referer_id` int(11) NOT NULL DEFAULT '0',
@@ -426,14 +575,25 @@ CREATE TABLE IF NOT EXISTS `db_regkey` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `db_regkey`
+--
+
+LOCK TABLES `db_regkey` WRITE;
+/*!40000 ALTER TABLE `db_regkey` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_regkey` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_sell_items`
 --
 
-CREATE TABLE IF NOT EXISTS `db_sell_items` (
+DROP TABLE IF EXISTS `db_sell_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_sell_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -447,25 +607,27 @@ CREATE TABLE IF NOT EXISTS `db_sell_items` (
   `date_add` int(11) NOT NULL DEFAULT '0',
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_sell_items`
 --
 
-INSERT INTO `db_sell_items` (`id`, `user`, `user_id`, `a_s`, `b_s`, `c_s`, `d_s`, `e_s`, `amount`, `all_sell`, `date_add`, `date_del`) VALUES
-(2, 'Admin', 1, 143409, 143338, 214971, 286604, 358237, 114655.90, 1146559, 1511084878, 1512380878),
-(3, 'Admin', 1, 27165279, 27151710, 40720781, 54289851, 67858922, 21718654.00, 217186543, 1559933542, 1561229542),
-(4, 'Admin', 1, 10731224, 10725864, 16086115, 21446367, 26806619, 8579619.00, 85796189, 1579230466, 1580526466),
-(5, 'Admin', 1, 2319868, 2318709, 3477484, 4636259, 5795034, 1854735.38, 18547354, 1583402060, 1584698060);
-
--- --------------------------------------------------------
+LOCK TABLES `db_sell_items` WRITE;
+/*!40000 ALTER TABLE `db_sell_items` DISABLE KEYS */;
+INSERT INTO `db_sell_items` VALUES (2,'Admin',1,143409,143338,214971,286604,358237,114655.90,1146559,1511084878,1512380878),(3,'Admin',1,27165279,27151710,40720781,54289851,67858922,21718654.00,217186543,1559933542,1561229542),(4,'Admin',1,10731224,10725864,16086115,21446367,26806619,8579619.00,85796189,1579230466,1580526466),(5,'Admin',1,2319868,2318709,3477484,4636259,5795034,1854735.38,18547354,1583402060,1584698060),(6,'pligin',7,200,0,0,0,0,20.00,200,1600884910,1602180910),(7,'pligin',7,200,0,0,0,0,20.00,200,1600884940,1602180940),(8,'pligin',7,96254,0,0,0,0,9625.40,96254,1600971044,1602267044),(9,'MrLogon',12,2041,0,0,0,0,204.10,2041,1603467512,1604763512);
+/*!40000 ALTER TABLE `db_sell_items` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_sender`
 --
 
-CREATE TABLE IF NOT EXISTS `db_sender` (
+DROP TABLE IF EXISTS `db_sender`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_sender` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `mess` text NOT NULL,
@@ -474,22 +636,26 @@ CREATE TABLE IF NOT EXISTS `db_sender` (
   `status` int(1) NOT NULL DEFAULT '0',
   `date_add` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_sender`
 --
 
-INSERT INTO `db_sender` (`id`, `name`, `mess`, `page`, `sended`, `status`, `date_add`) VALUES
-(1, 'Тестовая рассылка', 'Привет, {!USER!}!\r\nЭто тестовая рассылка', 0, 0, 0, 1510834066);
-
--- --------------------------------------------------------
+LOCK TABLES `db_sender` WRITE;
+/*!40000 ALTER TABLE `db_sender` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_sender` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_stats`
 --
 
-CREATE TABLE IF NOT EXISTS `db_stats` (
+DROP TABLE IF EXISTS `db_stats`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `all_users` int(11) NOT NULL DEFAULT '0',
   `all_payments` float(11,2) NOT NULL DEFAULT '0.00',
@@ -497,21 +663,26 @@ CREATE TABLE IF NOT EXISTS `db_stats` (
   `donations` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_stats`
 --
 
-INSERT INTO `db_stats` (`id`, `all_users`, `all_payments`, `all_insert`, `donations`) VALUES
-(1, 10, 6.00, 0.00, 0);
-
--- --------------------------------------------------------
+LOCK TABLES `db_stats` WRITE;
+/*!40000 ALTER TABLE `db_stats` DISABLE KEYS */;
+INSERT INTO `db_stats` VALUES (1,12,6.00,0.00,0);
+/*!40000 ALTER TABLE `db_stats` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_stats_btree`
 --
 
-CREATE TABLE IF NOT EXISTS `db_stats_btree` (
+DROP TABLE IF EXISTS `db_stats_btree`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_stats_btree` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `user` varchar(50) NOT NULL,
@@ -521,26 +692,26 @@ CREATE TABLE IF NOT EXISTS `db_stats_btree` (
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_stats_btree`
 --
 
-INSERT INTO `db_stats_btree` (`id`, `user_id`, `user`, `tree_name`, `amount`, `date_add`, `date_del`) VALUES
-(1, 1, 'Admin', 'Лайм', 1001.00, 1510826203, 1512122203),
-(2, 1, 'Admin', 'Лайм', 1001.00, 1510826278, 1512122278),
-(3, 1, 'Admin', 'Вишня', 2001.00, 1510826290, 1512122290),
-(4, 1, 'Admin', 'Апельсин', 5001.00, 1510826294, 1512122294),
-(5, 1, 'Admin', 'Киви', 4001.00, 1510826298, 1512122298),
-(6, 1, 'Admin', 'Клубника', 3001.00, 1510826300, 1512122300);
-
--- --------------------------------------------------------
+LOCK TABLES `db_stats_btree` WRITE;
+/*!40000 ALTER TABLE `db_stats_btree` DISABLE KEYS */;
+INSERT INTO `db_stats_btree` VALUES (1,1,'Admin','Лайм',1001.00,1510826203,1512122203),(2,1,'Admin','Лайм',1001.00,1510826278,1512122278),(3,1,'Admin','Вишня',2001.00,1510826290,1512122290),(4,1,'Admin','Апельсин',5001.00,1510826294,1512122294),(5,1,'Admin','Киви',4001.00,1510826298,1512122298),(6,1,'Admin','Клубника',3001.00,1510826300,1512122300);
+/*!40000 ALTER TABLE `db_stats_btree` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_swap_ser`
 --
 
-CREATE TABLE IF NOT EXISTS `db_swap_ser` (
+DROP TABLE IF EXISTS `db_swap_ser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_swap_ser` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
@@ -549,60 +720,89 @@ CREATE TABLE IF NOT EXISTS `db_swap_ser` (
   `date_add` int(11) NOT NULL DEFAULT '0',
   `date_del` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_swap_ser`
 --
 
-INSERT INTO `db_swap_ser` (`id`, `user_id`, `user`, `amount_b`, `amount_p`, `date_add`, `date_del`) VALUES
-(3, 1, 'Admin', 1500.00, 1000.00, 1510898628, 1512194628);
+LOCK TABLES `db_swap_ser` WRITE;
+/*!40000 ALTER TABLE `db_swap_ser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_swap_ser` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `db_tg`
+--
+
+DROP TABLE IF EXISTS `db_tg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_tg` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `tg_id` bigint(20) NOT NULL,
+  `token` varchar(36) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `db_tg`
+--
+
+LOCK TABLES `db_tg` WRITE;
+/*!40000 ALTER TABLE `db_tg` DISABLE KEYS */;
+INSERT INTO `db_tg` VALUES (1,1,696245516,'qmgpyrlw-8w54-iuqd-k1kk-f7vlve6nl4mx');
+/*!40000 ALTER TABLE `db_tg` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_users_a`
 --
 
-CREATE TABLE IF NOT EXISTS `db_users_a` (
+DROP TABLE IF EXISTS `db_users_a`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_users_a` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `pass` varchar(20) NOT NULL,
+  `pass` varchar(128) NOT NULL,
+  `salt` varchar(64) NOT NULL,
   `referer` varchar(50) NOT NULL,
   `referer_id` int(11) NOT NULL DEFAULT '0',
   `referals` int(11) NOT NULL DEFAULT '0',
   `date_reg` int(11) NOT NULL DEFAULT '0',
   `date_login` int(11) NOT NULL DEFAULT '0',
-  `ip` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `ip` int(10) unsigned NOT NULL DEFAULT '0',
   `banned` int(1) NOT NULL DEFAULT '0',
   `refback` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_users_a`
 --
 
-INSERT INTO `db_users_a` (`id`, `user`, `email`, `pass`, `referer`, `referer_id`, `referals`, `date_reg`, `date_login`, `ip`, `banned`, `refback`) VALUES
-(1, 'Admin', 'admin@admin.ru', 'admin', 'Admin', 1, 8, 1367313062, 1592836895, 1427827337, 0, 50),
-(2, 'aleksey', 'leha.vodanov@mail.ru', 'aleksey', 'Admin', 1, 0, 1440868538, 1440868651, 1832711990, 0, 0),
-(3, 'baxedik', 'bax.edik@yandex.ru', '000000', 'Admin', 1, 0, 1510901125, 1510904750, 1509523661, 0, 0),
-(4, 'lexa2015', 'bax@yandex.ru', '000000', 'Admin', 1, 0, 1510901171, 0, 1509523661, 0, 0),
-(7, 'pligin', 'pligin103@gmail.com', 'a12344321', 'Admin', 1, 0, 1510915285, 0, 2956760126, 0, 0),
-(8, 'lexa', 'edik@yandex.ru', '000000', 'Admin', 1, 0, 1510919054, 0, 1509523661, 0, 0),
-(9, 'luchinin', 'maksim@luchinin.net', 'dZtXrWR49B4rF3G', 'Admin', 1, 0, 1543990229, 1544222965, 3585554581, 0, 0),
-(10, 'icutuz', 'cutuzowandrey@gmail.com', 'swat181199', 'Admin', 1, 0, 1591646873, 0, 771757176, 0, 0);
-
--- --------------------------------------------------------
+LOCK TABLES `db_users_a` WRITE;
+/*!40000 ALTER TABLE `db_users_a` DISABLE KEYS */;
+INSERT INTO `db_users_a` VALUES (1,'Admin','i@psweb.ru','3fd76819e2198cae8c729b21f1b82d203e1fd99446d5b5c32cef720d2aca2adc8a04b616a1e7f87ee7f361048c6c0a599afb22510471163c79c40036673bb25a','1SGQToTrh1qwpMIDBm9hmrjHm82zl85Lh89uGwNKm6Gg337k66EZLcHmpPfzJLRu','Admin',1,9,1367313062,1602091594,2994523295,0,50),(2,'aleksey','leha.vodanov@mail.ru','aleksey','','Admin',1,0,1440868538,1440868651,1832711990,0,0),(3,'baxedik','bax.edik@yandex.ru','000000','','Admin',1,0,1510901125,1510904750,1509523661,0,0),(4,'lexa2015','bax@yandex.ru','000000','','Admin',1,0,1510901171,0,1509523661,0,0),(7,'pligin','pligin103@gmail.com','ed5ed0ca798cd8ef42df14799b1c1bfcaa47eae9f9a45f249868cd38ee82ec5779d5ee2a1787a06d92dac692b9b183334480c94b6f50324bd7e4d7be075d0619','iglfQG9fn5uFjwkznq9xbppvqsd8PdyVvjJNnPV9SjcZEmA9XlZUVU3XORbyAeUE','Admin',1,0,1510915285,1601028364,775482177,0,0),(8,'lexa','edik@yandex.ru','000000','','Admin',1,0,1510919054,0,1509523661,0,0),(9,'luchinin','maksim@luchinin.net','dZtXrWR49B4rF3G','','Admin',1,0,1543990229,1544222965,3585554581,0,0),(10,'icutuz','cutuzowandrey@gmail.com','swat181199','','Admin',1,0,1591646873,0,771757176,0,0),(11,'qazqaz','qazqaz@ffsnd.ru','41dff820c1ee2006b0aed4ff0dd6d380bb85872b5cb06fbf48efe2a06e61b564483f801c0b2054562f5f88264e5348679fe4891477e23fa3741fa6cafb39c935','jgWOHUp8mbO1tonhLorJb9x6bQlZGyAGUKuzjnzd296L2ykPvBrpHdwwxDvgxSd4','Admin',1,0,1601909675,0,1402279350,0,0),(12,'MrLogon','iskorpionbek@gmail.com','e5c621032956954e8473c30a8c7db88a9974c2fa40b1b7c3e27ce3cdc227276bffe39e21c98d9ce93b7c19780af873ff61b4ff44357a4ecc49aea7c7bd019c10','nLUFfJMHs5qlmYxMFF07vz7jyQVawXNReNE8wHCA5f2Pu70Z33tX7gpx15GuI7hq','Admin',1,0,1603460156,1603467370,3588640962,0,10);
+/*!40000 ALTER TABLE `db_users_a` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_users_b`
 --
 
-CREATE TABLE IF NOT EXISTS `db_users_b` (
+DROP TABLE IF EXISTS `db_users_b`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_users_b` (
   `id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
   `money_b` float(11,2) NOT NULL DEFAULT '0.00',
@@ -630,34 +830,49 @@ CREATE TABLE IF NOT EXISTS `db_users_b` (
   `kredit` float(11,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `db_users_b`
 --
 
-INSERT INTO `db_users_b` (`id`, `user`, `money_b`, `money_p`, `a_t`, `b_t`, `c_t`, `d_t`, `e_t`, `a_b`, `b_b`, `c_b`, `d_b`, `e_b`, `all_time_a`, `all_time_b`, `all_time_c`, `all_time_d`, `all_time_e`, `last_sbor`, `from_referals`, `to_referer`, `payment_sum`, `insert_sum`, `kredit`) VALUES
-(1, 'Admin', -20.00, 9499.00, 2, 1, 1, 1, 1, 2693649, 2692304, 4037783, 5383262, 6728741, 43053870, 43032366, 64537795, 86043224, 107548655, 1588245785, 0.00, 0.00, 5.00, 0.00, 0.00),
-(2, 'aleksey', 0.00, 0.00, 1, 0, 0, 0, 0, 40979062, 0, 0, 0, 0, 40979062, 0, 0, 0, 0, 1588245785, 0.00, 0.00, 0.00, 0.00, 0.00),
-(3, 'baxedik', 0.00, 0.00, 1, 0, 0, 0, 0, 21506112, 0, 0, 0, 0, 21506112, 0, 0, 0, 0, 1588245785, 0.00, 0.00, 0.00, 0.00, 0.00),
-(4, 'lexa2015', 0.00, 0.00, 1, 0, 0, 0, 0, 21506100, 0, 0, 0, 0, 21506100, 0, 0, 0, 0, 1588245785, 0.00, 0.00, 0.00, 0.00, 0.00),
-(8, 'lexa', 0.00, 0.00, 1, 0, 0, 0, 0, 21501127, 0, 0, 0, 0, 21501127, 0, 0, 0, 0, 1588245785, 0.00, 0.00, 0.00, 0.00, 0.00),
-(7, 'pligin', 0.00, 0.00, 1, 0, 0, 0, 0, 21502175, 0, 0, 0, 0, 21502175, 0, 0, 0, 0, 1588245785, 0.00, 0.00, 0.00, 0.00, 0.00),
-(9, 'luchinin', 0.00, 0.00, 1, 0, 0, 0, 0, 12305503, 0, 0, 0, 0, 12305503, 0, 0, 0, 0, 1588245785, 0.00, 0.00, 0.00, 0.00, 0.00),
-(10, 'icutuz', 0.00, 0.00, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1591646873, 0.00, 0.00, 0.00, 0.00, 0.00);
-
--- --------------------------------------------------------
+LOCK TABLES `db_users_b` WRITE;
+/*!40000 ALTER TABLE `db_users_b` DISABLE KEYS */;
+INSERT INTO `db_users_b` VALUES (1,'Admin',74.00,9499.00,2,1,1,1,1,9911085,9906134,14856726,19807318,24757910,50271306,50246196,75356738,100467280,125577824,1601224191,0.00,0.00,5.00,0.00,0.00),(2,'aleksey',0.00,0.00,1,0,0,0,0,44587779,0,0,0,0,44587779,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(3,'baxedik',0.00,0.00,1,0,0,0,0,25114829,0,0,0,0,25114829,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(4,'lexa2015',0.00,0.00,1,0,0,0,0,25114817,0,0,0,0,25114817,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(8,'lexa',0.00,0.00,1,0,0,0,0,25109844,0,0,0,0,25109844,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(7,'pligin',5851.70,3852.70,3,0,0,0,0,211171,0,0,0,0,25315843,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(9,'luchinin',0.00,0.00,1,0,0,0,0,15914220,0,0,0,0,15914220,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(10,'icutuz',0.00,0.00,1,0,0,0,0,2663026,0,0,0,0,2663026,0,0,0,0,1601224191,0.00,0.00,0.00,0.00,0.00),(11,'qazqaz',56.00,0.00,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1601909675,0.00,0.00,0.00,0.00,0.00),(12,'MrLogon',116.05,102.05,1,0,0,0,0,0,0,0,0,0,2041,0,0,0,0,1603467498,0.00,0.00,0.00,0.00,0.00);
+/*!40000 ALTER TABLE `db_users_b` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `db_welcomText`
 --
 
-CREATE TABLE IF NOT EXISTS `db_welcomText` (
+DROP TABLE IF EXISTS `db_welcomText`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_welcomText` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `db_welcomText`
+--
+
+LOCK TABLES `db_welcomText` WRITE;
+/*!40000 ALTER TABLE `db_welcomText` DISABLE KEYS */;
+/*!40000 ALTER TABLE `db_welcomText` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-10-23 20:18:07
