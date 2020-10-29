@@ -41,7 +41,7 @@ if(isset($_POST['balance_set'])){
 }
 # Забанить пользователя
 if(isset($_POST['banned'])){
-    $db->Query("UPDATE db_users_a SET banned = :banned WHERE id = :eid");
+    $result=$pdo->prepare("UPDATE `db_users_a` SET `banned` = :banned WHERE `id` = :eid");
     $result->execute(array('eid'=>$eid,'banned'=>intval($_POST['banned'])));
     $result=$pdo->prepare("SELECT *, INET_NTOA(db_users_a.ip) uip FROM db_users_a, db_users_b WHERE db_users_a.id = db_users_b.id AND db_users_b.id = :eid LIMIT 1");
     $result->execute(array('eid'=>$eid));
