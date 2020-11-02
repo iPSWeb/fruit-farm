@@ -60,13 +60,14 @@ if(isset($_POST['purse'])){
                                     $da = time();
                                     $dd = $da + 60*60*24*15;
                                     $ppid = $arTransfer['historyId'];
-                                    $result = $pdo->prepare("INSERT INTO `db_payment` (`user`,`user_id`,`purse`,`sum`,`valuta`,`serebro`,`payment_id`,`date_add`,`status`) VALUES (:user_name,:user_id,:purse,:sum_pay,:valuta,:sum,:ppid',:time,:status)");
+                                    $result = $pdo->prepare("INSERT INTO `db_payment` (`user`,`user_id`,`purse`,`sum`,`valuta`,`serebro`,`payment_id`,`date_add`,`status`) VALUES (:user_name,:user_id,:purse,:sum_pay,:valuta,:sum,:ppid,:time,:status)");
                                     $result->execute(array(
                                         'user_name'=>$user_name,
                                         'user_id'=>$user_id,
                                         'purse'=>$purse,
                                         'sum_pay'=>$sum_pay,
                                         'valuta'=>'RUB',
+                                        'sum'=>$sum,
                                         'ppid'=>$ppid,
                                         'time'=>time(),
                                         'status'=>3
