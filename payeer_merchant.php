@@ -54,7 +54,7 @@ if (isset($_POST['m_operation_id']) && isset($_POST['m_sign'])){
 	# Если в базе нет такого платежа, выдаем "Ошибка"
         if($result->rowCount() == 0){ exit($order_id.'|error');}
 	# Массив информации о платеже	
-        $row = $db->FetchArray();
+        $row = $result->fetch();
 	# Если статус платежа 1 ('Выполнено'), возвращаем 'Выполненно'
         if($row['status'] == 1){ exit($order_id.'|success');}
 	# Если сумма платежа в оповещении не равна сумме в базе
