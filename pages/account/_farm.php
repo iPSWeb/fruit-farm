@@ -1,7 +1,6 @@
 <?PHP
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION['title'] = 'Аккаунт - Ферма';
-//$pdo->query("UPDATE `db_users_b` SET `money_b` = '10000' WHERE `id` = '1'");
 ?>
 <div class="s-bk-lf">
 	<div class="acc-title">Ферма</div>
