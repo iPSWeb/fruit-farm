@@ -9,8 +9,13 @@
 //Проверка IP сервера оповещений Payeer
 if (!in_array($_SERVER['REMOTE_ADDR'], array('185.71.65.92', '185.71.65.189', '149.202.17.210'))) die('ERROR IP');
 if (isset($_POST['m_operation_id']) && isset($_POST['m_sign'])){
+    define('PSWeb', true);
+    define('BASE_DIR',$_SERVER['DOCUMENT_ROOT']);
     # Автоподгрузка классов
-    function __autoload($name){ include('classes/_class.'.$name.'.php');}
+    function my_autoloader($class) {
+        include BASE_DIR.'/classes/_class.'.$class.'.php';
+    }
+    spl_autoload_register('my_autoloader');
     # Класс конфига 
     $config = new config;
     $m_key = $config->secretW;
