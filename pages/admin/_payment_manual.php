@@ -7,6 +7,7 @@
  */
 
 if (!defined('PSWeb') || PSWeb !== true) { Header('Location: /404'); return; }
+if (!defined('PSWebAdmin') || PSWeb !== true) { Header('Location: /404'); return; }
 $_OPTIMIZATION['title'] = 'Выплаты';
 $status_array = array( 0 => "Проверяется", 1 => "Выплачивается", 2 => "Отменена", 3 => "Выплачено");
 $page = (isset($_GET['page']) && intval($_GET['page']) < 1000 && intval($_GET['page']) >= 1) ? (intval($_GET['page'])-1) : 0;
